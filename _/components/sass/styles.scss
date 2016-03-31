@@ -1,15 +1,59 @@
 @import 'compass';
 @import 'compass/reset';
 @import 'variables';
+@import 'layout';
 
 html {
     min-height: 100%;
 }
 body {
+	@include box-sizing(border-box);
 	font-family: $font-stack;
+	font-size: 16px;
 }
 .wrapper {
-	width: 960px;
+	width: $large;
 	margin: 0 auto;
-	background-color: $background;
+	padding-top: 5em;
+	// background-color: $background;
+}
+input[name=search] {
+	background: url(../images/userSearchMagnifyingGlass.png) no-repeat .8em .6em;
+	padding-left: 3em !important;
+	margin-bottom: .75em !important;
+	font-size: 14px;
+	width: 50%;
+	height: 2.5em;
+	background-color: #fff;
+	color: #000;
+	border: 1px solid #e6e6e6 !important;
+}
+.resultDCDCDC  {
+	background-color: #DCDCDC;
+	width: 100%;
+	height: auto;
+	margin-bottom: 10px;
+}
+.resultC8DAE8 {
+	background-color: #C8DAE8;
+	width: 100%;
+	height: auto;	
+	margin-bottom: 10px;
+}
+ul.resultList {
+	padding: 15px 0 15px 15px;
+	margin-left: 0;
+	width: 50%;
+}
+li.fullName {
+	font-size: 1.2rem;
+	font-weight: 500;
+}
+hr.searchRule {
+	border: 0;
+	height: 0;
+	width: 100%;
+	border-top: 2px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 0px solid rgba(255, 255, 255, 0.3);
+	margin-top: 20px;
 }

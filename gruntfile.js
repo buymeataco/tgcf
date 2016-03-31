@@ -52,7 +52,7 @@ module.exports = function(grunt) {
 				}, //sass
 			html: {
 				files: ['*.php']
-				}
+				}				
 		} //watch
 	}) //initConfig
 	grunt.registerTask('default',['watch','scsslint']);

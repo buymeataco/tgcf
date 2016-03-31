@@ -1,0 +1,15 @@
+@import 'compass';
+@import 'compass/reset';
+@import 'variables';
+
+html {
+    min-height: 100%;
+}
+body {
+	font-family: $font-stack;
+}
+.wrapper {
+	width: 960px;
+	margin: 0 auto;
+	background-color: $background;
+}

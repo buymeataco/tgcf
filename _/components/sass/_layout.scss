@@ -1,0 +1,17 @@
+$susy: (
+	columns:	12,
+);
+
+//compass
+@include border-box-sizing;
+
+$small:				20em;//320
+$medium:			48em;//768
+$large:				60em;//960
+
+.wrapper {
+  @include container($large);
+  @include show-grid(overlay);
+  position: relative;
+  top: -165px;
+}

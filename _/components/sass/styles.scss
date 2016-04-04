@@ -1,5 +1,5 @@
 @import 'compass';
-@import 'compass/reset';
+@import "compass/utilities/general/reset";
 @import 'variables';
 @import 'layout';
 
@@ -9,13 +9,12 @@ html {
 body {
 	@include box-sizing(border-box);
 	font-family: $font-stack;
-	font-size: 16px;
+	font-size: 1em;
 }
 .wrapper {
 	width: $large;
 	margin: 0 auto;
 	padding-top: 5em;
-	// background-color: $background;
 }
 input[name=search] {
 	background: url(../images/userSearchMagnifyingGlass.png) no-repeat .8em .6em;
@@ -33,21 +32,59 @@ input[name=search] {
 	width: 100%;
 	height: auto;
 	margin-bottom: 10px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+		&:hover {
+			background-color: #bfbfbf;
+			cursor: pointer;
+			transition: all .125s ease-in;
+		}
 }
 .resultC8DAE8 {
 	background-color: #C8DAE8;
 	width: 100%;
 	height: auto;	
 	margin-bottom: 10px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+		&:hover {
+			background-color: #93b7d2;
+			cursor: pointer;
+			transition: all .125s ease-in;
+		}
 }
 ul.resultList {
-	padding: 15px 0 15px 15px;
-	margin-left: 0;
-	width: 50%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
 }
-li.fullName {
-	font-size: 1.2rem;
+.resultCount {
+	float: right;
+	margin-top: -40px;
+}
+li.listResultName {
+	font-weight: 600;
+	display: inline;
+	width: 300px;
+	float: left;
+	padding-left: 10px;
+	margin-right: 20px;
+}
+li.listResultEmployer {
 	font-weight: 500;
+	font-size: .8em;
+	display: inline;
+	width: 300px;
+	float: left;
+	padding-top: 3px;
+}
+li.listResultTitle {
+	font-weight: 500;
+	font-size: .8em;
+	display: inline;
+	width: 300px;
+	float: left;
+	padding-top: 3px;
 }
 hr.searchRule {
 	border: 0;
@@ -55,5 +92,20 @@ hr.searchRule {
 	width: 100%;
 	border-top: 2px solid rgba(0, 0, 0, 0.1);
 	border-bottom: 0px solid rgba(255, 255, 255, 0.3);
-	margin-top: 20px;
+	margin-top: 0px;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+.cf:after {
+    clear: both;
+}
+.cf {
+    *zoom: 1;
 }

@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-postcss');
 	grunt.loadNpmTasks('grunt-scss-lint');
+	grunt.loadNpmTasks('grunt-postcss');
 	grunt.initConfig({
 		uglify: {
 			my_target: {
@@ -22,7 +23,6 @@ module.exports = function(grunt) {
 		postcss: {
 			options: {
 				processors: [
-					require('pixrem')(), // add fallbacks for rem units 
 					require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes 
 				]
 			},
@@ -53,7 +53,17 @@ module.exports = function(grunt) {
 			html: {
 				files: ['*.php']
 				}				
-		} //watch
+		}, //watch
+		postcss: {
+    		options: {
+      			processors: [
+        			require('autoprefixer')({browsers: 'last 2 versions'}),
+ 				]
+			},
+			dist: {
+				src: '_/components/sass/styles.scss'
+			}
+		}
 	}) //initConfig
 	grunt.registerTask('default',['watch','scsslint']);
 } //exports

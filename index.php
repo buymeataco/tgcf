@@ -12,7 +12,7 @@
 		<div class="wrapper">
 			<div class="entryForm">
 				<input name="search" id="search" type="text" value="Search" size="128" maxlength="256" onkeydown="if (event.keyCode==13) return processForm();"/>
-				<hr />
+				<hr class="searchRule" />
 			</div>
 			<div id="results"></div>
 		</div> <!-- end wrapper -->

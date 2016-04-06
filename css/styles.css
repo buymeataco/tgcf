@@ -1,3 +1,68 @@
+/* line 5, ../../../../Thomas/.rvm/gems/ruby-2.0.0-p643@global/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../Thomas/.rvm/gems/ruby-2.0.0-p643@global/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../Thomas/.rvm/gems/ruby-2.0.0-p643@global/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../Thomas/.rvm/gems/ruby-2.0.0-p643@global/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../Thomas/.rvm/gems/ruby-2.0.0-p643@global/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../Thomas/.rvm/gems/ruby-2.0.0-p643@global/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../Thomas/.rvm/gems/ruby-2.0.0-p643@global/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../Thomas/.rvm/gems/ruby-2.0.0-p643@global/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../Thomas/.rvm/gems/ruby-2.0.0-p643@global/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
 /* line 6, ../_/components/sass/styles.scss */
 html {
   min-height: 100%;
@@ -16,7 +81,7 @@ body {
 .wrapper {
   width: 60em;
   margin: 0 auto;
-  padding-top: 5em;
+  padding-top: 3em;
 }
 
 /* line 19, ../_/components/sass/styles.scss */
@@ -73,8 +138,8 @@ ul.resultList {
 
 /* line 61, ../_/components/sass/styles.scss */
 .resultCount {
-  float: right;
-  margin-top: -40px;
+  float: left;
+  margin-top: -30px;
 }
 
 /* line 65, ../_/components/sass/styles.scss */
@@ -88,7 +153,8 @@ li.listResultName {
 }
 
 /* line 73, ../_/components/sass/styles.scss */
-li.listResultEmployer {
+li.listResultEmployer,
+.listResultTitle {
   font-weight: 500;
   font-size: .8em;
   display: inline;
@@ -97,17 +163,7 @@ li.listResultEmployer {
   padding-top: 3px;
 }
 
-/* line 81, ../_/components/sass/styles.scss */
-li.listResultTitle {
-  font-weight: 500;
-  font-size: .8em;
-  display: inline;
-  width: 300px;
-  float: left;
-  padding-top: 3px;
-}
-
-/* line 89, ../_/components/sass/styles.scss */
+/* line 82, ../_/components/sass/styles.scss */
 hr.searchRule {
   border: 0;
   height: 0;
@@ -117,25 +173,154 @@ hr.searchRule {
   margin-top: 0px;
 }
 
-/* line 97, ../_/components/sass/styles.scss */
+/* line 90, ../_/components/sass/styles.scss */
+hr.rowRule {
+  border: 0;
+  height: 0;
+  width: 100%;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 0px solid rgba(255, 255, 255, 0.3);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* line 99, ../_/components/sass/styles.scss */
+p.fullName {
+  margin-bottom: .9em;
+}
+
+/* line 102, ../_/components/sass/styles.scss */
+span.nameBold {
+  font-weight: bold;
+}
+
+/* line 105, ../_/components/sass/styles.scss */
+.rowOneColOne, .rowTwoColOne, .rowThreeColOne,
+.rowOneColTwo, .rowTwoColTwo, .rowThreeColTwo,
+.rowFourColOne, .rowFourColTwo, .rowFiveColOne,
+.rowFiveColTwo {
+  width: 480px;
+  float: left;
+}
+
+/* line 112, ../_/components/sass/styles.scss */
+ul.leftListItem li {
+  display: inline;
+}
+
+/* line 115, ../_/components/sass/styles.scss */
+ul.leftListItem li, ul.rightListItem li {
+  display: inline;
+  font-size: .8em;
+  margin-bottom: .5em;
+  line-height: 1.1;
+}
+/* line 120, ../_/components/sass/styles.scss */
+ul.leftListItem li:first-child, ul.rightListItem li:first-child {
+  font-weight: bold;
+  float: left;
+  width: 152px;
+}
+
+/* line 127, ../_/components/sass/styles.scss */
+ul.leftListItem li:nth-child(2), ul.rightListItem li:nth-child(2) {
+  float: left;
+  width: 282px;
+}
+
+/* line 132, ../_/components/sass/styles.scss */
+.notes {
+  width: 808px;
+  font-size: .8em;
+  float: right;
+}
+
+/* line 137, ../_/components/sass/styles.scss */
 a {
   text-decoration: none;
   color: #000;
 }
 
-/* line 101, ../_/components/sass/styles.scss */
+/* line 141, ../_/components/sass/styles.scss */
+.btn-primary {
+  height: 2.6em;
+  width: 5.5em;
+  background-color: #228B22;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1em;
+}
+
+/* line 150, ../_/components/sass/styles.scss */
+.editButton {
+  width: 5.375em;
+  float: right;
+  margin-top: -3.5em;
+}
+
+/* line 155, ../_/components/sass/styles.scss */
+ul.fullName li {
+  display: inline;
+}
+/* line 157, ../_/components/sass/styles.scss */
+ul.fullName li:nth-child(n+1):nth-child(odd):nth-child(-n+6) {
+  font-weight: bold;
+  font-size: .8em;
+}
+
+/* line 162, ../_/components/sass/styles.scss */
+input[name=name], input[name=title],
+input[name=company], input[name=office],
+input[name=cell], input[name=fax],
+input[name=home], input[name=numStreet],
+input[name=suite], input[name=cityStateZip],
+input[name=primaryEmail], input[name=chapter],
+input[name=role], input[name=recruitedBy],
+input[name=status], input[name=territory],
+input[name=source], input[name=code], input[name=level],
+input[name=joinDate], input[name=groups],
+input[name=assistant], input[name=assEmail],
+input[name=assOffice], input[name=assCell],
+input[name=attorneys], input[name=industry],
+input[name=nih], input[name=newCLOGC] {
+  padding-left: 1em;
+  margin-bottom: .5em;
+  height: 1.8em;
+  width: 17.5em;
+  background-color: #fff;
+  color: #696969;
+  border: 1px solid #e6e6e6;
+  font-size: 1em;
+}
+
+/* line 185, ../_/components/sass/styles.scss */
+input[name=firstName], input[name=lastName],
+input[name=middleName] {
+  padding-left: 1em;
+  margin-bottom: .75em;
+  margin-right: .5em;
+  height: 1.8em;
+  width: 16em;
+  background-color: #fff;
+  color: #696969;
+  border: 1px solid #e6e6e6;
+  font-size: .8em;
+}
+
+/* line 197, ../_/components/sass/styles.scss */
 .cf:before,
 .cf:after {
   content: " ";
   display: table;
 }
 
-/* line 106, ../_/components/sass/styles.scss */
+/* line 202, ../_/components/sass/styles.scss */
 .cf:after {
   clear: both;
 }
 
-/* line 109, ../_/components/sass/styles.scss */
+/* line 205, ../_/components/sass/styles.scss */
 .cf {
   *zoom: 1;
 }

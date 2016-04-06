@@ -1,4 +1,5 @@
 <?php
+	$whichQuery = 'searchPageResults';
 	include ('dbConnect.php');
 	include ('queries.php');
 ?>

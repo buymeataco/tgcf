@@ -1,5 +1,5 @@
 @import 'compass';
-@import "compass/utilities/general/reset";
+@import "compass/reset";
 @import 'variables';
 @import 'layout';
 
@@ -14,7 +14,7 @@ body {
 .wrapper {
 	width: $large;
 	margin: 0 auto;
-	padding-top: 5em;
+	padding-top: 3em;
 }
 input[name=search] {
 	background: url(../images/userSearchMagnifyingGlass.png) no-repeat .8em .6em;
@@ -59,8 +59,8 @@ ul.resultList {
 	margin: 0;
 }
 .resultCount {
-	float: right;
-	margin-top: -40px;
+	float: left;
+	margin-top: -30px;
 }
 li.listResultName {
 	font-weight: 600;
@@ -70,15 +70,8 @@ li.listResultName {
 	padding-left: 10px;
 	margin-right: 20px;
 }
-li.listResultEmployer {
-	font-weight: 500;
-	font-size: .8em;
-	display: inline;
-	width: 300px;
-	float: left;
-	padding-top: 3px;
-}
-li.listResultTitle {
+li.listResultEmployer,
+.listResultTitle {
 	font-weight: 500;
 	font-size: .8em;
 	display: inline;
@@ -94,9 +87,112 @@ hr.searchRule {
 	border-bottom: 0px solid rgba(255, 255, 255, 0.3);
 	margin-top: 0px;
 }
+hr.rowRule {
+	border: 0;
+	height: 0;
+	width: 100%;
+	border-top: 2px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 0px solid rgba(255, 255, 255, 0.3);
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+p.fullName {
+	margin-bottom: .9em;
+}
+span.nameBold {
+	font-weight: bold;
+}
+.rowOneColOne, .rowTwoColOne, .rowThreeColOne,
+.rowOneColTwo, .rowTwoColTwo, .rowThreeColTwo,
+.rowFourColOne, .rowFourColTwo, .rowFiveColOne,
+.rowFiveColTwo {
+	width: 480px;
+	float: left;
+}
+ul.leftListItem li {
+	display: inline;
+}
+ul.leftListItem li, ul.rightListItem li {
+	display: inline;
+	font-size: .8em;
+	margin-bottom: .5em;
+	line-height: 1.1;
+		&:first-child {
+			font-weight: bold;
+			float: left;
+			width: 152px;
+		}
+}
+ul.leftListItem li, ul.rightListItem li {
+	&:nth-child(2) {
+		float: left;
+		width: 282px;
+	}
+}
+.notes {
+	width: 808px;
+	font-size: .8em;
+	float: right;
+}
 a {
 	text-decoration: none;
 	color: #000;
+}
+.btn-primary {
+	height: 2.6em;
+	width: 5.5em;
+	background-color: #228B22;
+	border: none;
+	border-radius: 8px;
+	color: #fff;
+	font-size: 1em;
+}
+.editButton {
+	width: 5.375em;
+	float: right;
+	margin-top: -3.5em;
+}
+ul.fullName li {
+	display: inline;
+		&:nth-child(n+1):nth-child(odd):nth-child(-n+6) {
+			font-weight: bold;
+			font-size: .8em;
+		}
+}
+input[name=name], input[name=title],
+input[name=company],input[name=office],
+input[name=cell], input[name=fax],
+input[name=home],input[name=numStreet],
+input[name=suite], input[name=cityStateZip],
+input[name=primaryEmail],input[name=chapter],
+input[name=role], input[name=recruitedBy],
+input[name=status], input[name=territory],
+input[name=source],input[name=code], input[name=level],
+input[name=joinDate],input[name=groups],
+input[name=assistant], input[name=assEmail],
+input[name=assOffice],input[name=assCell],
+input[name=attorneys], input[name=industry],
+input[name=nih],input[name=newCLOGC] {
+	padding-left: 1em;
+	margin-bottom: .5em;
+	height: 1.8em;
+	width: 17.5em;
+	background-color: #fff;
+	color: #696969;
+	border: 1px solid #e6e6e6;
+	font-size: 1em;
+}
+input[name=firstName], input[name=lastName],
+input[name=middleName] {
+	padding-left: 1em;
+	margin-bottom: .75em;
+	margin-right: .5em;	
+	height: 1.8em;
+	width: 16em;
+	background-color: #fff;
+	color: #696969;
+	border: 1px solid #e6e6e6;
+	font-size: .8em;
 }
 .cf:before,
 .cf:after {

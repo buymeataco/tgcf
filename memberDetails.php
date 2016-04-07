@@ -8,7 +8,7 @@
 	<body>
 		<div class="wrapper">
 			<?php
-				$whichQuery = 'profilePage';
+				$whichQuery = 'memberDetails';
 				include ('queries.php');
 				function displaySearchResults($result) {
 					while ($row = mysqli_fetch_array($result)) {
@@ -20,8 +20,8 @@
 						$myTitle = $title;
 							echo
 								"<p>Profile for <strong>{$myFirst} {$myLast}</strong></p>
-								<hr class=\"searchRule\"/>
-								<p class=\"resultCount\">Record last updated on: {$lastUpdate}.</p>
+								<hr class=\"memberDetailsPage\"/>
+								<p class=\"lastUpdate\">Record last updated on: {$lastUpdate}.</p>
 								<div class=\"profile\">
 									<ul class=\"resultList\">
 										<li class=\"listResultName\">{$myLast}, {$myFirst} {$myMiddle}</li>

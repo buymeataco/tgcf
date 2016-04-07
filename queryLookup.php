@@ -6,7 +6,7 @@
 
 <?php
 function displaySearchResults($result, $resultCount) {
-	echo "<p class=\"resultCount\">Your search returned {$resultCount} result(s).</p>";
+	echo "<p class=\"resultCountIndexPage\">Your search returned {$resultCount} result(s).</p>";
 	$counter = 1;
 	while ($row = mysqli_fetch_array($result)) {
 	extract ($row);
@@ -19,7 +19,7 @@ function displaySearchResults($result, $resultCount) {
 	$counter++;
 	$rowColor = ($counter & 1) ? $rowColor = 'resultDCDCDC' : $rowColor = 'resultC8DAE8';
 	echo
-	"<a href=\"profile.php?id={$myId}\"><div class=\"{$rowColor} cf\">
+	"<a href=\"memberDetails.php?id={$myId}\"><div class=\"{$rowColor} cf\">
 		<ul class=\"resultList\">
 			<li class=\"listResultName\">{$myLast}, {$myFirst} {$myMiddle}</li>
 			<li class=\"listResultEmployer\">{$employer}</li>

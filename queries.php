@@ -14,7 +14,7 @@ case 'searchPageResults':
 		}
 	cleanupScripts($result);
 break;
-case 'profilePage':
+case 'memberDetails':
 	$profileSearchParameter = $_GET["id"];
 	$query = "SELECT * FROM members WHERE id = '$profileSearchParameter'";
 	$result = mysqli_query($conn,$query) or die ("<br />Could not execute a query, please see system administrator.");

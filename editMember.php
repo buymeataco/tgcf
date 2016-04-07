@@ -13,7 +13,14 @@
 	<body>
 		<div class="wrapper">
 			<p class="resultCount">Record last updated on: 2106-04-04.</p>
-			<ul class="fullName">				
+			<ul class="fullName">
+				<li>
+					<select name="salutation" class="salutation" id="salutation">
+					  <option value="1">Mr.</option>
+					  <option value="2">Ms.</option>
+					  <option value="3">Mrs.</option>
+					</select>
+				</li>				
 				<li><label for="firstName">First:</label></li>
 				<li>
 					<input id="firstName" class="firstName" name="firstName" type="text" size="128" maxlength="256" />
@@ -108,14 +115,32 @@
 							</ul>
 							<ul class="rightListItem">
 								<li><label for="chapter">Chapter:</label></li>
-								<li>
-									<input id="chapter" class="chapter" name="chapter" type="text" size="128" maxlength="256" />
-								</li>
+								<li>	
+									<select name="chapter" class="chapter" id="chapter">
+										<option value="1">Austin-San Antonio</option>
+										<option value="2">Dallas-Fort Worth</option>	
+									 	<option value="3">Houston</option>								
+									</select>
+								</li>	
 							</ul>
 							<ul class="rightListItem">
 								<li><label for="role">Role:</label></li>
 								<li>
-									<input id="role" class="role" name="role" type="text" size="128" maxlength="256" />
+									<select name="role" class="role" id="role">
+									  <option value="1">Subscriber</option>
+									  <option value="2">Follow-Up Emails Manager</option>
+									  <option value="3">Shop Manager</option>
+									  <option value="4">s2Member Level 4</option>
+									  <option value="5">s2Member Level 3</option>
+									  <option value="6">s2Member Level 2</option>
+									  <option value="7">s2Member Level 1</option>
+									  <option value="8">Client</option>
+									  <option value="9">Contributor</option>
+									  <option value="10">Author</option>
+									  <option value="11">Editor</option>
+									  <option value="12">Administrator</option>
+									  <option value="13">No role for this site</option>
+									</select>
 								</li>
 							</ul>
 						</div> <!-- rowTwoColumnTwo -->
@@ -132,7 +157,15 @@
 							<ul class="leftListItem">
 								<li><label for="status">Customer Status:</label></li>
 								<li>
-									<input id="status" class="status" name="status" type="text" size="128" maxlength="256" />
+									<select name="status" class="status" id="status">
+									  <option value="1">Customer</option>
+									  <option value="2">Lead</option>
+									  <option value="3">Follow-up</option>
+									  <option value="4">Prospect</option>
+									  <option value="5">Favourite</option>
+									  <option value="6">Blocked</option>
+									  <option value="7">Flagged</option>
+									</select>
 								</li>
 							</ul>
 							<ul class="leftListItem">
@@ -185,7 +218,7 @@
 								</li>
 							</ul>
 							<ul class="leftListItem">
-								<li><label for="assEmail">Assistant Email:</label></li>
+								<li><label for="assEmail">Asst. Email:</label></li>
 								<li>
 									<input id="assEmail" class="assEmail" name="assEmail" type="text" size="128" maxlength="256" />
 								</li>
@@ -212,27 +245,107 @@
 							<ul class="leftListItem">
 								<li><label for="attorneys">Attorneys in Dept:</label></li>
 								<li>
-									<input id="attorneys" class="attorneys" name="attorneys" type="text" size="128" maxlength="256" />
+									<select name="attorneys" class="attorneys" id="attorneys">
+									  <option value="1">Solo</option>
+									  <option value="2">Small 2-5 Lawyers</option>
+									  <option value="3">Medium 6-9 Lawyers</option>
+									  <option value="4">Large 11 or more Lawyers</option>
+									</select>
 								</li>
 							</ul>
 							<ul class="leftListItem">
-								<li><label for="industry">Industry:</label></li>
+								<li class="industryLabel"><label for="industry">Industry:</label></li>
 								<li>
-									<input id="industry" class="industry" name="industry" type="text" size="128" maxlength="256" />
+									<select name="industry" class="industry" id="industry">
+										<option value="Agriculture &amp; Forestry Sector">Agriculture &amp; Forestry Sector</option>
+										<option value="Arts Entertainment &amp; Recreation Sector">Arts Entertainment &amp; Recreation Sector</option>
+										<option value="Beverage Manufacturing">Beverage Manufacturing</option>
+										<option value="Biotechnology Product Manufacturing">Biotechnology Product Manufacturing</option>
+										<option value="Business Services Sector">Business Services Sector</option>
+										<option value="Chemical Manufacturing">Chemical Manufacturing</option>
+										<option value="Commercial Equipment Repair &amp; Maintenance">Commercial Equipment Repair &amp; Maintenance</option>
+										<option value="Commercial Printing">Commercial Printing</option>
+										<option value="Computer Hardware Manufacturing">Computer Hardware Manufacturing</option>
+										<option value="Computer Software">Computer Software</option>
+										<option value="Construction Sector">Construction Sector</option>
+										<option value="Consumer Products Manufacturing">Consumer Products Manufacturing</option>
+										<option value="Consumer Services">Consumer Services</option>
+										<option value="Contract Electronics Manufacturing">Contract Electronics Manufacturing</option>
+										<option value="Control Electromedical Measuring &amp; Navigational Instruments Manufacturing">Control Electromedical Measuring &amp; Navigational Instruments Manufacturing</option>
+										<option value="Education Sector">Education Sector</option>
+										<option value="Electric Power Generation">Electric Power Generation</option>
+										<option value="Electric Utilities">Electric Utilities</option>
+										<option value="Electrical Products Manufacturing">Electrical Products Manufacturing</option>
+										<option value="Fabricated Metal Product Manufacturing">Fabricated Metal Product Manufacturing</option>
+										<option value="Finance &amp; Insurance Sector">Finance &amp; Insurance Sector</option>
+										<option value="Food Manufacturing">Food Manufacturing</option>
+										<option value="Government">Government</option>
+										<option value="Health Care Products Manufacturing">Health Care Products Manufacturing</option>
+										<option value="Health Care Sector">Health Care Sector</option>
+										<option value="HVAC Equipment Manufacturing">HVAC Equipment Manufacturing</option>
+										<option value="Insurance">Insurance</option>
+										<option value="Leasing of Intangible Assets">Leasing of Intangible Assets</option>
+										<option value="Lodging">Lodging</option>
+										<option value="Machinery Manufacturing">Machinery Manufacturing</option>
+										<option value="Magnetic &amp; Optical Media Manufacturing">Magnetic &amp; Optical Media Manufacturing &amp; Reproduction</option>
+										<option value="Managed Application &map; Network Services">Managed Application &amp; Network Services</option>
+										<option value="Management of Companies &amp; Enterprises">Management of Companies &amp; Enterprises</option>
+										<option value="Manufacturing Sector">Manufacturing Sector</option>
+										<option value="Media">Media</option>
+										<option value="Membership Organizations">Membership Organizations</option>
+										<option value="Mining">Mining</option>
+										<option value="Miscellaneous Manufacturing">Miscellaneous Manufacturing</option>
+										<option value="Natural Gas Distribution &amp; Marketing">Natural Gas Distribution &amp; Marketing</option>
+										<option value="Nonclassifiable Establishments">Nonclassifiable Establishments</option>
+										<option value="Nonmetallic Mineral Product Manufacturing">Nonmetallic Mineral Product Manufacturing</option>
+										<option value="Nonprofit Institutions">Nonprofit Institutions</option>
+										<option value="Oil &amp; Gas Exploration &amp; Production">Oil &amp; Gas Exploration &amp; Production</option>
+										<option value="Oil &amp; Gas Field Services">Oil &amp; Gas Field Services</option>
+										<option value="Oil &amp; Gas Well Drilling">Oil &amp; Gas Well Drilling</option>
+										<option value="Petroleum &amp; Coal Products Manufacturing">Petroleum &amp; Coal Products Manufacturing</option>
+										<option value="Pharmaceutical Manufacturing">Pharmaceutical Manufacturing</option>
+										<option value="Primary Metals Manufacturing">Primary Metals Manufacturing</option>
+										<option value="Private Households">Private Households</option>
+										<option value="Professional Services Sector">Professional Services Sector</option>
+										<option value="Real Estate">Real Estate</option>
+										<option value="Religious Organizations">Religious Organizations</option>
+										<option value="Rental &amp; Leasing<">Rental &amp; Leasing</option>
+										<option value="Restaurants">Restaurants</option>
+										<option value="Bars &amp; Food Services">Bars &amp; Food Services</option>
+										<option value="Retail Sector">Retail Sector</option>
+										<option value="Security Products Manufacturing">Security Products Manufacturing</option>
+										<option value="Semiconductor &amp; Other Electronic Component Manufacturing">Semiconductor &amp; Other Electronic Component Manufacturing</option>
+										<option value="Telecommunications Equipment Manufacturing<">Telecommunications Equipment Manufacturing</option>
+										<option value="Transportation Equipment Manufacturing">Transportation Equipment Manufacturing</option>
+										<option value="Transportation Services Sector">Transportation Services Sector</option>
+										<option value="Water &amp; Sewer Utilities">Water &amp; Sewer Utilities</option>
+										<option value="Web Development">Web Development</option>
+										<option value="Wholesale Sector">Wholesale Sector</option>
+										<option value="Wood Product Manufacturing">Wood Product Manufacturing</option>
+										<option value="Other">Other</option>
+									</select>	
 								</li>
 							</ul>
 						</div> <!-- rowFiveColumnOne -->
 						<div class="rowFiveColTwo cf">
-							<ul class="rightListItem">
-								<li><label for="nih">New in-house?</label></li>
+							<ul class="rightListItem radioGroup">
+								<li>New in-house?</li>
 								<li>
-									<input id="nih" class="nih" name="nih" type="text" size="128" maxlength="256" />
+									<label>
+										<input type="radio" name="inHouse" value="Yes" id="inHouse_0" />
+										Yes</label>									
+									<label>
+										<input type="radio" name="inHouse" value="No" id="inHouse_1" />
+										No</label>									
 								</li>
-							</ul>
-							<ul class="rightListItem">
-								<li><label for="newCLOGC">New to GC-CLO?</label></li>
+								<li>New to GC-CLO?</li>
 								<li>
-									<input id="newCLOGC" class="newCLOGC" name="newCLOGC" type="text" size="128" maxlength="256" />
+									<label>
+										<input type="radio" name="newGCCLO" value="Yes" id="inHouse_0" />
+										Yes</label>									
+									<label>
+										<input type="radio" name="newGCCLO" value="No" id="inHouse_1" />
+										No</label>									
 								</li>
 							</ul>
 						</div> <!-- rowFiveColumnTwo -->

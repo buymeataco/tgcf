@@ -16,17 +16,6 @@ body {
 	margin: 0 auto;
 	padding-top: 3em;
 }
-input[name=search] {
-	background: url(../images/userSearchMagnifyingGlass.png) no-repeat .8em .6em;
-	padding-left: 3em !important;
-	margin-bottom: .75em !important;
-	font-size: 14px;
-	width: 50%;
-	height: 2.5em;
-	background-color: #fff;
-	color: #000;
-	border: 1px solid #e6e6e6 !important;
-}
 .resultDCDCDC  {
 	background-color: #DCDCDC;
 	width: 100%;
@@ -62,6 +51,14 @@ ul.resultList {
 	float: left;
 	margin-top: -30px;
 }
+.lastUpdate {
+	float: right;
+	margin-top: -37px;
+}
+.resultCountIndexPage {
+	float: right;
+	margin-top: -37px;
+}
 li.listResultName {
 	font-weight: 600;
 	display: inline;
@@ -79,22 +76,29 @@ li.listResultEmployer,
 	float: left;
 	padding-top: 3px;
 }
-hr.searchRule {
+hr.searchRuleIndexPage, .memberDetailsPage {
 	border: 0;
 	height: 0;
 	width: 100%;
 	border-top: 2px solid rgba(0, 0, 0, 0.1);
 	border-bottom: 0px solid rgba(255, 255, 255, 0.3);
-	margin-top: 0px;
+	margin: 10px 0 10px 0;
+}
+hr.searchRule {
+	border: 0;
+	height: 0;
+	width: 842px;
+	border-top: 2px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 0px solid rgba(255, 255, 255, 0.3);
+	margin: 0 0 10px 0;
 }
 hr.rowRule {
 	border: 0;
 	height: 0;
-	width: 100%;
+	width: 842px;
 	border-top: 2px solid rgba(0, 0, 0, 0.1);
 	border-bottom: 0px solid rgba(255, 255, 255, 0.3);
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin: 5px 0 10px 0;
 }
 p.fullName {
 	margin-bottom: .9em;
@@ -103,10 +107,13 @@ span.nameBold {
 	font-weight: bold;
 }
 .rowOneColOne, .rowTwoColOne, .rowThreeColOne,
+.rowFourColOne, .rowFiveColOne {
+	width: 465px;
+	float: left;
+}
 .rowOneColTwo, .rowTwoColTwo, .rowThreeColTwo,
-.rowFourColOne, .rowFourColTwo, .rowFiveColOne,
-.rowFiveColTwo {
-	width: 480px;
+.rowFourColTwo, .rowFiveColTwo {
+	width: 465px;
 	float: left;
 }
 ul.leftListItem li {
@@ -115,7 +122,7 @@ ul.leftListItem li {
 ul.leftListItem li, ul.rightListItem li {
 	display: inline;
 	font-size: .8em;
-	margin-bottom: .5em;
+	margin-bottom: .4em;
 	line-height: 1.1;
 		&:first-child {
 			font-weight: bold;
@@ -154,10 +161,47 @@ a {
 }
 ul.fullName li {
 	display: inline;
-		&:nth-child(n+1):nth-child(odd):nth-child(-n+6) {
+		&:nth-child(n+1):nth-child(even):nth-child(-n+6) {
 			font-weight: bold;
 			font-size: .8em;
 		}
+}
+ul.radioGroup {
+	width: 24em;
+}
+ul.radioGroup li {
+	&:nth-child(2) {
+		display: block;
+		float: none;
+		width: 26em;
+			label {
+				margin-right: 3em;
+			}
+	}
+	&:nth-child(3) {
+		font-weight: bold;
+		width: 152px;
+		float: left;
+	}
+	&:nth-child(4) {
+		label {
+			margin-right: 3em;
+		}
+	}
+}
+li.industryLabel label {
+	margin-top: 2em;
+}
+select[name=role], select[name=chapter],
+select[name=status]  {
+	width: 14.063em;
+}
+select[name=salutation] {
+	margin-right: 1.25em;
+	font-size: .8em;
+}
+select[name=industry] {
+	margin-top: 2em;
 }
 input[name=name], input[name=title],
 input[name=company],input[name=office],
@@ -173,8 +217,7 @@ input[name=assistant], input[name=assEmail],
 input[name=assOffice],input[name=assCell],
 input[name=attorneys], input[name=industry],
 input[name=nih],input[name=newCLOGC] {
-	padding-left: 1em;
-	margin-bottom: .5em;
+	padding-left: .3em;
 	height: 1.8em;
 	width: 17.5em;
 	background-color: #fff;
@@ -184,15 +227,25 @@ input[name=nih],input[name=newCLOGC] {
 }
 input[name=firstName], input[name=lastName],
 input[name=middleName] {
-	padding-left: 1em;
+	padding-left: .3em;
 	margin-bottom: .75em;
 	margin-right: .5em;	
 	height: 1.8em;
-	width: 16em;
+	width: 15.4em;
 	background-color: #fff;
 	color: #696969;
 	border: 1px solid #e6e6e6;
 	font-size: .8em;
+}
+input[name=search] {
+	background: url(../images/userSearchMagnifyingGlass.png) no-repeat .8em .6em;
+	padding-left: 3em !important;
+	font-size: 14px;
+	width: 50%;
+	height: 2.5em;
+	background-color: #fff;
+	color: #000;
+	border: 1px solid #e6e6e6 !important;
 }
 .cf:before,
 .cf:after {

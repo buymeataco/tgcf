@@ -1,6 +1,5 @@
 <?php
 	$whichQuery = 'searchPageResults';
-	include ('dbConnect.php');
 	include ('queries.php');
 ?>
 
@@ -18,8 +17,7 @@ function displaySearchResults($result, $resultCount) {
 	$myId = $id;
 	$counter++;
 	$rowColor = ($counter & 1) ? $rowColor = 'resultDCDCDC' : $rowColor = 'resultC8DAE8';
-	echo
-	"<a href=\"memberDetails.php?id={$myId}\"><div class=\"{$rowColor} cf\">
+	echo"<a href=\"memberDetails.php?id={$myId}\"><div class=\"{$rowColor} cf\">
 		<ul class=\"resultList\">
 			<li class=\"listResultName\">{$myLast}, {$myFirst} {$myMiddle}</li>
 			<li class=\"listResultEmployer\">{$employer}</li>

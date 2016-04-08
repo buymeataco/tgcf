@@ -1,7 +1,6 @@
 @import 'compass';
 @import "compass/reset";
 @import 'variables';
-@import 'layout';
 
 html {
     min-height: 100%;
@@ -11,10 +10,24 @@ body {
 	font-family: $font-stack;
 	font-size: 1em;
 }
+.modal-body {
+	padding-top: 0;
+}
+.modal-dialog {
+    width: 875px;
+    margin-top: 5px;
+}
+.modal-header {
+	padding-top: 5px;
+	padding-bottom: 5px;	
+}
+.modal-footer {
+	border-top: 0px;
+}
 .wrapper {
-	width: $large;
+	width: 60em;
 	margin: 0 auto;
-	padding-top: 3em;
+	padding-top: 2.5em;
 }
 .resultDCDCDC  {
 	background-color: #DCDCDC;
@@ -147,17 +160,23 @@ a {
 }
 .btn-primary {
 	height: 2.6em;
-	width: 5.5em;
+	width: 9.375em;
 	background-color: #228B22;
 	border: none;
 	border-radius: 8px;
 	color: #fff;
 	font-size: 1em;
+	float: right;
+	margin-top: -1.5em;
+	margin-right: 7.5em;
+	cursor: pointer;
 }
 .editButton {
 	width: 5.375em;
 	float: right;
 	margin-top: -3.5em;
+	margin-right: 7.5em;
+	cursor: pointer;
 }
 ul.fullName li {
 	display: inline;

@@ -1,15 +1,12 @@
 function processForm() {
 	var submittedSearchString = document.getElementById("search").value;
-	console.log(submittedSearchString);
 	submitXMLhttpRequest(submittedSearchString);
 }
 
 function submitXMLhttpRequest(submittedSearchString) {
     var hr = new XMLHttpRequest();
-    var url = "queryLookup.php";
-    var smartSearchQuery = submittedSearchString;
-    console.log(smartSearchQuery);
-    var vars = "smartSearch="+smartSearchQuery;
+    var url = "searchLookup.php";
+    var vars = "smartSearch="+submittedSearchString;
     hr.open("POST", url, true);
     hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     hr.onreadystatechange = function() {

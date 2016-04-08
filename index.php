@@ -5,8 +5,6 @@
 	<title>The General Counsel Forum</title>
 	<link href='https://fonts.googleapis.com/css?family=Passero+One' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/styles.css">
-	<script src="js/script.min.js"></script>
-	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
 </head>
 	<body>
 		<div class="wrapper">

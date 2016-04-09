@@ -14,20 +14,20 @@
 		<div class="wrapper">
 		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Edit Member</button>
 			<?php
-				include ('queries.php');
-				include ('editMember.php');
-				$whichQuery = 'memberDetails';
-				function displaySearchResults($result) {
-				while ($row = mysqli_fetch_array($result)) {
-					extract ($row);
-					$myLast = $last;
+				// include ('queries.php');
+				 include ('editMember.php');
+				// $whichQuery = 'memberDetails';
+				// function displaySearchResults($result) {
+				// while ($row = mysqli_fetch_array($result)) {
+				// 	extract ($row);
+					// $myLast = $last;
 					// $myFirst = $first;
 					// $myMiddle = $middle;
 					// $myEmployer = $employer;
-					// $myTitle = $title;	
-					// $myLast = 'Munster';
-					// $myFirst = 'Herman';
-					// $myMiddle = '"Darn"';
+					// $myTitle = $title;	$myLast = 'Munster';
+					$myFirst = 'Herman';
+					$myMiddle = '"Darn"';
+					$myLast = 'Munster';
 					// $myEmployer = 'Goodman, Goodbury & Graves';
 					// $myTitle = 'Grave Digger';
 					// $lastUpdate = '12/5/15';

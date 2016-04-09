@@ -1,29 +1,27 @@
 <?php
-	$whichQuery = 'searchPageResults';
-	include ('queries.php');
-?>
+$whichQuery = 'searchPageResults';
+include('queries.php');
 
-<?php
-function displaySearchResults($result, $resultCount) {
-	echo "<p class=\"resultCountIndexPage\">Your search returned {$resultCount} result(s).</p>";
+function displaySearchResults($searchData, $resultCount, $result2, $meta_value) {
 	$counter = 1;
-	while ($row = mysqli_fetch_array($result)) {
-	extract ($row);
-	$myLast = $last;
-	$myFirst = $first;
-	$myMiddle = $middle;
-	$myEmployer = $employer;
-	$myTitle = $title;
-	$myId = $id;
-	$counter++;
-	$rowColor = ($counter & 1) ? $rowColor = 'resultDCDCDC' : $rowColor = 'resultC8DAE8';
-	echo"<a href=\"memberDetails.php?id={$myId}\"><div class=\"{$rowColor} cf\">
-		<ul class=\"resultList\">
-			<li class=\"listResultName\">{$myLast}, {$myFirst} {$myMiddle}</li>
-			<li class=\"listResultEmployer\">{$employer}</li>
-			<li class=\"listResultTitle\">{$title}</li>
-		</ul>
-	</div></a>";
-	} // end loop
+	$resultCountAdjusted = $resultCount/3; 
+	echo "<p class=\"resultCountIndexPage\">Your search returned {$resultCountAdjusted} result(s).</p>";
+			$arrayLength = count($searchData, COUNT_RECURSIVE);
+			for ($i=0; $i!=$arrayLength; $i++) {
+				$returnedValue1 = $searchData[$i++];
+				$returnedValue2 = $searchData[$i++];
+				$returnedValue3 = $searchData[$i];
+			 	$counter++;
+				$rowColor = ($counter & 1) ? $rowColor = 'resultDCDCDC' : $rowColor = 'resultC8DAE8';
+				echo "<div class=\"{$rowColor} cf\">
+						<ul class=\"resultListLoop\">
+							<li>{$returnedValue1}</li>
+							<li>{$returnedValue2}</li>
+							<li>{$returnedValue3}</li>
+						</ul>
+					 </div>";	
+			}
 } // displaySearchResults()
+
 ?>
+<!-- <a href=\"memberDetails.php?id={$myId}\"></a> -->

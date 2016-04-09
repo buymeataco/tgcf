@@ -146,24 +146,29 @@ ul.resultList {
 }
 
 /* line 63, ../_/components/sass/styles.scss */
+ul.resultListLoop li {
+  display: inline;
+}
+
+/* line 66, ../_/components/sass/styles.scss */
 .resultCount {
   float: left;
   margin-top: -30px;
 }
 
-/* line 67, ../_/components/sass/styles.scss */
+/* line 70, ../_/components/sass/styles.scss */
 .lastUpdate {
   float: right;
   margin-top: -37px;
 }
 
-/* line 71, ../_/components/sass/styles.scss */
+/* line 74, ../_/components/sass/styles.scss */
 .resultCountIndexPage {
   float: right;
   margin-top: -37px;
 }
 
-/* line 75, ../_/components/sass/styles.scss */
+/* line 78, ../_/components/sass/styles.scss */
 li.listResultName {
   font-weight: 600;
   display: inline;
@@ -173,7 +178,7 @@ li.listResultName {
   margin-right: 20px;
 }
 
-/* line 83, ../_/components/sass/styles.scss */
+/* line 86, ../_/components/sass/styles.scss */
 li.listResultEmployer,
 .listResultTitle {
   font-weight: 500;
@@ -184,7 +189,7 @@ li.listResultEmployer,
   padding-top: 3px;
 }
 
-/* line 92, ../_/components/sass/styles.scss */
+/* line 95, ../_/components/sass/styles.scss */
 hr.searchRuleIndexPage, .memberDetailsPage {
   border: 0;
   height: 0;
@@ -194,7 +199,7 @@ hr.searchRuleIndexPage, .memberDetailsPage {
   margin: 10px 0 10px 0;
 }
 
-/* line 100, ../_/components/sass/styles.scss */
+/* line 103, ../_/components/sass/styles.scss */
 hr.searchRule {
   border: 0;
   height: 0;
@@ -204,7 +209,7 @@ hr.searchRule {
   margin: 0 0 10px 0;
 }
 
-/* line 108, ../_/components/sass/styles.scss */
+/* line 111, ../_/components/sass/styles.scss */
 hr.rowRule {
   border: 0;
   height: 0;
@@ -214,69 +219,69 @@ hr.rowRule {
   margin: 5px 0 10px 0;
 }
 
-/* line 116, ../_/components/sass/styles.scss */
+/* line 119, ../_/components/sass/styles.scss */
 p.fullName {
   margin-bottom: .9em;
 }
 
-/* line 119, ../_/components/sass/styles.scss */
+/* line 122, ../_/components/sass/styles.scss */
 span.nameBold {
   font-weight: bold;
 }
 
-/* line 122, ../_/components/sass/styles.scss */
+/* line 125, ../_/components/sass/styles.scss */
 .rowOneColOne, .rowTwoColOne, .rowThreeColOne,
 .rowFourColOne, .rowFiveColOne {
   width: 465px;
   float: left;
 }
 
-/* line 127, ../_/components/sass/styles.scss */
+/* line 130, ../_/components/sass/styles.scss */
 .rowOneColTwo, .rowTwoColTwo, .rowThreeColTwo,
 .rowFourColTwo, .rowFiveColTwo {
   width: 465px;
   float: left;
 }
 
-/* line 132, ../_/components/sass/styles.scss */
+/* line 135, ../_/components/sass/styles.scss */
 ul.leftListItem li {
   display: inline;
 }
 
-/* line 135, ../_/components/sass/styles.scss */
+/* line 138, ../_/components/sass/styles.scss */
 ul.leftListItem li, ul.rightListItem li {
   display: inline;
   font-size: .8em;
   margin-bottom: .4em;
   line-height: 1.1;
 }
-/* line 140, ../_/components/sass/styles.scss */
+/* line 143, ../_/components/sass/styles.scss */
 ul.leftListItem li:first-child, ul.rightListItem li:first-child {
   font-weight: bold;
   float: left;
   width: 152px;
 }
 
-/* line 147, ../_/components/sass/styles.scss */
+/* line 150, ../_/components/sass/styles.scss */
 ul.leftListItem li:nth-child(2), ul.rightListItem li:nth-child(2) {
   float: left;
   width: 282px;
 }
 
-/* line 152, ../_/components/sass/styles.scss */
+/* line 155, ../_/components/sass/styles.scss */
 .notes {
   width: 808px;
   font-size: .8em;
   float: right;
 }
 
-/* line 157, ../_/components/sass/styles.scss */
+/* line 160, ../_/components/sass/styles.scss */
 a {
   text-decoration: none;
   color: #000;
 }
 
-/* line 161, ../_/components/sass/styles.scss */
+/* line 164, ../_/components/sass/styles.scss */
 .btn-primary {
   height: 2.6em;
   width: 9.375em;
@@ -291,7 +296,7 @@ a {
   cursor: pointer;
 }
 
-/* line 174, ../_/components/sass/styles.scss */
+/* line 177, ../_/components/sass/styles.scss */
 .editButton {
   width: 5.375em;
   float: right;
@@ -300,65 +305,65 @@ a {
   cursor: pointer;
 }
 
-/* line 181, ../_/components/sass/styles.scss */
+/* line 184, ../_/components/sass/styles.scss */
 ul.fullName li {
   display: inline;
 }
-/* line 183, ../_/components/sass/styles.scss */
+/* line 186, ../_/components/sass/styles.scss */
 ul.fullName li:nth-child(n+1):nth-child(even):nth-child(-n+6) {
   font-weight: bold;
   font-size: .8em;
 }
 
-/* line 188, ../_/components/sass/styles.scss */
+/* line 191, ../_/components/sass/styles.scss */
 ul.radioGroup {
   width: 24em;
 }
 
-/* line 192, ../_/components/sass/styles.scss */
+/* line 195, ../_/components/sass/styles.scss */
 ul.radioGroup li:nth-child(2) {
   display: block;
   float: none;
   width: 26em;
 }
-/* line 196, ../_/components/sass/styles.scss */
+/* line 199, ../_/components/sass/styles.scss */
 ul.radioGroup li:nth-child(2) label {
   margin-right: 3em;
 }
-/* line 200, ../_/components/sass/styles.scss */
+/* line 203, ../_/components/sass/styles.scss */
 ul.radioGroup li:nth-child(3) {
   font-weight: bold;
   width: 152px;
   float: left;
 }
-/* line 206, ../_/components/sass/styles.scss */
+/* line 209, ../_/components/sass/styles.scss */
 ul.radioGroup li:nth-child(4) label {
   margin-right: 3em;
 }
 
-/* line 211, ../_/components/sass/styles.scss */
+/* line 214, ../_/components/sass/styles.scss */
 li.industryLabel label {
   margin-top: 2em;
 }
 
-/* line 214, ../_/components/sass/styles.scss */
+/* line 217, ../_/components/sass/styles.scss */
 select[name=role], select[name=chapter],
 select[name=status] {
   width: 14.063em;
 }
 
-/* line 218, ../_/components/sass/styles.scss */
+/* line 221, ../_/components/sass/styles.scss */
 select[name=salutation] {
   margin-right: 1.25em;
   font-size: .8em;
 }
 
-/* line 222, ../_/components/sass/styles.scss */
+/* line 225, ../_/components/sass/styles.scss */
 select[name=industry] {
   margin-top: 2em;
 }
 
-/* line 225, ../_/components/sass/styles.scss */
+/* line 228, ../_/components/sass/styles.scss */
 input[name=name], input[name=title],
 input[name=company], input[name=office],
 input[name=cell], input[name=fax],
@@ -382,7 +387,7 @@ input[name=nih], input[name=newCLOGC] {
   font-size: 1em;
 }
 
-/* line 247, ../_/components/sass/styles.scss */
+/* line 250, ../_/components/sass/styles.scss */
 input[name=firstName], input[name=lastName],
 input[name=middleName] {
   padding-left: .3em;
@@ -396,7 +401,7 @@ input[name=middleName] {
   font-size: .8em;
 }
 
-/* line 259, ../_/components/sass/styles.scss */
+/* line 262, ../_/components/sass/styles.scss */
 input[name=search] {
   background: url(../images/userSearchMagnifyingGlass.png) no-repeat 0.8em 0.6em;
   padding-left: 3em !important;
@@ -408,19 +413,19 @@ input[name=search] {
   border: 1px solid #e6e6e6 !important;
 }
 
-/* line 269, ../_/components/sass/styles.scss */
+/* line 272, ../_/components/sass/styles.scss */
 .cf:before,
 .cf:after {
   content: " ";
   display: table;
 }
 
-/* line 274, ../_/components/sass/styles.scss */
+/* line 277, ../_/components/sass/styles.scss */
 .cf:after {
   clear: both;
 }
 
-/* line 277, ../_/components/sass/styles.scss */
+/* line 280, ../_/components/sass/styles.scss */
 .cf {
   *zoom: 1;
 }

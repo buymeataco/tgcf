@@ -12,35 +12,24 @@ case 'searchPageResults':
 			extract ($row);
 			array_push($idArray, $user_id);
 		}
-
+	if (!EMPTY($idArray)) {
 	//converts id's back to a string suitable for use in a query
 	$idLookupString = implode(",", $idArray);
-
 	//Get all associated info matching user ID.
 	$query2 = "SELECT meta_value FROM metaTest WHERE meta_key IN ('first_name', 'last_name', 'city') = user_id IN ($idLookupString)";
 	$result2 = mysqli_query($conn,$query2) or die ("<br />Could not execute second query.");
 	$resultCount = mysqli_num_rows($result2);
-
 	$searchData = [];
 		while ($row = mysqli_fetch_array($result2)) {
 			extract ($row);
 			array_push($searchData, $meta_value);
 		}
-
-		if ($resultCount >= 1) {
-			displaySearchResults($searchData, $resultCount, $result2, $meta_value);
-		} else {
-			echo "<p class=\"resultCount\">Your search returned no results.</p>";
-		}
-	cleanup($result, $result2, $idArray, $idLookupString, $searchData);
+		displaySearchResults($searchData, $resultCount, $idArray);
+		cleanup($result, $result2, $idArray, $idLookupString, $searchData);
+	} else {
+		echo "<p class=\"resultCountIndexPage\">Your search returned no results.</p>";
+	}	
 break;
-
-
-
-
-
-
-
 
 case 'memberDetails':
 	$profileSearchParameter = $_GET["id"];

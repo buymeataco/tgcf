@@ -3,7 +3,6 @@ include('dbConnect.php');
 
 switch($whichQuery) {
 case 'searchPageResults':
-	$i=0;
 	$smartSearchParameter = $_POST['smartSearch'];
 	//Get user ID.
 	$query = "SELECT user_id FROM metaTest WHERE meta_value LIKE '%$smartSearchParameter%'";
@@ -20,6 +19,7 @@ case 'searchPageResults':
 	// echo "<br /><br />";
 	$userMetaValues = [];
 	$userMetaKeys = [];
+	$combinedKeyValuePairs = [];
 	//Get all associated info matching user ID.
 	foreach ($idArray as $value) {
 		$nestedMetaValues = [];
@@ -42,15 +42,34 @@ case 'searchPageResults':
 			} //foreach
 		array_push($userMetaValues, $nestedMetaValues);
 		array_push($userMetaKeys, $nestedKeys);
-	} //foreach					
+	} //foreach			
 
+	foreach ($userMetaValues as $value4) {
+			foreach ($userMetaKeys as $values5) {
+				$combinedArrays = array_combine($values5, $value4);
+			}
+		array_push($combinedKeyValuePairs, $combinedArrays);	
+	}
+
+		// echo "<pre>";
+		// 	print_r($userMetaValues);
+		// echo "</pre>";
+		// echo "<br />"; 
+		// echo "<pre>";
+		// 	print_r($userMetaKeys);
+		// echo "</pre>";
 		echo "<pre>";
-			print_r($userMetaValues);
+			print_r($combinedKeyValuePairs);
 		echo "</pre>";
-		echo "<br />"; 
-		echo "<pre>";
-			print_r($userMetaKeys);
-		echo "</pre>";
+		echo "<br />"; 		
+
+		// echo "<pre>";
+		// 	print_r($userMetaValues);
+		// echo "</pre>";
+		// echo "<br />"; 
+		// echo "<pre>";
+		// 	print_r($userMetaKeys);
+		// echo "</pre>";
 
 	displaySearchResults($resultCountMetaValues, $userMetaValues);
 	cleanup($result, $result2, $result3, $idArray, $userMetaValues, $userMetaKeys, $nestedKeys, $nestedMetaValues);

@@ -2,25 +2,34 @@
 $whichQuery = 'searchPageResults';
 include('queries.php');
 
-function displaySearchResults($searchData, $resultCount, $idArray) {
+function displaySearchResults($resultCountMetaValues, $userMetaValues) {
 	$counter = 1;
-	$resultCountAdjusted = $resultCount/3; 
+	$resultCountAdjusted = $resultCountMetaValues/3; 
 	echo "<p class=\"resultCountIndexPage\">Your search returned {$resultCountAdjusted} result(s).</p>";
-			$arrayLength = count($searchData, COUNT_RECURSIVE);
-			for ($i=0; $i!=$arrayLength; $i++) {
-					$returnedValue1 = $searchData[$i++];
-					$returnedValue2 = $searchData[$i++];
-					$returnedValue3 = $searchData[$i];
+			$arrayLength = count($userMetaValues, COUNT_RECURSIVE);
+			for ($i=0; $i<=3;$i++) {
+					// $returnedValue1 = $searchData[$i++]; //first_name
+					// $returnedValue2 = $searchData[$i++]; //last_name
+					// $returnedValue3 = $searchData[$i]; //city
 			 		$counter++;
 					$rowColor = ($counter & 1) ? $rowColor = 'resultDCDCDC' : $rowColor = 'resultC8DAE8';
-					echo "<div class=\"{$rowColor} cf\">
+					echo "<a href=\"memberDetails.php?id=\"><div class=\"{$rowColor} cf\">
 							<ul class=\"resultListLoop\">
-								<li><a href=\"#\">{$returnedValue1}</a></li>
-								<li><a href=\"#\">{$returnedValue2}</a></li>
-								<li><a href=\"#\">{$returnedValue3}</a></li>
+								<li class=\"listResultName\"><a href=\"#\"></li>
+								<li class=\"listResultTitle\"><a href=\"#\"></li>
 							</ul>
-					 	  </div>";	
+					 	  </div></a>";
+					 	  //echo $i;
 			}
 } // displaySearchResults()
+
+// echo "<pre>";
+// 	print_r($idArray);
+// echo "</pre>";
+// echo "<pre>";
+// 	print_r($searchData);
+// echo "</pre>";
+
+//echo "ID lookup string from php page: " . $idLookupString;
 
 ?>

@@ -14,59 +14,78 @@
 		<div class="wrapper">
 		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Edit Member</button>
 			<?php
-				// include ('queries.php');
-				 include ('editMember.php');
-				// $whichQuery = 'memberDetails';
-				// function displaySearchResults($result) {
-				// while ($row = mysqli_fetch_array($result)) {
-				// 	extract ($row);
-					// $myLast = $last;
-					// $myFirst = $first;
-					// $myMiddle = $middle;
-					// $myEmployer = $employer;
-					// $myTitle = $title;	$myLast = 'Munster';
-					$myFirst = 'Herman';
-					$myMiddle = '"Darn"';
-					$myLast = 'Munster';
-					// $myEmployer = 'Goodman, Goodbury & Graves';
-					// $myTitle = 'Grave Digger';
-					// $lastUpdate = '12/5/15';
+				$whichQuery = 'memberDetails';
+				include ('queries.php');
+				include ('editMember.php');				
+					@$myEmail = $individualMemberData[0]['Email'];
+					@$myFirst = $individualMemberData[0]['first_name'];
+					@$myMiddle = $individualMemberData[0]['Middle'];
+					@$myLast = $individualMemberData[0]['last_name'];
+					@$mySalutation = $individualMemberData[0]['salutation'];
+					@$myTitle = $individualMemberData[0]['title'];
+					@$myCompany = $individualMemberData[0]['billing_company'];
+					@$myOfficePhone = $individualMemberData[0]['billing_phone'];
+					@$myBillingAddress1	= $individualMemberData[0]['billing_address_1'];
+					@$myBillingAddress2	= $individualMemberData[0]['billing_address_2'];
+					@$myNickName	= $individualMemberData[0]['nickname'];
+					@$myCity	= $individualMemberData[0]['billing_city'];
+					@$myState = $individualMemberData[0]['billing_state'];	
+					@$myZip = $individualMemberData[0]['billing_postcode'];
+					@$myAss	= $individualMemberData[0]['assistant'];
+					@$myAssPhone = $individualMemberData[0]['assistant_phone'];	
+					@$myAssEmail = $individualMemberData[0]['assistant_email'];
+					@$myDeptSize = $individualMemberData[0]['depart_size'];
+					@$myTerritory = $individualMemberData[0]['Territory'];
+					@$myJoinDate = $individualMemberData[0]['date_i18n'];
+					@$myMembersCode = $individualMemberData[0]['members_code'];
+					@$myIndustry = $individualMemberData[0]['industry'];
+					@$myRemarks = $individualMemberData[0]['remarks'];
+					@$myRecruitedBy = $individualMemberData[0]['recruited_by'];
+					@$myMobilePhone = $individualMemberData[0]['mobile-phone'];
+					@$myFax = $individualMemberData[0]['Fax'];
+					@$myHome = $individualMemberData[0]['Home'];
+					@$myRole = $individualMemberData[0]['role'];
+					@$myAdditionalEmail = $individualMemberData[0]['additionalEmail'];
+					@$myContactType = $individualMemberData[0]['contactType'];
+					@$mySource = $individualMemberData[0]['source'];
+					@$myChapter = $individualMemberData[0]['chapter'];
+					@$myJoinDate = $individualMemberData[0]['date_i18n'];
+					@$myGroups = $individualMemberData[0]['groups'];
 			echo
-				"<p class=\"resultCount\">Record last updated on: 2106-04-04.</p>
-			<p class=\"fullName\">Profile for <span class=\"nameBold\">{$myFirst} {$myMiddle} {$myLast}</span></p>
+				"<p class=\"fullName\">Profile for <span class=\"nameBold\">Mr. {$myFirst} {$myMiddle} {$myLast} or \"{$mySalutation}\" </span></p>
 			<hr class=\"searchRule\"/>
 				<div class=\"profile\">
 					<div class=\"rowOne cf\">
 						<div class=\"rowOneColOne cf\">
 							<ul class=\"leftListItem\">
-								<li>Nickname:</li>
-								<li>The Hairman</li>
+								<li>Preferred Name:</li>
+								<li>{$myNickName}</li>
 							</ul>
 							<ul class=\"leftListItem\">
 								<li>Title:</li>
-								<li>Chief Administration Officer and Chief Legal Counsel and Two Other Meaningless Titles</li>
+								<li>{$myTitle}</li>
 							</ul>
 							<ul class=\"leftListItem\">
-								<li>I am new to the<br />GC – CLO role?</li>
-								<li>McLongCompanyName International Conglomerate of the World, Incorporated</li>
+								<li>Company:</li>
+								<li>{$myCompany}</li>
 							</ul>
 						</div> <!-- rowOneColumnOne -->
 						<div class=\"rowOneColTwo cf\">
 							<ul class=\"rightListItem\">
 								<li>Office:</li>
-								<li>000-000-0000</li>
+								<li>{$myOfficePhone}</li>
 							</ul>
 							<ul class=\"rightListItem\">
 								<li>Cell:</li>
-								<li>000-000-0000</li>
+								<li>{$myMobilePhone}</li>
 							</ul>
 							<ul class=\"rightListItem\">
 								<li>Fax:</li>
-								<li>000-000-0000</li>
+								<li>{$myFax}</li>
 							</ul>
 							<ul class=\"rightListItem\">
 								<li>Home:</li>
-								<li>000-000-0000</li>
+								<li>{$myHome}</li>
 							</ul>
 						</div> <!-- rowOneColumnTwo -->
 					</div> <!--rowOne -->
@@ -74,30 +93,30 @@
 					<div class=\"rowTwo cf\">
 						<div class=\"rowTwoColOne cf\">
 							<ul class=\"leftListItem\">
-								<li>Number &amp; Street:</li>
-								<li>12210 Merit Dr.</li>
+								<li>Address Line 1:</li>
+								<li>{$myBillingAddress1}</li>
 							</ul>
 							<ul class=\"leftListItem\">
-								<li>Suite:</li>
-								<li>900</li>
+								<li>Address Line 2:</li>
+								<li>{$myBillingAddress2}</li>
 							</ul>
 							<ul class=\"leftListItem\">
-								<li>City, State &amp; Zip:</li>
-								<li>Dallas, TX 75251</li>
+								<li>City, State & Zip</li>
+								<li>{$myCity}, {$myState} {$myZip}</li>
 							</ul>
 						</div> <!-- rowTwoColumnOne -->
 						<div class=\"rowTwoColTwo cf\">
 							<ul class=\"rightListItem\">
 								<li>Primary Email:</li>
-								<li>harry.martin@leduffamerica.com</li>
+								<li>{$myEmail}</li>
 							</ul>
 								<ul class=\"rightListItem\">
-								<li>Chapter:</li>
-								<li>Austin/San Antonio</li>
+								<li>Additional Email:</li>
+								<li>{$myAdditionalEmail}</li>
 							</ul>
 							<ul class=\"rightListItem\">
 								<li>Role:</li>
-								<li>Treasurer</li>
+								<li>{$myRole}</li>
 							</ul>
 						</div> <!-- rowTwoColumnTwo -->
 					</div> <!-- rowTwo -->
@@ -106,37 +125,45 @@
 						<div class=\"rowThreeColOne cf\">
 							<ul class=\"leftListItem\">
 								<li>Recruited by:</li>
-								<li>Lemmy Kilmister</li>
+								<li>{$myRecruitedBy}</li>
 							</ul>
 							<ul class=\"leftListItem\">
-								<li>Customer Status:</li>
-								<li>Member</li>
+								<li>Contact Type:</li>
+								<li>{$myContactType}</li>
 							</ul>
 							<ul class=\"leftListItem\">
-								<li>Territory:</li>
-								<li>Dallas/Fort Worth</li>
+								<li>Chapter</li>
+								<li>{$myChapter}</li>
 							</ul>
+							<ul class=\"leftListItem\">
+								<li>Territory</li>
+								<li>{$myTerritory}</li>
+							</ul>							
 							<ul class=\"leftListItem\">
 								<li>Source:</li>
-								<li>Why not</li>
+								<li>{$mySource}</li>
 							</ul>
 						</div> <!-- rowThreeColumnOne -->
 						<div class=\"rowThreeColTwo cf\">
 							<ul class=\"rightListItem\">
-								<li>Member Code:</li>
-								<li>007</li>
-							</ul>
-							<ul class=\"rightListItem\">
-								<li>Membership Level:</li>
-								<li>Platinum</li>
-							</ul>
-							<ul class=\"rightListItem\">
 								<li>Join Date:</li>
-								<li>04/05/2016</li>
+								<li>{$myJoinDate}</li>
 							</ul>
 							<ul class=\"rightListItem\">
 								<li>Groups:</li>
-								<li>TCGF CONF CME</li>
+								<li>{$myGroups}</li>
+							</ul>
+							<ul class=\"rightListItem\">
+								<li>Attorneys in Dept:</li>
+								<li>{$myDeptSize}</li>
+							</ul>
+							<ul class=\"rightListItem\">
+								<li>Industry:</li>
+								<li>{$myIndustry}</li>
+							</ul>
+							<ul class=\"rightListItem\">
+								<li>Members Code:</li>
+								<li>{$myMembersCode}</li>
 							</ul>
 						</div> <!-- rowThreeColumnTwo -->
 					</div> <!-- rowThree -->
@@ -145,55 +172,28 @@
 						<div class=\"rowFourColOne cf\">
 							<ul class=\"leftListItem\">
 								<li>Assistant:</li>
-								<li>Lurch</li>
+								<li>{$myAss}</li>
 							</ul>
 							<ul class=\"leftListItem\">
 								<li>Assistant Email:</li>
-								<li>lurch@leduffamerica.com</li>
+								<li>{$myAssEmail}</li>
 							</ul>
 						</div> <!-- rowFourColumnOne -->
 						<div class=\"rowFourColTwo cf\">
 							<ul class=\"rightListItem\">
-								<li>Asst. Office:</li>
-								<li>000-000-0000</li>
-							</ul>
-							<ul class=\"rightListItem\">
-								<li>Asst. Cell:</li>
-								<li>000-000-0000</li>
+								<li>Assistant Office:</li>
+								<li>{$myAssPhone}</li>
 							</ul>
 						</div> <!-- rowFourColumnTwo -->	
 					</div> <!-- row four -->
 				<hr class=\"rowRule\"/>					
 					<div class=\"rowFive cf\">
-						<div class=\"rowFiveColOne cf\">
-							<ul class=\"leftListItem\">
-								<li>Attorneys in Dept:</li>
-								<li>3</li>
-							</ul>
-							<ul class=\"leftListItem\">
-								<li>Industry:</li>
-								<li>Hospitality</li>
-							</ul>
-						</div> <!-- rowFiveColumnOne -->
-						<div class=\"rowFiveColTwo cf\">
-							<ul class=\"rightListItem\">
-								<li>New in-house?</li>
-								<li>No</li>
-							</ul>
-							<ul class=\"rightListItem\">
-								<li>New to GC-CLO?</li>
-								<li>Yes</li>
-							</ul>
-						</div> <!-- rowFiveColumnTwo -->
-					</div> <!-- row five -->
-				<hr class=\"rowRule\"/>
-					<div class=\"rowSix cf\">
 						<div class=\"rowSixColOne cf\">
 							<ul class=\"leftListItem\">
 								<li>Notes:</li>
 							</ul>
 						<div class=\"notes\">
-							<p>Notes here</p>
+							<p>{$myRemarks}</p>
 						</div>	
 						</div> <!-- rowSixColumnOne -->					
 					</div> <!-- row six -->

@@ -150,12 +150,16 @@ ul.leftListItem li, ul.rightListItem li {
 	&:nth-child(2) {
 		float: left;
 		width: 282px;
+			&:after {
+				content: ".";
+				color: #fff; 
+			}	
 	}
 }
 .notes {
-	width: 808px;
+	width: 693px;
 	font-size: .8em;
-	float: right;
+	float: left;
 }
 a {
 	text-decoration: none;
@@ -238,7 +242,8 @@ input[name=joinDate],input[name=groups],
 input[name=assistant], input[name=assEmail],
 input[name=assOffice],input[name=assCell],
 input[name=attorneys], input[name=industry],
-input[name=nih],input[name=newCLOGC] {
+input[name=nih],input[name=newCLOGC],
+input[name=additionalEmail] {
 	padding-left: .3em;
 	height: 1.8em;
 	width: 17.5em;

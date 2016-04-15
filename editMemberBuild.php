@@ -39,7 +39,7 @@
 					<div class="rowOne cf">
 						<div class="rowOneColOne cf">
 							<ul class="leftListItem">
-								<li><label for="name">Nickname:</label></li>
+								<li><label for="name">Preferred Name:</label></li>
 								<li>
 									<input id="name" class="merchant" name="name" type="text" size="128" maxlength="256" />
 								</li>
@@ -88,13 +88,13 @@
 					<div class="rowTwo cf">
 						<div class="rowTwoColOne cf">
 							<ul class="leftListItem">
-								<li><label for="numStreet">Number &amp; Street:</label></li>
+								<li><label for="numStreet">Address Line 1:</label></li>
 								<li>
 									<input id="numStreet" class="numStreet" name="numStreet" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="leftListItem">
-								<li><label for="suite">Suite:</label></li>
+								<li><label for="suite">Address Line 2:</label></li>
 								<li>
 									<input id="suite" class="suite" name="suite" type="text" size="128" maxlength="256" />
 								</li>
@@ -114,15 +114,11 @@
 								</li>
 							</ul>
 							<ul class="rightListItem">
-								<li><label for="chapter">Chapter:</label></li>
-								<li>	
-									<select name="chapter" class="chapter" id="chapter">
-										<option value="1">Austin-San Antonio</option>
-										<option value="2">Dallas-Fort Worth</option>	
-									 	<option value="3">Houston</option>								
-									</select>
-								</li>	
-							</ul>
+								<li><label for="additionalEmail">Additional Email:</label></li>
+								<li>
+									<input id="additionalEmail" class="primaryEmail" name="additionalEmail" type="text" size="128" maxlength="256" />
+								</li>
+							</ul>							
 							<ul class="rightListItem">
 								<li><label for="role">Role:</label></li>
 								<li>
@@ -155,7 +151,7 @@
 								</li>
 							</ul>
 							<ul class="leftListItem">
-								<li><label for="status">Customer Status:</label></li>
+								<li><label for="status">Contact Type</label></li>
 								<li>
 									<select name="status" class="status" id="status">
 									  <option value="1">Customer</option>
@@ -169,6 +165,16 @@
 								</li>
 							</ul>
 							<ul class="leftListItem">
+								<li><label for="chapter">Chapter:</label></li>
+								<li>	
+									<select name="chapter" class="chapter" id="chapter">
+										<option value="1">Austin-San Antonio</option>
+										<option value="2">Dallas-Fort Worth</option>	
+									 	<option value="3">Houston</option>								
+									</select>
+								</li>	
+							</ul>							
+							<ul class="leftListItem">								
 								<li><label for="territory">Territory:</label></li>
 								<li>
 									<input id="territory" class="territory" name="territory" type="text" size="128" maxlength="256" />
@@ -182,18 +188,6 @@
 							</ul>
 						</div> <!-- rowThreeColumnOne -->
 						<div class="rowThreeColTwo cf">
-							<ul class="rightListItem">
-								<li><label for="code">Member Code:</label></li>
-								<li>
-									<input id="code" class="code" name="code" type="text" size="128" maxlength="256" />
-								</li>
-							</ul>
-							<ul class="rightListItem">
-								<li><label for="level">Membership Level:</label></li>
-								<li>
-									<input id="level" class="level" name="level" type="text" size="128" maxlength="256" />
-								</li>
-							</ul>
 							<ul class="rightListItem">
 								<li><label for="joinDate">Join Date:</label></li>
 								<li>

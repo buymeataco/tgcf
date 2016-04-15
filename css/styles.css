@@ -267,21 +267,26 @@ ul.leftListItem li:nth-child(2), ul.rightListItem li:nth-child(2) {
   float: left;
   width: 282px;
 }
-
-/* line 155, ../_/components/sass/styles.scss */
-.notes {
-  width: 808px;
-  font-size: .8em;
-  float: right;
+/* line 153, ../_/components/sass/styles.scss */
+ul.leftListItem li:nth-child(2):after, ul.rightListItem li:nth-child(2):after {
+  content: ".";
+  color: #fff;
 }
 
-/* line 160, ../_/components/sass/styles.scss */
+/* line 159, ../_/components/sass/styles.scss */
+.notes {
+  width: 693px;
+  font-size: .8em;
+  float: left;
+}
+
+/* line 164, ../_/components/sass/styles.scss */
 a {
   text-decoration: none;
   color: #000;
 }
 
-/* line 164, ../_/components/sass/styles.scss */
+/* line 168, ../_/components/sass/styles.scss */
 .btn-primary {
   height: 2.6em;
   width: 9.375em;
@@ -296,7 +301,7 @@ a {
   cursor: pointer;
 }
 
-/* line 177, ../_/components/sass/styles.scss */
+/* line 181, ../_/components/sass/styles.scss */
 .editButton {
   width: 5.375em;
   float: right;
@@ -305,65 +310,65 @@ a {
   cursor: pointer;
 }
 
-/* line 184, ../_/components/sass/styles.scss */
+/* line 188, ../_/components/sass/styles.scss */
 ul.fullName li {
   display: inline;
 }
-/* line 186, ../_/components/sass/styles.scss */
+/* line 190, ../_/components/sass/styles.scss */
 ul.fullName li:nth-child(n+1):nth-child(even):nth-child(-n+6) {
   font-weight: bold;
   font-size: .8em;
 }
 
-/* line 191, ../_/components/sass/styles.scss */
+/* line 195, ../_/components/sass/styles.scss */
 ul.radioGroup {
   width: 24em;
 }
 
-/* line 195, ../_/components/sass/styles.scss */
+/* line 199, ../_/components/sass/styles.scss */
 ul.radioGroup li:nth-child(2) {
   display: block;
   float: none;
   width: 26em;
 }
-/* line 199, ../_/components/sass/styles.scss */
+/* line 203, ../_/components/sass/styles.scss */
 ul.radioGroup li:nth-child(2) label {
   margin-right: 3em;
 }
-/* line 203, ../_/components/sass/styles.scss */
+/* line 207, ../_/components/sass/styles.scss */
 ul.radioGroup li:nth-child(3) {
   font-weight: bold;
   width: 152px;
   float: left;
 }
-/* line 209, ../_/components/sass/styles.scss */
+/* line 213, ../_/components/sass/styles.scss */
 ul.radioGroup li:nth-child(4) label {
   margin-right: 3em;
 }
 
-/* line 214, ../_/components/sass/styles.scss */
+/* line 218, ../_/components/sass/styles.scss */
 li.industryLabel label {
   margin-top: 2em;
 }
 
-/* line 217, ../_/components/sass/styles.scss */
+/* line 221, ../_/components/sass/styles.scss */
 select[name=role], select[name=chapter],
 select[name=status] {
   width: 14.063em;
 }
 
-/* line 221, ../_/components/sass/styles.scss */
+/* line 225, ../_/components/sass/styles.scss */
 select[name=salutation] {
   margin-right: 1.25em;
   font-size: .8em;
 }
 
-/* line 225, ../_/components/sass/styles.scss */
+/* line 229, ../_/components/sass/styles.scss */
 select[name=industry] {
   margin-top: 2em;
 }
 
-/* line 228, ../_/components/sass/styles.scss */
+/* line 232, ../_/components/sass/styles.scss */
 input[name=name], input[name=title],
 input[name=company], input[name=office],
 input[name=cell], input[name=fax],
@@ -377,7 +382,8 @@ input[name=joinDate], input[name=groups],
 input[name=assistant], input[name=assEmail],
 input[name=assOffice], input[name=assCell],
 input[name=attorneys], input[name=industry],
-input[name=nih], input[name=newCLOGC] {
+input[name=nih], input[name=newCLOGC],
+input[name=additionalEmail] {
   padding-left: .3em;
   height: 1.8em;
   width: 17.5em;
@@ -387,7 +393,7 @@ input[name=nih], input[name=newCLOGC] {
   font-size: 1em;
 }
 
-/* line 250, ../_/components/sass/styles.scss */
+/* line 255, ../_/components/sass/styles.scss */
 input[name=firstName], input[name=lastName],
 input[name=middleName] {
   padding-left: .3em;
@@ -401,7 +407,7 @@ input[name=middleName] {
   font-size: .8em;
 }
 
-/* line 262, ../_/components/sass/styles.scss */
+/* line 267, ../_/components/sass/styles.scss */
 input[name=search] {
   background: url(../images/userSearchMagnifyingGlass.png) no-repeat 0.8em 0.6em;
   padding-left: 3em !important;
@@ -413,19 +419,19 @@ input[name=search] {
   border: 1px solid #e6e6e6 !important;
 }
 
-/* line 272, ../_/components/sass/styles.scss */
+/* line 277, ../_/components/sass/styles.scss */
 .cf:before,
 .cf:after {
   content: " ";
   display: table;
 }
 
-/* line 277, ../_/components/sass/styles.scss */
+/* line 282, ../_/components/sass/styles.scss */
 .cf:after {
   clear: both;
 }
 
-/* line 280, ../_/components/sass/styles.scss */
+/* line 285, ../_/components/sass/styles.scss */
 .cf {
   *zoom: 1;
 }

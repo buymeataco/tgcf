@@ -225,12 +225,6 @@
 									<input id="assOffice" class="assOffice" name="assOffice" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
-							<ul class="rightListItem">
-								<li><label for="assCell">Asst. Cell:</label></li>
-								<li>
-									<input id="assCell" class="assCell" name="assCell" type="text" size="128" maxlength="256" />
-								</li>
-							</ul>
 						</div> <!-- rowFourColumnTwo -->	
 					</div> <!-- row four -->
 				<hr class="rowRule"/>					
@@ -322,26 +316,6 @@
 							</ul>
 						</div> <!-- rowFiveColumnOne -->
 						<div class="rowFiveColTwo cf">
-							<ul class="rightListItem radioGroup">
-								<li>New in-house?</li>
-								<li>
-									<label>
-										<input type="radio" name="inHouse" value="Yes" id="inHouse_0" />
-										Yes</label>									
-									<label>
-										<input type="radio" name="inHouse" value="No" id="inHouse_1" />
-										No</label>									
-								</li>
-								<li>New to GC-CLO?</li>
-								<li>
-									<label>
-										<input type="radio" name="newGCCLO" value="Yes" id="inHouse_0" />
-										Yes</label>									
-									<label>
-										<input type="radio" name="newGCCLO" value="No" id="inHouse_1" />
-										No</label>									
-								</li>
-							</ul>
 						</div> <!-- rowFiveColumnTwo -->
 					</div> <!-- row five -->
 				<hr class="rowRule"/>

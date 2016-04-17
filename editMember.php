@@ -8,7 +8,6 @@
       <div class="modal-body">
       	<!-- start HTML template -->
 		<div class="wrapper">
-			<p class="resultCount">Record last updated on: 2106-04-04.</p>
 			<ul class="fullName">
 				<li>
 					<select name="salutation" class="salutation" id="salutation">
@@ -35,7 +34,7 @@
 					<div class="rowOne cf">
 						<div class="rowOneColOne cf">
 							<ul class="leftListItem">
-								<li><label for="name">Nickname:</label></li>
+								<li><label for="name">Preferred Name:</label></li>
 								<li>
 									<input id="name" class="merchant" name="name" type="text" size="128" maxlength="256" />
 								</li>
@@ -84,21 +83,82 @@
 					<div class="rowTwo cf">
 						<div class="rowTwoColOne cf">
 							<ul class="leftListItem">
-								<li><label for="numStreet">Number &amp; Street:</label></li>
+								<li><label for="address1">Address Line 1:</label></li>
 								<li>
-									<input id="numStreet" class="numStreet" name="numStreet" type="text" size="128" maxlength="256" />
+									<input id="address1" class="address1" name="address1" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="leftListItem">
-								<li><label for="suite">Suite:</label></li>
+								<li><label for="address2">Address Line 2:</label></li>
 								<li>
-									<input id="suite" class="suite" name="suite" type="text" size="128" maxlength="256" />
+									<input id="address2" class="address2" name="address2" type="text" size="128" maxlength="256" />
+								</li>
+							</ul>
+							<ul class="leftListItem cityState">
+								<li><label for="cityStateZip">City &amp; State</label></li>
+								<li>
+									<input id="cityStateZip" class="cityStateZip" name="cityStateZip" type="text" maxlength="256" />
+								</li>
+								<li>
+									<select name="state">
+										<option value="AL">AL</option>
+										<option value="AK">AK</option>
+										<option value="AZ">AZ</option>
+										<option value="AR">AR</option>
+										<option value="CA">CA</option>
+										<option value="CO">CO</option>
+										<option value="CT">CT</option>
+										<option value="DE">DE</option>
+										<option value="DC">DC</option>
+										<option value="FL">FL</option>
+										<option value="GA">GA</option>
+										<option value="HI">HI</option>
+										<option value="ID">ID</option>
+										<option value="IL">IL</option>
+										<option value="IN">IN</option>
+										<option value="IA">IA</option>
+										<option value="KS">KS</option>
+										<option value="KY">KY</option>
+										<option value="LA">LA</option>
+										<option value="ME">ME</option>
+										<option value="MD">MD</option>
+										<option value="MA">MA</option>
+										<option value="MI">MI</option>
+										<option value="MN">MN</option>
+										<option value="MS">MS</option>
+										<option value="MO">MO</option>
+										<option value="MT">MT</option>
+										<option value="NE">NE</option>
+										<option value="NV">NV</option>
+										<option value="NH">NH</option>
+										<option value="NJ">NJ</option>
+										<option value="NM">NM</option>
+										<option value="NY">NY</option>
+										<option value="NC">NC</option>
+										<option value="ND">ND</option>
+										<option value="OH">OH</option>
+										<option value="OK">OK</option>
+										<option value="OR">OR</option>
+										<option value="PA">PA</option>
+										<option value="RI">RI</option>
+										<option value="SC">SC</option>
+										<option value="SD">SD</option>
+										<option value="TN">TN</option>
+										<option value="TX">TX</option>
+										<option value="UT">UT</option>
+										<option value="VT">VT</option>
+										<option value="VA">VA</option>
+										<option value="WA">WA</option>
+										<option value="WV">WV</option>
+										<option value="WI">WI</option>
+										<option value="WY">WY</option>
+									</select>
 								</li>
 							</ul>
 							<ul class="leftListItem">
-								<li><label for="cityStateZip">City, State &amp; Zip:</label></li>
+								<li><label for="cityStateZip">Zip Code:</label></li>
 								<li>
-									<input id="cityStateZip" class="cityStateZip" name="cityStateZip" type="text" size="128" maxlength="256" />
+									<input id="cityStateZip" class="cityStateZip" name="cityStateZip" type="text" maxlength="5" />
 								</li>
 							</ul>
 						</div> <!-- rowTwoColumnOne -->
@@ -110,15 +170,11 @@
 								</li>
 							</ul>
 							<ul class="rightListItem">
-								<li><label for="chapter">Chapter:</label></li>
-								<li>	
-									<select name="chapter" class="chapter" id="chapter">
-										<option value="1">Austin-San Antonio</option>
-										<option value="2">Dallas-Fort Worth</option>	
-									 	<option value="3">Houston</option>								
-									</select>
-								</li>	
-							</ul>
+								<li><label for="additionalEmail">Additional Email:</label></li>
+								<li>
+									<input id="additionalEmail" class="primaryEmail" name="additionalEmail" type="text" size="128" maxlength="256" />
+								</li>
+							</ul>							
 							<ul class="rightListItem">
 								<li><label for="role">Role:</label></li>
 								<li>
@@ -139,57 +195,49 @@
 									</select>
 								</li>
 							</ul>
+							<ul class="rightListItem">
+								<li><label for="recruitedBy">Recruited by:</label></li>
+								<li>
+									<input id="recruitedBy" class="recruitedBy" name="recruitedBy" type="text" size="128" maxlength="256" />
+								</li>
+							</ul>							
 						</div> <!-- rowTwoColumnTwo -->
 					</div> <!-- rowTwo -->
 				<hr class="rowRule"/>
 					<div class="rowThree cf">
 						<div class="rowThreeColOne cf">
 							<ul class="leftListItem">
-								<li><label for="recruitedBy">Recruited by:</label></li>
-								<li>
-									<input id="recruitedBy" class="recruitedBy" name="recruitedBy" type="text" size="128" maxlength="256" />
-								</li>
-							</ul>
-							<ul class="leftListItem">
-								<li><label for="status">Customer Status:</label></li>
+								<li><label for="status">Contact Type</label></li>
 								<li>
 									<select name="status" class="status" id="status">
-									  <option value="1">Customer</option>
-									  <option value="2">Lead</option>
-									  <option value="3">Follow-up</option>
-									  <option value="4">Prospect</option>
-									  <option value="5">Favourite</option>
-									  <option value="6">Blocked</option>
-									  <option value="7">Flagged</option>
+									  <option value="1">M1 - Individual Corp.</option>
+									  <option value="2">M2 - Non-Profit Gov't. Mun</option>
+									  <option value="3">M3 - Corp. Mentor Sponsor</option>
+									  <option value="4">M4 - Legal Dept.</option>
+									  <option value="5">M5 - Corp. Underwriter</option>
+									  <option value="6">M6 - Displaced GC</option>
+									  <option value="7">M7 - GC Emeretus</option>
 									</select>
 								</li>
 							</ul>
 							<ul class="leftListItem">
+								<li><label for="chapter">Chapter:</label></li>
+								<li>	
+									<select name="chapter" class="chapter" id="chapter">
+										<option value="1">Austin-San Antonio</option>
+										<option value="2">Dallas-Fort Worth</option>	
+									 	<option value="3">Houston</option>								
+									</select>
+								</li>	
+							</ul>							
+							<ul class="leftListItem">								
 								<li><label for="territory">Territory:</label></li>
 								<li>
 									<input id="territory" class="territory" name="territory" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
-							<ul class="leftListItem">
-								<li><label for="source">Source:</label></li>
-								<li>
-									<input id="source" class="source" name="source" type="text" size="128" maxlength="256" />
-								</li>
-							</ul>
 						</div> <!-- rowThreeColumnOne -->
 						<div class="rowThreeColTwo cf">
-							<ul class="rightListItem">
-								<li><label for="code">Member Code:</label></li>
-								<li>
-									<input id="code" class="code" name="code" type="text" size="128" maxlength="256" />
-								</li>
-							</ul>
-							<ul class="rightListItem">
-								<li><label for="level">Membership Level:</label></li>
-								<li>
-									<input id="level" class="level" name="level" type="text" size="128" maxlength="256" />
-								</li>
-							</ul>
 							<ul class="rightListItem">
 								<li><label for="joinDate">Join Date:</label></li>
 								<li>
@@ -202,6 +250,39 @@
 									<input id="groups" class="groups" name="groups" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
+							<ul class="rightListItem">
+								<li><label for="source">Source:</label></li>
+								<li>
+									<select name="source" class="source" id="source">
+										<option value="AUS BIZ JOUR">Austin Business Journal</option>
+ 										<option value="BOD RECRU">BOD Recruitment</option>
+ 										<option value="CONFERENCE">Joined to attend Conference</option>
+ 										<option value="DEN PROSP">2014 Denver Prospects</option>
+ 										<option value="FILL ALUM">FILL Alumni- Any Year</option>
+ 										<option value="FORMER UND">Prev. Underwriter via From</option>
+ 										<option value="LINKEDIN">Linkedin General Councel</option>
+ 										<option value="LINKEDINNJ">Req. to Join LinkedIn Gr.</option>
+ 										<option value="MAILINGS">Brochure Mail Outs</option>
+ 										<option value="MCC">Digital Monthly Issue of MCC</option>
+ 										<option value="MEM REFERL">Member Referral</option>
+ 										<option value="MKTING LST">Marketing List</option>
+ 										<option value="NETWORKING">Networking Mixers/Meetings</option>
+ 										<option value="REJOIN">Previous Member</option>
+ 										<option value="REPL M">New GC/MC Replaced Prev.</option>
+ 										<option value="SEE SUC REC">See Successor Record</option>
+ 										<option value="SPNR">Sponsor Referral</option>
+ 										<option value="STATE BAR">Chapter State Bar</option>
+ 										<option value="TGCF">The Forum</option>
+ 										<option value="TX CORP">TX Corporate Counsel Dir.</option>
+ 										<option value="TX LAWBOOKLIST">Texas Lawnbook List</option>
+ 										<option value="TX LWYR">Monthly In-House TX Issue</option>
+ 										<option value="TXLAWBK">Monthly Texas Lawbook</option>
+ 										<option value="UND REF">Currently an Underwriter Ref.</option>
+ 										<option value="UND REFRL">Underwriter Referral</option>
+ 										<option value="WEBSITE">Website</option>
+									</select>	
+								</li>
+							</ul>							
 						</div> <!-- rowThreeColumnTwo -->
 					</div> <!-- rowThree -->
 				<hr class="rowRule"/>
@@ -214,7 +295,7 @@
 								</li>
 							</ul>
 							<ul class="leftListItem">
-								<li><label for="assEmail">Asst. Email:</label></li>
+								<li><label for="assEmail">Assistant Email:</label></li>
 								<li>
 									<input id="assEmail" class="assEmail" name="assEmail" type="text" size="128" maxlength="256" />
 								</li>
@@ -222,15 +303,9 @@
 						</div> <!-- rowFourColumnOne -->
 						<div class="rowFourColTwo cf">
 							<ul class="rightListItem">
-								<li><label for="assOffice">Asst. Office:</label></li>
+								<li><label for="assOffice">Assistant Office:</label></li>
 								<li>
 									<input id="assOffice" class="assOffice" name="assOffice" type="text" size="128" maxlength="256" />
-								</li>
-							</ul>
-							<ul class="rightListItem">
-								<li><label for="assCell">Asst. Cell:</label></li>
-								<li>
-									<input id="assCell" class="assCell" name="assCell" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 						</div> <!-- rowFourColumnTwo -->	
@@ -324,26 +399,6 @@
 							</ul>
 						</div> <!-- rowFiveColumnOne -->
 						<div class="rowFiveColTwo cf">
-							<ul class="rightListItem radioGroup">
-								<li>New in-house?</li>
-								<li>
-									<label>
-										<input type="radio" name="inHouse" value="Yes" id="inHouse_0" />
-										Yes</label>									
-									<label>
-										<input type="radio" name="inHouse" value="No" id="inHouse_1" />
-										No</label>									
-								</li>
-								<li>New to GC-CLO?</li>
-								<li>
-									<label>
-										<input type="radio" name="newGCCLO" value="Yes" id="inHouse_0" />
-										Yes</label>									
-									<label>
-										<input type="radio" name="newGCCLO" value="No" id="inHouse_1" />
-										No</label>									
-								</li>
-							</ul>
 						</div> <!-- rowFiveColumnTwo -->
 					</div> <!-- row five -->
 				<hr class="rowRule"/>
@@ -357,13 +412,13 @@
 						</div>	
 						</div> <!-- rowSixColumnOne -->					
 					</div> <!-- row six -->
-				</div> <!-- profile -->	
+				</div> <!-- profile -->
 		</div> <!-- wrapper -->
 		<!-- end HTML template -->
       </div>
       <div class="modal-footer">
+      	<button type="button" class="saveButton">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save Changes</button>
       </div>
     </div>
   </div>

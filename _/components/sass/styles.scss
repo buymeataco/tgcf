@@ -27,7 +27,7 @@ body {
 .wrapper {
 	width: 60em;
 	margin: 0 auto;
-	padding-top: 2.5em;
+	padding-top: .5em;
 }
 .resultDCDCDC  {
 	background-color: #DCDCDC;
@@ -166,17 +166,21 @@ a {
 	color: #000;
 }
 .btn-primary {
-	height: 2.6em;
-	width: 9.375em;
+	height: 1.9em;
+	width: 4em;
 	background-color: #228B22;
 	border: none;
 	border-radius: 8px;
 	color: #fff;
 	font-size: 1em;
 	float: right;
-	margin-top: -1.5em;
+	margin-top: -.2em;
 	margin-right: 7.5em;
 	cursor: pointer;
+}
+.btn-lg {
+	line-height: .333;
+	padding: 10px 10px;
 }
 .editButton {
 	width: 5.375em;
@@ -185,6 +189,22 @@ a {
 	margin-right: 7.5em;
 	cursor: pointer;
 }
+button.saveButton {
+    height: -0.1em;
+    width: 4em;
+    background-color: #265a88;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1em;
+    float: right;
+    padding: .5em;
+    margin-top: -2.5em;
+    	&:hover {
+    		color: #fff;
+    		cursor: pointer !important;
+    	}
+}
 ul.fullName li {
 	display: inline;
 		&:nth-child(n+1):nth-child(even):nth-child(-n+6) {
@@ -192,32 +212,34 @@ ul.fullName li {
 			font-size: .8em;
 		}
 }
-ul.radioGroup {
-	width: 24em;
-}
-ul.radioGroup li {
+ul.cityState li {
 	&:nth-child(2) {
-		display: block;
-		float: none;
-		width: 26em;
-			label {
-				margin-right: 3em;
-			}
-	}
-	&:nth-child(3) {
-		font-weight: bold;
-		width: 152px;
-		float: left;
-	}
-	&:nth-child(4) {
-		label {
-			margin-right: 3em;
-		}
+		width: 170px;
 	}
 }
-li.industryLabel label {
-	margin-top: 2em;
-}
+// ul.radioGroup {
+// 	width: 24em;
+// }
+// ul.radioGroup li {
+// 	&:nth-child(2) {
+// 		display: block;
+// 		float: none;
+// 		width: 26em;
+// 			label {
+// 				margin-right: 3em;
+// 			}
+// 	}
+// 	&:nth-child(3) {
+// 		font-weight: bold;
+// 		width: 152px;
+// 		float: left;
+// 	}
+// 	&:nth-child(4) {
+// 		label {
+// 			margin-right: 3em;
+// 		}
+// 	}
+// }
 select[name=role], select[name=chapter],
 select[name=status]  {
 	width: 14.063em;
@@ -226,27 +248,33 @@ select[name=salutation] {
 	margin-right: 1.25em;
 	font-size: .8em;
 }
-select[name=industry] {
-	margin-top: 2em;
-}
-input[name=name], input[name=title],
+input[name=name],input[name=title],
 input[name=company],input[name=office],
-input[name=cell], input[name=fax],
-input[name=home],input[name=numStreet],
-input[name=suite], input[name=cityStateZip],
+input[name=cell],input[name=fax],
+input[name=home],input[name=address1],
+input[name=suite],input[name=additionalEmail],
 input[name=primaryEmail],input[name=chapter],
-input[name=role], input[name=recruitedBy],
-input[name=status], input[name=territory],
-input[name=source],input[name=code], input[name=level],
+input[name=role],input[name=recruitedBy],
+input[name=status],input[name=territory],
+input[name=source],input[name=code],input[name=level],
 input[name=joinDate],input[name=groups],
-input[name=assistant], input[name=assEmail],
+input[name=assistant],input[name=assEmail],
 input[name=assOffice],input[name=assCell],
-input[name=attorneys], input[name=industry],
+input[name=attorneys],input[name=industry],
 input[name=nih],input[name=newCLOGC],
-input[name=additionalEmail] {
+input[name=address2] {
 	padding-left: .3em;
 	height: 1.8em;
 	width: 17.5em;
+	background-color: #fff;
+	color: #696969;
+	border: 1px solid #e6e6e6;
+	font-size: 1em;
+}
+input[name=cityStateZip] {
+	padding-left: .3em;
+	height: 1.8em;
+	width: 12.5em;
 	background-color: #fff;
 	color: #696969;
 	border: 1px solid #e6e6e6;

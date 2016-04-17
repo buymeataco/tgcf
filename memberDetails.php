@@ -12,7 +12,7 @@
 </head>
 	<body>
 		<div class="wrapper">
-		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Edit Member</button>
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Edit</button>
 			<?php
 				$whichQuery = 'memberDetails';
 				include ('queries.php');

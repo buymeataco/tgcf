@@ -351,19 +351,31 @@ ul.cityState li:nth-child(2) {
   width: 170px;
 }
 
+<<<<<<< HEAD
 /* line 221, ../_/components/sass/styles.scss */
+=======
+/* line 220, ../_/components/sass/styles.scss */
+>>>>>>> memberBuild
 select[name=role], select[name=chapter],
 select[name=status] {
   width: 14.063em;
 }
 
+<<<<<<< HEAD
 /* line 225, ../_/components/sass/styles.scss */
+=======
+/* line 224, ../_/components/sass/styles.scss */
+>>>>>>> memberBuild
 select[name=salutation] {
   margin-right: 1.25em;
   font-size: .8em;
 }
 
+<<<<<<< HEAD
 /* line 229, ../_/components/sass/styles.scss */
+=======
+/* line 228, ../_/components/sass/styles.scss */
+>>>>>>> memberBuild
 input[name=name], input[name=title],
 input[name=company], input[name=office],
 input[name=cell], input[name=fax],
@@ -388,7 +400,11 @@ input[name=address2] {
   font-size: 1em;
 }
 
+<<<<<<< HEAD
 /* line 252, ../_/components/sass/styles.scss */
+=======
+/* line 251, ../_/components/sass/styles.scss */
+>>>>>>> memberBuild
 input[name=cityStateZip] {
   padding-left: .3em;
   height: 1.8em;
@@ -399,7 +415,11 @@ input[name=cityStateZip] {
   font-size: 1em;
 }
 
+<<<<<<< HEAD
 /* line 261, ../_/components/sass/styles.scss */
+=======
+/* line 260, ../_/components/sass/styles.scss */
+>>>>>>> memberBuild
 input[name=firstName], input[name=lastName],
 input[name=middleName] {
   padding-left: .3em;
@@ -413,7 +433,11 @@ input[name=middleName] {
   font-size: .8em;
 }
 
+<<<<<<< HEAD
 /* line 273, ../_/components/sass/styles.scss */
+=======
+/* line 272, ../_/components/sass/styles.scss */
+>>>>>>> memberBuild
 input[name=search] {
   background: url(../images/userSearchMagnifyingGlass.png) no-repeat 0.8em 0.6em;
   padding-left: 3em !important;
@@ -425,20 +449,32 @@ input[name=search] {
   border: 1px solid #e6e6e6 !important;
 }
 
+<<<<<<< HEAD
 /* line 283, ../_/components/sass/styles.scss */
 textarea[name=tex]
+=======
+/* line 282, ../_/components/sass/styles.scss */
+>>>>>>> memberBuild
 .cf:before,
 .cf:after {
   content: " ";
   display: table;
 }
 
+<<<<<<< HEAD
 /* line 289, ../_/components/sass/styles.scss */
+=======
+/* line 287, ../_/components/sass/styles.scss */
+>>>>>>> memberBuild
 .cf:after {
   clear: both;
 }
 
+<<<<<<< HEAD
 /* line 292, ../_/components/sass/styles.scss */
+=======
+/* line 290, ../_/components/sass/styles.scss */
+>>>>>>> memberBuild
 .cf {
   *zoom: 1;
 }

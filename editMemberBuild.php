@@ -409,10 +409,9 @@
 					<div class="rowSix cf">
 						<div class="rowSixColOne cf">
 							<ul class="leftListItem">
-								<li><label for="source">Notes:</label></li>
+								<li><label for="notes">Notes:</label></li>
+								<li><textarea name="notes" id="notes" cols="78" rows="12"></textarea></li>
 							</ul>
-						<div class="notes">
-							<p>Notes here</p>
 						</div>	
 						</div> <!-- rowSixColumnOne -->					
 					</div> <!-- row six -->

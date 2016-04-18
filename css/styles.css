@@ -104,9 +104,10 @@ body {
   width: 60em;
   margin: 0 auto;
   padding-top: .5em;
+  background-color: LemonChiffon;
 }
 
-/* line 32, ../_/components/sass/styles.scss */
+/* line 33, ../_/components/sass/styles.scss */
 .resultDCDCDC {
   background-color: #DCDCDC;
   width: 100%;
@@ -115,14 +116,14 @@ body {
   padding-bottom: 10px;
   padding-top: 10px;
 }
-/* line 39, ../_/components/sass/styles.scss */
+/* line 40, ../_/components/sass/styles.scss */
 .resultDCDCDC:hover {
   background-color: #bfbfbf;
   cursor: pointer;
   transition: all .125s ease-in;
 }
 
-/* line 45, ../_/components/sass/styles.scss */
+/* line 46, ../_/components/sass/styles.scss */
 .resultC8DAE8 {
   background-color: #C8DAE8;
   width: 100%;
@@ -131,44 +132,44 @@ body {
   padding-bottom: 10px;
   padding-top: 10px;
 }
-/* line 52, ../_/components/sass/styles.scss */
+/* line 53, ../_/components/sass/styles.scss */
 .resultC8DAE8:hover {
   background-color: #93b7d2;
   cursor: pointer;
   transition: all .125s ease-in;
 }
 
-/* line 58, ../_/components/sass/styles.scss */
+/* line 59, ../_/components/sass/styles.scss */
 ul.resultList {
   width: 100%;
   padding: 0;
   margin: 0;
 }
 
-/* line 63, ../_/components/sass/styles.scss */
+/* line 64, ../_/components/sass/styles.scss */
 ul.resultListLoop li {
   display: inline;
 }
 
-/* line 66, ../_/components/sass/styles.scss */
+/* line 67, ../_/components/sass/styles.scss */
 .resultCount {
   float: left;
   margin-top: -30px;
 }
 
-/* line 70, ../_/components/sass/styles.scss */
+/* line 71, ../_/components/sass/styles.scss */
 .lastUpdate {
   float: right;
   margin-top: -37px;
 }
 
-/* line 74, ../_/components/sass/styles.scss */
+/* line 75, ../_/components/sass/styles.scss */
 .resultCountIndexPage {
   float: right;
   margin-top: -37px;
 }
 
-/* line 78, ../_/components/sass/styles.scss */
+/* line 79, ../_/components/sass/styles.scss */
 li.listResultName {
   font-weight: 600;
   display: inline;
@@ -178,7 +179,7 @@ li.listResultName {
   margin-right: 20px;
 }
 
-/* line 86, ../_/components/sass/styles.scss */
+/* line 87, ../_/components/sass/styles.scss */
 li.listResultEmployer,
 .listResultTitle {
   font-weight: 500;
@@ -189,7 +190,7 @@ li.listResultEmployer,
   padding-top: 3px;
 }
 
-/* line 95, ../_/components/sass/styles.scss */
+/* line 96, ../_/components/sass/styles.scss */
 hr.searchRuleIndexPage, .memberDetailsPage {
   border: 0;
   height: 0;
@@ -199,7 +200,7 @@ hr.searchRuleIndexPage, .memberDetailsPage {
   margin: 10px 0 10px 0;
 }
 
-/* line 103, ../_/components/sass/styles.scss */
+/* line 104, ../_/components/sass/styles.scss */
 hr.searchRule {
   border: 0;
   height: 0;
@@ -209,7 +210,7 @@ hr.searchRule {
   margin: 0 0 10px 0;
 }
 
-/* line 111, ../_/components/sass/styles.scss */
+/* line 112, ../_/components/sass/styles.scss */
 hr.rowRule {
   border: 0;
   height: 0;
@@ -219,74 +220,74 @@ hr.rowRule {
   margin: 5px 0 10px 0;
 }
 
-/* line 119, ../_/components/sass/styles.scss */
+/* line 120, ../_/components/sass/styles.scss */
 p.fullName {
   margin-bottom: .9em;
 }
 
-/* line 122, ../_/components/sass/styles.scss */
+/* line 123, ../_/components/sass/styles.scss */
 span.nameBold {
   font-weight: bold;
 }
 
-/* line 125, ../_/components/sass/styles.scss */
+/* line 126, ../_/components/sass/styles.scss */
 .rowOneColOne, .rowTwoColOne, .rowThreeColOne,
 .rowFourColOne, .rowFiveColOne {
   width: 465px;
   float: left;
 }
 
-/* line 130, ../_/components/sass/styles.scss */
+/* line 131, ../_/components/sass/styles.scss */
 .rowOneColTwo, .rowTwoColTwo, .rowThreeColTwo,
 .rowFourColTwo, .rowFiveColTwo {
   width: 465px;
   float: left;
 }
 
-/* line 135, ../_/components/sass/styles.scss */
+/* line 136, ../_/components/sass/styles.scss */
 ul.leftListItem li {
   display: inline;
 }
 
-/* line 138, ../_/components/sass/styles.scss */
+/* line 139, ../_/components/sass/styles.scss */
 ul.leftListItem li, ul.rightListItem li {
   display: inline;
   font-size: .8em;
   margin-bottom: .4em;
   line-height: 1.1;
 }
-/* line 143, ../_/components/sass/styles.scss */
+/* line 144, ../_/components/sass/styles.scss */
 ul.leftListItem li:first-child, ul.rightListItem li:first-child {
   font-weight: bold;
   float: left;
   width: 152px;
 }
 
-/* line 150, ../_/components/sass/styles.scss */
+/* line 151, ../_/components/sass/styles.scss */
 ul.leftListItem li:nth-child(2), ul.rightListItem li:nth-child(2) {
   float: left;
   width: 282px;
 }
-/* line 153, ../_/components/sass/styles.scss */
+/* line 154, ../_/components/sass/styles.scss */
 ul.leftListItem li:nth-child(2):after, ul.rightListItem li:nth-child(2):after {
   content: ".";
   color: #fff;
 }
 
-/* line 159, ../_/components/sass/styles.scss */
+/* line 160, ../_/components/sass/styles.scss */
 .notes {
   width: 693px;
   font-size: .8em;
   float: left;
 }
 
-/* line 164, ../_/components/sass/styles.scss */
+/* line 165, ../_/components/sass/styles.scss */
 a {
   text-decoration: none;
   color: #000;
 }
 
-/* line 168, ../_/components/sass/styles.scss */
+/* line 169, ../_/components/sass/styles.scss */
 .btn-primary {
   height: 1.9em;
   width: 4em;
@@ -301,13 +302,13 @@ a {
   cursor: pointer;
 }
 
-/* line 181, ../_/components/sass/styles.scss */
+/* line 182, ../_/components/sass/styles.scss */
 .btn-lg {
   line-height: .333;
   padding: 10px 10px;
 }
 
-/* line 185, ../_/components/sass/styles.scss */
+/* line 186, ../_/components/sass/styles.scss */
 .editButton {
   width: 5.375em;
   float: right;
@@ -316,7 +317,7 @@ a {
   cursor: pointer;
 }
 
-/* line 192, ../_/components/sass/styles.scss */
+/* line 193, ../_/components/sass/styles.scss */
 button.saveButton {
   height: -0.1em;
   width: 4em;
@@ -329,40 +330,40 @@ button.saveButton {
   padding: .5em;
   margin-top: -2.5em;
 }
-/* line 203, ../_/components/sass/styles.scss */
+/* line 204, ../_/components/sass/styles.scss */
 button.saveButton:hover {
   color: #fff;
   cursor: pointer !important;
 }
 
-/* line 208, ../_/components/sass/styles.scss */
+/* line 209, ../_/components/sass/styles.scss */
 ul.fullName li {
   display: inline;
 }
-/* line 210, ../_/components/sass/styles.scss */
+/* line 211, ../_/components/sass/styles.scss */
 ul.fullName li:nth-child(n+1):nth-child(even):nth-child(-n+6) {
   font-weight: bold;
   font-size: .8em;
 }
 
-/* line 216, ../_/components/sass/styles.scss */
+/* line 217, ../_/components/sass/styles.scss */
 ul.cityState li:nth-child(2) {
   width: 170px;
 }
 
-/* line 243, ../_/components/sass/styles.scss */
+/* line 221, ../_/components/sass/styles.scss */
 select[name=role], select[name=chapter],
 select[name=status] {
   width: 14.063em;
 }
 
-/* line 247, ../_/components/sass/styles.scss */
+/* line 225, ../_/components/sass/styles.scss */
 select[name=salutation] {
   margin-right: 1.25em;
   font-size: .8em;
 }
 
-/* line 251, ../_/components/sass/styles.scss */
+/* line 229, ../_/components/sass/styles.scss */
 input[name=name], input[name=title],
 input[name=company], input[name=office],
 input[name=cell], input[name=fax],
@@ -387,7 +388,7 @@ input[name=address2] {
   font-size: 1em;
 }
 
-/* line 274, ../_/components/sass/styles.scss */
+/* line 252, ../_/components/sass/styles.scss */
 input[name=cityStateZip] {
   padding-left: .3em;
   height: 1.8em;
@@ -398,7 +399,7 @@ input[name=cityStateZip] {
   font-size: 1em;
 }
 
-/* line 283, ../_/components/sass/styles.scss */
+/* line 261, ../_/components/sass/styles.scss */
 input[name=firstName], input[name=lastName],
 input[name=middleName] {
   padding-left: .3em;
@@ -412,7 +413,7 @@ input[name=middleName] {
   font-size: .8em;
 }
 
-/* line 295, ../_/components/sass/styles.scss */
+/* line 273, ../_/components/sass/styles.scss */
 input[name=search] {
   background: url(../images/userSearchMagnifyingGlass.png) no-repeat 0.8em 0.6em;
   padding-left: 3em !important;
@@ -424,19 +425,20 @@ input[name=search] {
   border: 1px solid #e6e6e6 !important;
 }
 
-/* line 305, ../_/components/sass/styles.scss */
+/* line 283, ../_/components/sass/styles.scss */
+textarea[name=tex]
 .cf:before,
 .cf:after {
   content: " ";
   display: table;
 }
 
-/* line 310, ../_/components/sass/styles.scss */
+/* line 289, ../_/components/sass/styles.scss */
 .cf:after {
   clear: both;
 }
 
-/* line 313, ../_/components/sass/styles.scss */
+/* line 292, ../_/components/sass/styles.scss */
 .cf {
   *zoom: 1;
 }

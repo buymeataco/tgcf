@@ -28,6 +28,7 @@ body {
 	width: 60em;
 	margin: 0 auto;
 	padding-top: .5em;
+	background-color: LemonChiffon;
 }
 .resultDCDCDC  {
 	background-color: #DCDCDC;
@@ -217,29 +218,6 @@ ul.cityState li {
 		width: 170px;
 	}
 }
-// ul.radioGroup {
-// 	width: 24em;
-// }
-// ul.radioGroup li {
-// 	&:nth-child(2) {
-// 		display: block;
-// 		float: none;
-// 		width: 26em;
-// 			label {
-// 				margin-right: 3em;
-// 			}
-// 	}
-// 	&:nth-child(3) {
-// 		font-weight: bold;
-// 		width: 152px;
-// 		float: left;
-// 	}
-// 	&:nth-child(4) {
-// 		label {
-// 			margin-right: 3em;
-// 		}
-// 	}
-// }
 select[name=role], select[name=chapter],
 select[name=status]  {
 	width: 14.063em;
@@ -302,6 +280,7 @@ input[name=search] {
 	color: #000;
 	border: 1px solid #e6e6e6 !important;
 }
+textarea[name=tex]
 .cf:before,
 .cf:after {
     content: " ";

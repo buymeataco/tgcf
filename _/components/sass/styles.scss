@@ -24,7 +24,7 @@ body {
 .modal-footer {
 	border-top: 0px;
 }
-.wrapper {
+.containerWrapper {
 	width: 60em;
 	margin: 0 auto;
 	padding-top: .5em;
@@ -106,7 +106,7 @@ hr.searchRule {
 	width: 842px;
 	border-top: 2px solid rgba(0, 0, 0, 0.1);
 	border-bottom: 0px solid rgba(255, 255, 255, 0.3);
-	margin: 0 0 10px 0;
+	margin-bottom: 10px;
 }
 hr.rowRule {
 	border: 0;

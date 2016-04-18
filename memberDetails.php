@@ -11,50 +11,51 @@
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 	<body>
-		<div class="wrapper">
-		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Edit</button>
+		<div class="containerWrapper">
 			<?php
 				$whichQuery = 'memberDetails';
 				include ('queries.php');
 				include ('editMember.php');				
-					@$myEmail = $individualMemberData[0]['Email'];
-					@$myFirst = $individualMemberData[0]['first_name'];
-					@$myMiddle = $individualMemberData[0]['Middle'];
-					@$myLast = $individualMemberData[0]['last_name'];
-					@$mySalutation = $individualMemberData[0]['salutation'];
-					@$myTitle = $individualMemberData[0]['title'];
-					@$myCompany = $individualMemberData[0]['billing_company'];
-					@$myOfficePhone = $individualMemberData[0]['billing_phone'];
-					@$myBillingAddress1	= $individualMemberData[0]['billing_address_1'];
-					@$myBillingAddress2	= $individualMemberData[0]['billing_address_2'];
-					@$myNickName	= $individualMemberData[0]['nickname'];
-					@$myCity	= $individualMemberData[0]['billing_city'];
-					@$myState = $individualMemberData[0]['billing_state'];	
-					@$myZip = $individualMemberData[0]['billing_postcode'];
-					@$myAss	= $individualMemberData[0]['assistant'];
-					@$myAssPhone = $individualMemberData[0]['assistant_phone'];	
-					@$myAssEmail = $individualMemberData[0]['assistant_email'];
-					@$myDeptSize = $individualMemberData[0]['depart_size'];
-					@$myTerritory = $individualMemberData[0]['Territory'];
-					@$myJoinDate = $individualMemberData[0]['date_i18n'];
-					@$myMembersCode = $individualMemberData[0]['members_code'];
-					@$myIndustry = $individualMemberData[0]['industry'];
-					@$myRemarks = $individualMemberData[0]['remarks'];
-					@$myRecruitedBy = $individualMemberData[0]['recruited_by'];
-					@$myMobilePhone = $individualMemberData[0]['mobile-phone'];
-					@$myFax = $individualMemberData[0]['Fax'];
-					@$myHome = $individualMemberData[0]['Home'];
-					@$myRole = $individualMemberData[0]['role'];
-					@$myAdditionalEmail = $individualMemberData[0]['additionalEmail'];
-					@$myContactType = $individualMemberData[0]['contactType'];
-					@$mySource = $individualMemberData[0]['source'];
-					@$myChapter = $individualMemberData[0]['chapter'];
-					@$myJoinDate = $individualMemberData[0]['date_i18n'];
-					@$myGroups = $individualMemberData[0]['groups'];
+				@$myEmail = $individualMemberData[0]['Email'];
+				@$myFirst = $individualMemberData[0]['first_name'];
+				@$myMiddle = $individualMemberData[0]['Middle'];
+				@$myLast = $individualMemberData[0]['last_name'];
+				@$mySalutation = $individualMemberData[0]['salutation'];
+				@$myTitle = $individualMemberData[0]['title'];
+				@$myCompany = $individualMemberData[0]['billing_company'];
+				@$myOfficePhone = $individualMemberData[0]['billing_phone'];
+				@$myBillingAddress1	= $individualMemberData[0]['billing_address_1'];
+				@$myBillingAddress2	= $individualMemberData[0]['billing_address_2'];
+				@$myNickName	= $individualMemberData[0]['nickname'];
+				@$myCity	= $individualMemberData[0]['billing_city'];
+				@$myState = $individualMemberData[0]['billing_state'];	
+				@$myZip = $individualMemberData[0]['billing_postcode'];
+				@$myAss	= $individualMemberData[0]['assistant'];
+				@$myAssPhone = $individualMemberData[0]['assistant_phone'];	
+				@$myAssEmail = $individualMemberData[0]['assistant_email'];
+				@$myDeptSize = $individualMemberData[0]['depart_size'];
+				@$myTerritory = $individualMemberData[0]['Territory'];
+				@$myJoinDate = $individualMemberData[0]['date_i18n'];
+				@$myMembersCode = $individualMemberData[0]['members_code'];
+				@$myIndustry = $individualMemberData[0]['industry'];
+				@$myRemarks = $individualMemberData[0]['remarks'];
+				@$myRecruitedBy = $individualMemberData[0]['recruited_by'];
+				@$myMobilePhone = $individualMemberData[0]['mobile-phone'];
+				@$myFax = $individualMemberData[0]['Fax'];
+				@$myHome = $individualMemberData[0]['Home'];
+				@$myRole = $individualMemberData[0]['role'];
+				@$myAdditionalEmail = $individualMemberData[0]['additionalEmail'];
+				@$myContactType = $individualMemberData[0]['contactType'];
+				@$mySource = $individualMemberData[0]['source'];
+				@$myChapter = $individualMemberData[0]['chapter'];
+				@$myJoinDate = $individualMemberData[0]['date_i18n'];
+				@$myGroups = $individualMemberData[0]['groups'];
+				@$myRemarks = $individualMemberData[0]['remarks'];
 			echo
-				"<p class=\"fullName\">Profile for <span class=\"nameBold\">Mr. {$myFirst} {$myMiddle} {$myLast} or \"{$mySalutation}\" </span></p>
+			"<button type=\"button\" class=\"btn btn-primary btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\">Edit</button>
+			<p class=\"fullName\">Profile for <span class=\"nameBold\">Mr. {$myFirst} {$myMiddle} {$myLast} or \"{$mySalutation}\" </span></p>
 			<hr class=\"searchRule\"/>
-				<div class=\"profile\">
+				<di v class=\"profile\">
 					<div class=\"rowOne cf\">
 						<div class=\"rowOneColOne cf\">
 							<ul class=\"leftListItem\">
@@ -188,15 +189,13 @@
 					</div> <!-- row four -->
 				<hr class=\"rowRule\"/>					
 					<div class=\"rowFive cf\">
-						<div class=\"rowSixColOne cf\">
+						<div class=\"rowFiveColOne cf\">
 							<ul class=\"leftListItem\">
 								<li>Notes:</li>
+								<li>{$myRemarks}</li>
 							</ul>
-						<div class=\"notes\">
-							<p>{$myRemarks}</p>
-						</div>	
-						</div> <!-- rowSixColumnOne -->					
-					</div> <!-- row six -->
+						</div> <!-- rowFiveColumnOne -->					
+					</div> <!-- row five -->
 				</div> <!-- profile -->";
 			?>		
 		</div> <!-- end wrapper -->

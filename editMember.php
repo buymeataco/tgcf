@@ -6,8 +6,45 @@
         <h4 class="modal-title" id="myModalLabel">Edit Member</h4>
       </div>
       <div class="modal-body">
+      	<?php
+			@$myEmail = $individualMemberData[0]['Email'];
+			@$myFirst = $individualMemberData[0]['first_name'];
+			@$myMiddle = $individualMemberData[0]['Middle'];
+			@$myLast = $individualMemberData[0]['last_name'];
+			@$mySalutation = $individualMemberData[0]['salutation'];
+			@$myTitle = $individualMemberData[0]['title'];
+			@$myCompany = $individualMemberData[0]['billing_company'];
+			@$myOfficePhone = $individualMemberData[0]['billing_phone'];
+			@$myBillingAddress1	= $individualMemberData[0]['billing_address_1'];
+			@$myBillingAddress2	= $individualMemberData[0]['billing_address_2'];
+			@$myNickName	= $individualMemberData[0]['nickname'];
+			@$myCity = $individualMemberData[0]['billing_city'];
+			@$myState = $individualMemberData[0]['billing_state'];	
+			@$myZip = $individualMemberData[0]['billing_postcode'];
+			@$myAss	= $individualMemberData[0]['assistant'];
+			@$myAssPhone = $individualMemberData[0]['assistant_phone'];	
+			@$myAssEmail = $individualMemberData[0]['assistant_email'];
+			@$myDeptSize = $individualMemberData[0]['depart_size'];
+			@$myTerritory = $individualMemberData[0]['Territory'];
+			@$myJoinDate = $individualMemberData[0]['date_i18n'];
+			@$myMembersCode = $individualMemberData[0]['members_code'];
+			@$myIndustry = $individualMemberData[0]['industry'];
+			@$myRemarks = $individualMemberData[0]['remarks'];
+			@$myRecruitedBy = $individualMemberData[0]['recruited_by'];
+			@$myMobilePhone = $individualMemberData[0]['mobile-phone'];
+			@$myFax = $individualMemberData[0]['Fax'];
+			@$myHome = $individualMemberData[0]['Home'];
+			@$myRole = $individualMemberData[0]['role'];
+			@$myAdditionalEmail = $individualMemberData[0]['additionalEmail'];
+			@$myContactType = $individualMemberData[0]['contactType'];
+			@$mySource = $individualMemberData[0]['source'];
+			@$myChapter = $individualMemberData[0]['chapter'];
+			@$myJoinDate = $individualMemberData[0]['date_i18n'];
+			@$myGroups = $individualMemberData[0]['groups'];
+			@$myRemarks = $individualMemberData[0]['remarks']; 
+      	?>
       	<!-- start HTML template -->
-		<div class="wrapper">
+		<div class="wrapperContainer">
 			<ul class="fullName">
 				<li>
 					<select name="salutation" class="salutation" id="salutation">
@@ -18,37 +55,37 @@
 				</li>				
 				<li><label for="firstName">First:</label></li>
 				<li>
-					<input id="firstName" class="firstName" name="firstName" type="text" size="128" maxlength="256" />
+					<input id="firstName" class="firstName" value="<?php echo $myFirst; ?>" name="firstName" type="text" size="128" maxlength="256" />
 				</li>
 				<li><label for="middleName">Middle:</label></li>
 				<li>
-					<input id="middleName" class="middleName" name="middleName" type="text" size="128" maxlength="256" />
+					<input id="middleName" class="middleName" value="<?php echo $myMiddle; ?>" name="middleName" type="text" size="128" maxlength="256" />
 				</li>
 				<li><label for="lastName">Last:</label></li>
 				<li>
-					<input id="lastName" class="lastName" name="lastName" type="text" size="128" maxlength="256" />
+					<input id="lastName" class="lastName" value="<?php echo $myLast; ?>" name="lastName" type="text" size="128" maxlength="256" />
 				</li>
 			</ul>
 				<hr class="searchRule"/>
-				<div class="profile">
+				<div class="details">
 					<div class="rowOne cf">
 						<div class="rowOneColOne cf">
 							<ul class="leftListItem">
 								<li><label for="name">Preferred Name:</label></li>
 								<li>
-									<input id="name" class="merchant" name="name" type="text" size="128" maxlength="256" />
+									<input id="name" class="merchant" value="<?php echo $mySalutation; ?>" name="name" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>							
 							<ul class="leftListItem">
 								<li><label for="title">Title:</label></li>
 								<li>
-									<input id="title" class="title" name="title" type="text" size="128" maxlength="256" />
+									<input id="title" class="title" value="<?php echo $myTitle; ?>" name="title" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="leftListItem">
 								<li><label for="company">Company:</label></li>
 								<li>
-									<input id="company" class="company" name="company" type="text" size="128" maxlength="256" />
+									<input id="company" class="company" value="<?php echo $myCompany; ?>" name="company" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 						</div> <!-- rowOneColumnOne -->
@@ -56,25 +93,25 @@
 							<ul class="rightListItem">
 								<li><label for="office">Office:</label></li>
 								<li>
-									<input id="office" class="office" name="office" type="text" size="128" maxlength="256" />
+									<input id="office" class="office" value="<?php echo $myOfficePhone; ?>" name="office" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="rightListItem">
 								<li><label for="cell">Cell:</label></li>
 								<li>
-									<input id="cell" class="cell" name="cell" type="text" size="128" maxlength="256" />
+									<input id="cell" class="cell" value="<?php echo $myMobilePhone; ?>" name="cell" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="rightListItem">
 								<li><label for="fax">Fax:</label></li>
 								<li>
-									<input id="fax" class="fax" name="fax" type="text" size="128" maxlength="256" />
+									<input id="fax" class="fax" value="<?php echo $myFax; ?>" name="fax" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="rightListItem">
 								<li><label for="home">Home:</label></li>
 								<li>
-									<input id="home" class="home" name="home" type="text" size="128" maxlength="256" />
+									<input id="home" class="home" value="<?php echo $myHome; ?>" name="home" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 						</div> <!-- rowOneColumnTwo -->
@@ -85,22 +122,23 @@
 							<ul class="leftListItem">
 								<li><label for="address1">Address Line 1:</label></li>
 								<li>
-									<input id="address1" class="address1" name="address1" type="text" size="128" maxlength="256" />
+									<input id="address1" class="address1" value="<?php echo $myBillingAddress1; ?>" name="address1" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="leftListItem">
 								<li><label for="address2">Address Line 2:</label></li>
 								<li>
-									<input id="address2" class="address2" name="address2" type="text" size="128" maxlength="256" />
+									<input id="address2" class="address2" value="<?php echo $myBillingAddress2; ?>" name="address2" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="leftListItem cityState">
 								<li><label for="cityStateZip">City &amp; State</label></li>
 								<li>
-									<input id="cityStateZip" class="cityStateZip" name="cityStateZip" type="text" maxlength="256" />
+									<input id="cityStateZip" class="cityStateZip" value="<?php echo $myCity; ?>" name="cityStateZip" type="text" maxlength="256" />
 								</li>
 								<li>
 									<select name="state">
+										<option selected="selected"><?php if ($myState) {echo $myState;} else {echo 'Choose One';}  ?></option>
 										<option value="AL">AL</option>
 										<option value="AK">AK</option>
 										<option value="AZ">AZ</option>
@@ -158,7 +196,7 @@
 							<ul class="leftListItem">
 								<li><label for="cityStateZip">Zip Code:</label></li>
 								<li>
-									<input id="cityStateZip" class="cityStateZip" name="cityStateZip" type="text" maxlength="5" />
+									<input id="cityStateZip" class="cityStateZip" value="<?php echo $myZip; ?>" name="cityStateZip" type="text" maxlength="5" />
 								</li>
 							</ul>
 						</div> <!-- rowTwoColumnOne -->
@@ -166,19 +204,20 @@
 							<ul class="rightListItem">
 								<li><label for="primaryEmail">Primary Email:</label></li>
 								<li>
-									<input id="primaryEmail" class="primaryEmail" name="primaryEmail" type="text" size="128" maxlength="256" />
+									<input id="primaryEmail" class="primaryEmail" value="<?php echo $myEmail; ?>" name="primaryEmail" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="rightListItem">
 								<li><label for="additionalEmail">Additional Email:</label></li>
 								<li>
-									<input id="additionalEmail" class="primaryEmail" name="additionalEmail" type="text" size="128" maxlength="256" />
+									<input id="additionalEmail" class="primaryEmail" value="<?php echo $myAdditionalEmail; ?>" name="additionalEmail" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>							
 							<ul class="rightListItem">
 								<li><label for="role">Role:</label></li>
 								<li>
 									<select name="role" class="role" id="role">
+									  <option selected="selected"><?php if ($myRole) {echo $myRole;} else {echo 'Choose One';}  ?></option>		
 									  <option value="1">Subscriber</option>
 									  <option value="2">Follow-Up Emails Manager</option>
 									  <option value="3">Shop Manager</option>
@@ -198,7 +237,7 @@
 							<ul class="rightListItem">
 								<li><label for="recruitedBy">Recruited by:</label></li>
 								<li>
-									<input id="recruitedBy" class="recruitedBy" name="recruitedBy" type="text" size="128" maxlength="256" />
+									<input id="recruitedBy" class="recruitedBy" value="<?php echo $myRecruitedBy; ?>" name="recruitedBy" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>							
 						</div> <!-- rowTwoColumnTwo -->
@@ -207,9 +246,10 @@
 					<div class="rowThree cf">
 						<div class="rowThreeColOne cf">
 							<ul class="leftListItem">
-								<li><label for="status">Contact Type</label></li>
+								<li><label for="contactType">Contact Type</label></li>
 								<li>
-									<select name="status" class="status" id="status">
+									<select name="contactType" class="contactType" id="contactType">
+									  <option selected="selected"><?php if ($myMembersCode) {echo $myMembersCode;} else {echo 'Choose One';} ?></option>	
 									  <option value="1">M1 - Individual Corp.</option>
 									  <option value="2">M2 - Non-Profit Gov't. Mun</option>
 									  <option value="3">M3 - Corp. Mentor Sponsor</option>
@@ -224,6 +264,7 @@
 								<li><label for="chapter">Chapter:</label></li>
 								<li>	
 									<select name="chapter" class="chapter" id="chapter">
+									  <option selected="selected"><?php if ($myChapter) {echo $myChapter;} else {echo 'Choose One';} ?></option>											
 										<option value="1">Austin-San Antonio</option>
 										<option value="2">Dallas-Fort Worth</option>	
 									 	<option value="3">Houston</option>								
@@ -233,7 +274,7 @@
 							<ul class="leftListItem">								
 								<li><label for="territory">Territory:</label></li>
 								<li>
-									<input id="territory" class="territory" name="territory" type="text" size="128" maxlength="256" />
+									<input id="territory" class="territory" value="<?php echo $myTerritory; ?>" name="territory" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 						</div> <!-- rowThreeColumnOne -->
@@ -241,19 +282,20 @@
 							<ul class="rightListItem">
 								<li><label for="joinDate">Join Date:</label></li>
 								<li>
-									<input id="joinDate" class="joinDate" name="joinDate" type="text" size="128" maxlength="256" />
+									<input id="joinDate" class="joinDate" value="<?php echo $myJoinDate; ?>" name="joinDate" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="rightListItem">
 								<li><label for="groups">Groups:</label></li>
 								<li>
-									<input id="groups" class="groups" name="groups" type="text" size="128" maxlength="256" />
+									<input id="groups" class="groups" value="<?php echo $myGroups; ?>" name="groups" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="rightListItem">
 								<li><label for="source">Source:</label></li>
 								<li>
 									<select name="source" class="source" id="source">
+									  <option selected="selected"><?php if ($mySource) {echo $mySource;} else {echo 'Choose One';} ?></option>											
 										<option value="AUS BIZ JOUR">Austin Business Journal</option>
  										<option value="BOD RECRU">BOD Recruitment</option>
  										<option value="CONFERENCE">Joined to attend Conference</option>
@@ -291,13 +333,13 @@
 							<ul class="leftListItem">
 								<li><label for="assistant">Assistant:</label></li>
 								<li>
-									<input id="assistant" class="assistant" name="assistant" type="text" size="128" maxlength="256" />
+									<input id="assistant" class="assistant" value="<?php echo $myAss; ?>" name="assistant" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="leftListItem">
 								<li><label for="assEmail">Assistant Email:</label></li>
 								<li>
-									<input id="assEmail" class="assEmail" name="assEmail" type="text" size="128" maxlength="256" />
+									<input id="assEmail" class="assEmail" value="<?php echo $myAssEmail; ?>" name="assEmail" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 						</div> <!-- rowFourColumnOne -->
@@ -305,7 +347,7 @@
 							<ul class="rightListItem">
 								<li><label for="assOffice">Assistant Office:</label></li>
 								<li>
-									<input id="assOffice" class="assOffice" name="assOffice" type="text" size="128" maxlength="256" />
+									<input id="assOffice" class="assOffice" value="<?php echo $myAssPhone; ?>" name="assOffice" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 						</div> <!-- rowFourColumnTwo -->	
@@ -317,6 +359,7 @@
 								<li><label for="attorneys">Attorneys in Dept:</label></li>
 								<li>
 									<select name="attorneys" class="attorneys" id="attorneys">
+									  <option selected="selected"><?php if ($myDeptSize) {echo $myDeptSize;} else {echo 'Choose One';} ?></option>																					
 									  <option value="1">Solo</option>
 									  <option value="2">Small 2-5 Lawyers</option>
 									  <option value="3">Medium 6-9 Lawyers</option>
@@ -328,6 +371,7 @@
 								<li class="industryLabel"><label for="industry">Industry:</label></li>
 								<li>
 									<select name="industry" class="industry" id="industry">
+									    <option selected="selected"><?php if ($myIndustry) {echo $myIndustry;} else {echo 'Choose One';} ?></option>																																							
 										<option value="Agriculture &amp; Forestry Sector">Agriculture &amp; Forestry Sector</option>
 										<option value="Arts Entertainment &amp; Recreation Sector">Arts Entertainment &amp; Recreation Sector</option>
 										<option value="Beverage Manufacturing">Beverage Manufacturing</option>
@@ -406,18 +450,17 @@
 						<div class="rowSixColOne cf">
 							<ul class="leftListItem">
 								<li><label for="notes">Notes:</label></li>
-								<li><textarea name="notes" id="notes" cols="78" rows="12"></textarea></li>
+								<li><textarea name="notes" id="notes" cols="86" rows="12"><?php echo $myRemarks; ?></textarea></li>
 							</ul>
-						</div>	
-						</div> <!-- rowSixColumnOne -->					
+						</div>	<!-- rowSixColumnOne -->
 					</div> <!-- row six -->
-				</div> <!-- profile -->
-		</div> <!-- wrapper -->
+				</div> <!-- details -->
+			</div> <!-- wrapperContainer -->
 		<!-- end HTML template -->
-      </div>
+      </div> <!-- end modal-body -->
       <div class="modal-footer">
       	<button type="button" class="saveButton">Save</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="cancelButton" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

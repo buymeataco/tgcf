@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 	<body>
-		<div class="wrapper">
+		<div class="wrapperContainer">
 			<ul class="fullName">
 				<li>
 					<select name="salutation" class="salutation" id="salutation">
@@ -34,7 +34,7 @@
 				</li>
 			</ul>
 				<hr class="searchRule"/>
-				<div class="profile">
+				<div class="details">
 					<div class="rowOne cf">
 						<div class="rowOneColOne cf">
 							<ul class="leftListItem">
@@ -412,11 +412,10 @@
 								<li><label for="notes">Notes:</label></li>
 								<li><textarea name="notes" id="notes" cols="78" rows="12"></textarea></li>
 							</ul>
-						</div>	
-						</div> <!-- rowSixColumnOne -->					
+						</div> <!-- rowSixColumnOne --> 					
 					</div> <!-- row six -->
-				</div> <!-- profile -->	
-		</div> <!-- wrapper -->
+				</div> <!-- details -->	
+		</div> <!-- wrapperContainer -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="js/script.min.js"></script>

@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>The General Counsel Forum</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<!-- Optional theme -->
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+ 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 	<body>
-		<div class="containerWrapper">
+		<div class="wrapperContainer">
 			<?php
 				$whichQuery = 'memberDetails';
 				include ('queries.php');
@@ -27,7 +27,7 @@
 				@$myBillingAddress1	= $individualMemberData[0]['billing_address_1'];
 				@$myBillingAddress2	= $individualMemberData[0]['billing_address_2'];
 				@$myNickName	= $individualMemberData[0]['nickname'];
-				@$myCity	= $individualMemberData[0]['billing_city'];
+				@$myCity = $individualMemberData[0]['billing_city'];
 				@$myState = $individualMemberData[0]['billing_state'];	
 				@$myZip = $individualMemberData[0]['billing_postcode'];
 				@$myAss	= $individualMemberData[0]['assistant'];
@@ -51,11 +51,11 @@
 				@$myJoinDate = $individualMemberData[0]['date_i18n'];
 				@$myGroups = $individualMemberData[0]['groups'];
 				@$myRemarks = $individualMemberData[0]['remarks'];
-			echo
-			"<button type=\"button\" class=\"btn btn-primary btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\">Edit</button>
+			echo 
+"<button type=\"button\" class=\"editButton\" data-toggle=\"modal\" data-target=\"#myModal\">Edit</button>
 			<p class=\"fullName\">Profile for <span class=\"nameBold\">Mr. {$myFirst} {$myMiddle} {$myLast} or \"{$mySalutation}\" </span></p>
 			<hr class=\"searchRule\"/>
-				<di v class=\"profile\">
+				<div class=\"details\">
 					<div class=\"rowOne cf\">
 						<div class=\"rowOneColOne cf\">
 							<ul class=\"leftListItem\">
@@ -196,8 +196,8 @@
 							</ul>
 						</div> <!-- rowFiveColumnOne -->					
 					</div> <!-- row five -->
-				</div> <!-- profile -->";
-			?>		
+				</div> <!-- details -->";
+			?>
 		</div> <!-- end wrapper -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>		

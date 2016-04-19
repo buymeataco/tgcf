@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 	<body>
-		<div class="wrapper">
+		<div class="wrapperContainer">
 			<div class="entryForm">
 				<input name="search" id="search" type="text" value="Smart Search" size="128" maxlength="256" onkeydown="if (event.keyCode==13) return processForm();"/>
 				<hr class="searchRuleIndexPage" />

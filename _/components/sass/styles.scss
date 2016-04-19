@@ -24,8 +24,8 @@ body {
 .modal-footer {
 	border-top: 0px;
 }
-.containerWrapper {
-	width: 60em;
+.wrapperContainer {
+	width: 960px;
 	margin: 0 auto;
 	padding-top: .5em;
 }
@@ -103,7 +103,7 @@ hr.searchRuleIndexPage, .memberDetailsPage {
 hr.searchRule {
 	border: 0;
 	height: 0;
-	width: 842px;
+	width: 100%;
 	border-top: 2px solid rgba(0, 0, 0, 0.1);
 	border-bottom: 0px solid rgba(255, 255, 255, 0.3);
 	margin-bottom: 10px;
@@ -111,13 +111,14 @@ hr.searchRule {
 hr.rowRule {
 	border: 0;
 	height: 0;
-	width: 842px;
+	width: 100%;
 	border-top: 2px solid rgba(0, 0, 0, 0.1);
 	border-bottom: 0px solid rgba(255, 255, 255, 0.3);
 	margin: 5px 0 10px 0;
 }
 p.fullName {
 	margin-bottom: .9em;
+	padding-top: 5px;	
 }
 span.nameBold {
 	font-weight: bold;
@@ -132,10 +133,7 @@ span.nameBold {
 	width: 465px;
 	float: left;
 }
-ul.leftListItem li {
-	display: inline;
-}
-ul.leftListItem li, ul.rightListItem li {
+ul.rightListItem li, ul.leftListItem li {
 	display: inline;
 	font-size: .8em;
 	margin-bottom: .4em;
@@ -145,11 +143,13 @@ ul.leftListItem li, ul.rightListItem li {
 			float: left;
 			width: 152px;
 		}
+		&:nth-child(2) {
+			float: left;
+			width: 282px;
+		}			
 }
 ul.leftListItem li, ul.rightListItem li {
 	&:nth-child(2) {
-		float: left;
-		width: 282px;
 			&:after {
 				content: ".";
 				color: #fff; 
@@ -157,13 +157,28 @@ ul.leftListItem li, ul.rightListItem li {
 	}
 }
 .notes {
-	width: 693px;
+	width: 300px;
 	font-size: .8em;
 	float: left;
 }
 a {
 	text-decoration: none;
 	color: #000;
+}
+.editButton {
+	height: 1.9em;
+	width: 4em;
+	background-color: #228B22;
+	border: none;
+	border-radius: 8px;
+	color: #fff;
+	font-size: 1em;
+	float: right;
+	cursor: pointer;
+	float: right;
+		&:hover {
+			background-color: #28a428;
+		}
 }
 .btn-primary {
 	height: 1.9em;
@@ -177,32 +192,44 @@ a {
 	margin-top: -.2em;
 	margin-right: 7.5em;
 	cursor: pointer;
+	line-height: .333;
 }
 .btn-lg {
 	line-height: .333;
 	padding: 10px 10px;
 }
-.editButton {
-	width: 5.375em;
-	float: right;
-	margin-top: -3.5em;
-	margin-right: 7.5em;
-	cursor: pointer;
-}
 button.saveButton {
-    height: -0.1em;
-    width: 4em;
-    background-color: #265a88;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 1em;
-    float: right;
-    padding: .5em;
-    margin-top: -2.5em;
+	width: 4em;
+	background-color: #228B22;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 1em;
+	float: right;
+	padding: .5em;
+	margin-top: 0em;
+	margin-left: 10px;
     	&:hover {
     		color: #fff;
-    		cursor: pointer !important;
+    		background-color: #28a428;
+    		cursor: pointer;
+    	}
+}
+button.cancelButton {
+	width: 4em;
+	background-color: #ff1a1a;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 1em;
+	float: right;
+	padding: .5em;
+	margin-top: 0em;
+	margin-left: 10px;
+    	&:hover {
+    		color: #fff;
+    		background-color: #ff4d4d;
+    		cursor: pointer;
     	}
 }
 ul.fullName li {

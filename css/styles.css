@@ -100,8 +100,8 @@ body {
 }
 
 /* line 27, ../_/components/sass/styles.scss */
-.containerWrapper {
-  width: 60em;
+.wrapperContainer {
+  width: 960px;
   margin: 0 auto;
   padding-top: .5em;
 }
@@ -203,7 +203,7 @@ hr.searchRuleIndexPage, .memberDetailsPage {
 hr.searchRule {
   border: 0;
   height: 0;
-  width: 842px;
+  width: 100%;
   border-top: 2px solid rgba(0, 0, 0, 0.1);
   border-bottom: 0px solid rgba(255, 255, 255, 0.3);
   margin-bottom: 10px;
@@ -213,7 +213,7 @@ hr.searchRule {
 hr.rowRule {
   border: 0;
   height: 0;
-  width: 842px;
+  width: 100%;
   border-top: 2px solid rgba(0, 0, 0, 0.1);
   border-bottom: 0px solid rgba(255, 255, 255, 0.3);
   margin: 5px 0 10px 0;
@@ -222,51 +222,47 @@ hr.rowRule {
 /* line 119, ../_/components/sass/styles.scss */
 p.fullName {
   margin-bottom: .9em;
+  padding-top: 5px;
 }
 
-/* line 122, ../_/components/sass/styles.scss */
+/* line 123, ../_/components/sass/styles.scss */
 span.nameBold {
   font-weight: bold;
 }
 
-/* line 125, ../_/components/sass/styles.scss */
+/* line 126, ../_/components/sass/styles.scss */
 .rowOneColOne, .rowTwoColOne, .rowThreeColOne,
 .rowFourColOne, .rowFiveColOne {
   width: 465px;
   float: left;
 }
 
-/* line 130, ../_/components/sass/styles.scss */
+/* line 131, ../_/components/sass/styles.scss */
 .rowOneColTwo, .rowTwoColTwo, .rowThreeColTwo,
 .rowFourColTwo, .rowFiveColTwo {
   width: 465px;
   float: left;
 }
 
-/* line 135, ../_/components/sass/styles.scss */
-ul.leftListItem li {
-  display: inline;
-}
-
-/* line 138, ../_/components/sass/styles.scss */
-ul.leftListItem li, ul.rightListItem li {
+/* line 136, ../_/components/sass/styles.scss */
+ul.rightListItem li, ul.leftListItem li {
   display: inline;
   font-size: .8em;
   margin-bottom: .4em;
   line-height: 1.1;
 }
-/* line 143, ../_/components/sass/styles.scss */
-ul.leftListItem li:first-child, ul.rightListItem li:first-child {
+/* line 141, ../_/components/sass/styles.scss */
+ul.rightListItem li:first-child, ul.leftListItem li:first-child {
   font-weight: bold;
   float: left;
   width: 152px;
 }
-
-/* line 150, ../_/components/sass/styles.scss */
-ul.leftListItem li:nth-child(2), ul.rightListItem li:nth-child(2) {
+/* line 146, ../_/components/sass/styles.scss */
+ul.rightListItem li:nth-child(2), ul.leftListItem li:nth-child(2) {
   float: left;
   width: 282px;
 }
+
 /* line 153, ../_/components/sass/styles.scss */
 ul.leftListItem li:nth-child(2):after, ul.rightListItem li:nth-child(2):after {
   content: ".";
@@ -275,7 +271,7 @@ ul.leftListItem li:nth-child(2):after, ul.rightListItem li:nth-child(2):after {
 
 /* line 159, ../_/components/sass/styles.scss */
 .notes {
-  width: 693px;
+  width: 300px;
   font-size: .8em;
   float: left;
 }
@@ -287,6 +283,24 @@ a {
 }
 
 /* line 168, ../_/components/sass/styles.scss */
+.editButton {
+  height: 1.9em;
+  width: 4em;
+  background-color: #228B22;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1em;
+  float: right;
+  cursor: pointer;
+  float: right;
+}
+/* line 179, ../_/components/sass/styles.scss */
+.editButton:hover {
+  background-color: #28a428;
+}
+
+/* line 183, ../_/components/sass/styles.scss */
 .btn-primary {
   height: 1.9em;
   width: 4em;
@@ -299,70 +313,83 @@ a {
   margin-top: -.2em;
   margin-right: 7.5em;
   cursor: pointer;
+  line-height: .333;
 }
 
-/* line 181, ../_/components/sass/styles.scss */
+/* line 197, ../_/components/sass/styles.scss */
 .btn-lg {
   line-height: .333;
   padding: 10px 10px;
 }
 
-/* line 185, ../_/components/sass/styles.scss */
-.editButton {
-  width: 5.375em;
-  float: right;
-  margin-top: -3.5em;
-  margin-right: 7.5em;
-  cursor: pointer;
-}
-
-/* line 192, ../_/components/sass/styles.scss */
+/* line 201, ../_/components/sass/styles.scss */
 button.saveButton {
-  height: -0.1em;
   width: 4em;
-  background-color: #265a88;
+  background-color: #228B22;
   border: none;
   border-radius: 5px;
   color: #fff;
   font-size: 1em;
   float: right;
   padding: .5em;
-  margin-top: -2.5em;
+  margin-top: 0em;
+  margin-left: 10px;
 }
-/* line 203, ../_/components/sass/styles.scss */
+/* line 212, ../_/components/sass/styles.scss */
 button.saveButton:hover {
   color: #fff;
-  cursor: pointer !important;
+  background-color: #28a428;
+  cursor: pointer;
 }
 
-/* line 208, ../_/components/sass/styles.scss */
+/* line 218, ../_/components/sass/styles.scss */
+button.cancelButton {
+  width: 4em;
+  background-color: #ff1a1a;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1em;
+  float: right;
+  padding: .5em;
+  margin-top: 0em;
+  margin-left: 10px;
+}
+/* line 229, ../_/components/sass/styles.scss */
+button.cancelButton:hover {
+  color: #fff;
+  background-color: #ff4d4d;
+  cursor: pointer;
+}
+
+/* line 235, ../_/components/sass/styles.scss */
 ul.fullName li {
   display: inline;
 }
-/* line 210, ../_/components/sass/styles.scss */
+/* line 237, ../_/components/sass/styles.scss */
 ul.fullName li:nth-child(n+1):nth-child(even):nth-child(-n+6) {
   font-weight: bold;
   font-size: .8em;
 }
 
-/* line 216, ../_/components/sass/styles.scss */
+/* line 243, ../_/components/sass/styles.scss */
 ul.cityState li:nth-child(2) {
   width: 170px;
 }
 
-/* line 220, ../_/components/sass/styles.scss */
+/* line 247, ../_/components/sass/styles.scss */
 select[name=role], select[name=chapter],
 select[name=status] {
   width: 14.063em;
 }
 
-/* line 224, ../_/components/sass/styles.scss */
+/* line 251, ../_/components/sass/styles.scss */
 select[name=salutation] {
   margin-right: 1.25em;
   font-size: .8em;
 }
 
-/* line 228, ../_/components/sass/styles.scss */
+/* line 255, ../_/components/sass/styles.scss */
 input[name=name], input[name=title],
 input[name=company], input[name=office],
 input[name=cell], input[name=fax],
@@ -387,7 +414,7 @@ input[name=address2] {
   font-size: 1em;
 }
 
-/* line 251, ../_/components/sass/styles.scss */
+/* line 278, ../_/components/sass/styles.scss */
 input[name=cityStateZip] {
   padding-left: .3em;
   height: 1.8em;
@@ -398,7 +425,7 @@ input[name=cityStateZip] {
   font-size: 1em;
 }
 
-/* line 260, ../_/components/sass/styles.scss */
+/* line 287, ../_/components/sass/styles.scss */
 input[name=firstName], input[name=lastName],
 input[name=middleName] {
   padding-left: .3em;
@@ -412,7 +439,7 @@ input[name=middleName] {
   font-size: .8em;
 }
 
-/* line 272, ../_/components/sass/styles.scss */
+/* line 299, ../_/components/sass/styles.scss */
 input[name=search] {
   background: url(../images/userSearchMagnifyingGlass.png) no-repeat 0.8em 0.6em;
   padding-left: 3em !important;
@@ -424,19 +451,19 @@ input[name=search] {
   border: 1px solid #e6e6e6 !important;
 }
 
-/* line 282, ../_/components/sass/styles.scss */
+/* line 309, ../_/components/sass/styles.scss */
 .cf:before,
 .cf:after {
   content: " ";
   display: table;
 }
 
-/* line 287, ../_/components/sass/styles.scss */
+/* line 314, ../_/components/sass/styles.scss */
 .cf:after {
   clear: both;
 }
 
-/* line 290, ../_/components/sass/styles.scss */
+/* line 317, ../_/components/sass/styles.scss */
 .cf {
   *zoom: 1;
 }

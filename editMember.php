@@ -39,9 +39,7 @@
 			@$myContactType = $individualMemberData[0]['contactType'];
 			@$mySource = $individualMemberData[0]['source'];
 			@$myChapter = $individualMemberData[0]['chapter'];
-			@$myJoinDate = $individualMemberData[0]['date_i18n'];
 			@$myGroups = $individualMemberData[0]['groups'];
-			@$myRemarks = $individualMemberData[0]['remarks']; 
       	?>
       	<!-- start HTML template -->
 		<div class="wrapperContainer">

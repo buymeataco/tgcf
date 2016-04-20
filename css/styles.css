@@ -379,7 +379,7 @@ ul.cityState li:nth-child(2) {
 
 /* line 247, ../_/components/sass/styles.scss */
 select[name=role], select[name=chapter],
-select[name=status] {
+select[name=contactType] {
   width: 14.063em;
 }
 

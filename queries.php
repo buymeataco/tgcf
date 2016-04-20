@@ -64,12 +64,6 @@ case 'searchPageResults':
 			$i++;	
 		}
 
-	// echo "<pre>";
-	// echo "Combined key/value pairs: ";
-	// 	print_r($combinedKeyValuePairs);
-	// echo "</pre>";
-	// echo "<br />";
-
 	displaySearchResults($combinedKeyValuePairs, $scrubbedIdArray);
 	cleanup($result, $result2, $result3, $scrubbedIdArray, $userMetaValues, $userMetaKeys, $nestedKeys, $nestedMetaValues);
 	} else {
@@ -91,12 +85,6 @@ case 'memberDetails':
 				array_push($nestedMetaValues, $row4[0]);
 		} //while
 
-	// echo "<pre>";
-	// echo "Nested Meta Values: ";
-	// 	print_r($nestedMetaValues);
-	// echo "</pre>";
-	// echo "<br />";
-
 	//Get all associated meta keys for user info.
 	
 		foreach ($nestedMetaValues as $value3) {
@@ -115,12 +103,6 @@ case 'memberDetails':
 		array_push($userMetaKeys, $nestedKeys);
 		array_push($userMetaValues, $nestedMetaValues);
 
-	// echo "<pre>";
-	// echo "Nested Meta Keys: ";
-	// 	print_r($nestedKeys);
-	// echo "</pre>";
-	// echo "<br />";
-
 	//combines separate arrays & delets empty pockets
 	$lengthOfArray = count((array_keys($userMetaKeys)), COUNT_RECURSIVE);
 	$i=0;
@@ -132,16 +114,99 @@ case 'memberDetails':
 			$i++;	
 		}
 
-	// echo "<pre>";
-	// echo "Individual Member Data: ";
-	// 	print_r($individualMemberData);
-	// echo "</pre>";
-	// echo "<br />";
-
 	cleanup2($result4, $result5, $individualMemberData);
 	} else {
 		echo "<p class=\"resultCountIndexPage\">Your search returned no results.</p>";
 	}
+break;
+
+case 'updateMember':
+
+	echo "Which member: " . $editWhichMember;
+	echo "<br />";
+	echo "Email: " . $email;
+	echo "<br />";	
+	echo "First name: " . $firstName;
+	echo "<br />";
+	echo "Middle name: " . $middle;
+	echo "<br />";		
+	echo "Last name: " . $lastName;
+	echo "<br />";	
+	echo "Salutation: " . $salutation;
+	echo "<br />";	
+	echo "Title: " . $title;
+	echo "<br />";
+	echo "company: " . $company;
+	echo "<br />";
+	echo "Office Phone: " . $officePhone;
+	echo "<br />";	
+	echo "Billing Address 1: " . $billingAddress1;
+	echo "<br />";
+	echo "Billing Address 2: " . $billingAddress2;
+	echo "<br />";	
+	echo "Nickname: " . $nickname;
+	echo "<br />";	
+	echo "City: " . $city;
+	echo "<br />";	
+	echo "State: " . $state;
+	echo "<br />";
+	echo "Zip: " . $zip;
+	echo "<br />";		
+	echo "Assistant: " . $ass;
+	echo "<br />";
+	echo "Ass. Phone: " . $assPhone;
+	echo "<br />";	
+	echo "Ass. Email: " . $assEmail;
+	echo "<br />";
+	echo "Dept. Size: " . $deptSize;
+	echo "<br />";		
+	echo "Territory: " . $territory;
+	echo "<br />";	
+	echo "Join Date: " . $joinDate;
+	echo "<br />";	
+	echo "Members Code: " . $membersCode;
+	echo "<br />";
+	echo "Industry: " . $industry;
+	echo "<br />";
+	echo "Remarks: " . $remarks;
+	echo "<br />";	
+	echo "Recruited by: " . $recruitedBy;
+	echo "<br />";
+	echo "Mobile phone: " . $mobilePhone;
+	echo "<br />";		
+	echo "Fax: " . $fax;
+	echo "<br />";	
+	echo "Home: " . $home;
+	echo "<br />";	
+	echo "Role: " . $role;
+	echo "<br />";
+	echo "Additional Email: " . $additionalEmail;
+	echo "<br />";
+	echo "Contact Type: " . $contactType;
+	echo "<br />";		
+	echo "Source: " . $source;
+	echo "<br />";	
+	echo "Chapter: " . $chapter;
+	echo "<br />";	
+	echo "Groups: " . $groups;
+	echo "<br />";
+
+	$existingMetaKeys = [];
+	$i=0;
+	$query6 = "SELECT meta_key FROM wp_uqzn_usermeta WHERE user_id = '$editWhichMember'";
+			$result6 = mysqli_query($conn,$query6) or die ("<p class=\"resultCountIndexPage\">Your search returned no results.</p>");
+				while ($row6 = mysqli_fetch_array($result6)) {
+					extract($row6);
+						if (!empty($row6[$i])) {
+							array_push($existingMetaKeys, $row6[$i]);
+						}	
+					$i++;		
+				} //while
+
+	echo "<pre>";
+		print_r($existingMetaKeys);
+	echo "</pre>";				
+
 break;
 } //end case switch
 

@@ -107,6 +107,7 @@ hr.searchRule {
 	border-top: 2px solid rgba(0, 0, 0, 0.1);
 	border-bottom: 0px solid rgba(255, 255, 255, 0.3);
 	margin-bottom: 10px;
+	margin-top: 3px;
 }
 hr.rowRule {
 	border: 0;
@@ -244,29 +245,29 @@ ul.cityState li {
 		width: 170px;
 	}
 }
+
 select[name=role], select[name=chapter],
 select[name=contactType]  {
 	width: 14.063em;
 }
-select[name=salutation] {
+select[name=gender] {
 	margin-right: 1.25em;
 	font-size: .8em;
 }
-input[name=name],input[name=title],
-input[name=company],input[name=office],
-input[name=cell],input[name=fax],
-input[name=home],input[name=address1],
-input[name=suite],input[name=additionalEmail],
-input[name=primaryEmail],input[name=chapter],
-input[name=role],input[name=recruitedBy],
-input[name=status],input[name=territory],
+input[name=nickname],input[name=title],
+input[name=billing_company],input[name=billing_phone],
+input[name=moble-phone],input[name=Fax],
+input[name=home],input[name=billing_address_1],
+input[name=billing_address_2],input[name=addl_email],
+input[name=Email],input[name=chapter],
+input[name=role],input[name=recruited_by],
+input[name=members_code],input[name=Territory],
 input[name=source],input[name=code],input[name=level],
-input[name=joinDate],input[name=groups],
-input[name=assistant],input[name=assEmail],
-input[name=assOffice],input[name=assCell],
+input[name=date_i18n],input[name=groups],
+input[name=assistant],input[name=assistant_email],
+input[name=assistant_phone],input[name=assCell],
 input[name=attorneys],input[name=industry],
-input[name=nih],input[name=newCLOGC],
-input[name=address2] {
+input[name=nih], input[name=address2] {
 	padding-left: .3em;
 	height: 1.8em;
 	width: 17.5em;
@@ -275,7 +276,7 @@ input[name=address2] {
 	border: 1px solid #e6e6e6;
 	font-size: 1em;
 }
-input[name=cityStateZip] {
+input[name=billing_city], input[name=billing_postcode] {
 	padding-left: .3em;
 	height: 1.8em;
 	width: 12.5em;
@@ -284,8 +285,8 @@ input[name=cityStateZip] {
 	border: 1px solid #e6e6e6;
 	font-size: 1em;
 }
-input[name=firstName], input[name=lastName],
-input[name=middleName] {
+input[name=first_name], input[name=last_name],
+input[name=Middle] {
 	padding-left: .3em;
 	margin-bottom: .75em;
 	margin-right: .5em;	

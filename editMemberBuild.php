@@ -15,18 +15,18 @@
 			$whichQuery = 'memberDetails';
 			include ('queries.php');
 			$whichMember = $_GET['id'];
-			echo "Which member: " . $whichMember;
 			@$myEmail = $individualMemberData[0]['Email'];
-			@$myFirst = $individualMemberData[0]['first_name'];
+			@$myAdditionalEmail = $individualMemberData[0]['addl_email'];
+			@$myFirst = $individualMemberData[0]['first_name'];						
 			@$myMiddle = $individualMemberData[0]['Middle'];
 			@$myLast = $individualMemberData[0]['last_name'];
-			@$mySalutation = $individualMemberData[0]['salutation'];
+			@$myGender = $individualMemberData[0]['gender'];
+			@$mySalutation = $individualMemberData[0]['salutation'];			
 			@$myTitle = $individualMemberData[0]['title'];
 			@$myCompany = $individualMemberData[0]['billing_company'];
 			@$myOfficePhone = $individualMemberData[0]['billing_phone'];
 			@$myBillingAddress1	= $individualMemberData[0]['billing_address_1'];
 			@$myBillingAddress2	= $individualMemberData[0]['billing_address_2'];
-			@$myNickName = $individualMemberData[0]['nickname'];
 			@$myCity = $individualMemberData[0]['billing_city'];
 			@$myState = $individualMemberData[0]['billing_state'];	
 			@$myZip = $individualMemberData[0]['billing_postcode'];
@@ -44,35 +44,33 @@
 			@$myFax = $individualMemberData[0]['Fax'];
 			@$myHome = $individualMemberData[0]['Home'];
 			@$myRole = $individualMemberData[0]['role'];
-			@$myAdditionalEmail = $individualMemberData[0]['additionalEmail'];
-			@$myContactType = $individualMemberData[0]['contactType'];
 			@$mySource = $individualMemberData[0]['source'];
 			@$myChapter = $individualMemberData[0]['chapter'];
-			@$myJoinDate = $individualMemberData[0]['date_i18n'];
 			@$myGroups = $individualMemberData[0]['groups'];
       	?>
       	<!-- start HTML template -->
 		<div class="wrapperContainer">
-			<form action="submit.php" method="POST">
+			<form action="queries.php?query=updateMember&id=<?php echo $whichMember; ?>" method="POST">
 			<ul class="fullName">
 				<li>
-					<select name="salutation" class="salutation" id="salutation">
-					  <option value="1">Mr.</option>
-					  <option value="2">Ms.</option>
-					  <option value="3">Mrs.</option>
+					<select name="gender" class="gender" id="gender">
+						<option selected="selected"><?php if ($myGender) {echo $myGender;} else {echo 'Choose One';}  ?></option>	
+						<option value="Mr.">Mr.</option>
+						<option value="Ms.">Ms.</option>
+						<option value="Mrs.">Mrs.</option>
 					</select>
 				</li>				
 				<li><label for="firstName">First:</label></li>
 				<li>
-					<input id="firstName" class="firstName" value="<?php echo $myFirst; ?>" name="firstName" type="text" size="128" maxlength="256" />
+					<input id="firstName" class="firstName" value="<?php echo $myFirst; ?>" name="first_name" type="text" size="128" maxlength="256" />
 				</li>
 				<li><label for="middleName">Middle:</label></li>
 				<li>
-					<input id="middleName" class="middleName" value="<?php echo $myMiddle; ?>" name="middleName" type="text" size="128" maxlength="256" />
+					<input id="middleName" class="middleName" value="<?php echo $myMiddle; ?>" name="Middle" type="text" size="128" maxlength="256" />
 				</li>
 				<li><label for="lastName">Last:</label></li>
 				<li>
-					<input id="lastName" class="lastName" value="<?php echo $myLast; ?>" name="lastName" type="text" size="128" maxlength="256" />
+					<input id="lastName" class="lastName" value="<?php echo $myLast; ?>" name="last_name" type="text" size="128" maxlength="256" />
 				</li>
 			</ul>
 				<hr class="searchRule"/>
@@ -80,9 +78,9 @@
 					<div class="rowOne cf">
 						<div class="rowOneColOne cf">
 							<ul class="leftListItem">
-								<li><label for="name">Preferred Name:</label></li>
+								<li><label for="salutation">Salutation:</label></li>
 								<li>
-									<input id="name" class="merchant" value="<?php echo $mySalutation; ?>" name="name" type="text" size="128" maxlength="256" />
+									<input id="salutation" class="salutation" value="<?php echo $mySalutation; ?>" name="nickname" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>							
 							<ul class="leftListItem">
@@ -94,7 +92,7 @@
 							<ul class="leftListItem">
 								<li><label for="company">Company:</label></li>
 								<li>
-									<input id="company" class="company" value="<?php echo $myCompany; ?>" name="company" type="text" size="128" maxlength="256" />
+									<input id="company" class="company" value="<?php echo $myCompany; ?>" name="billing_company" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 						</div> <!-- rowOneColumnOne -->
@@ -102,19 +100,19 @@
 							<ul class="rightListItem">
 								<li><label for="office">Office:</label></li>
 								<li>
-									<input id="office" class="office" value="<?php echo $myOfficePhone; ?>" name="office" type="text" size="128" maxlength="256" />
+									<input id="office" class="office" value="<?php echo $myOfficePhone; ?>" name="billing_phone" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="rightListItem">
 								<li><label for="cell">Cell:</label></li>
 								<li>
-									<input id="cell" class="cell" value="<?php echo $myMobilePhone; ?>" name="cell" type="text" size="128" maxlength="256" />
+									<input id="cell" class="cell" value="<?php echo $myMobilePhone; ?>" name="moble-phone" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="rightListItem">
 								<li><label for="fax">Fax:</label></li>
 								<li>
-									<input id="fax" class="fax" value="<?php echo $myFax; ?>" name="fax" type="text" size="128" maxlength="256" />
+									<input id="fax" class="fax" value="<?php echo $myFax; ?>" name="Fax" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="rightListItem">
@@ -131,23 +129,23 @@
 							<ul class="leftListItem">
 								<li><label for="address1">Address Line 1:</label></li>
 								<li>
-									<input id="address1" class="address1" value="<?php echo $myBillingAddress1; ?>" name="address1" type="text" size="128" maxlength="256" />
+									<input id="address1" class="address1" value="<?php echo $myBillingAddress1; ?>" name="billing_address_1" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="leftListItem">
 								<li><label for="address2">Address Line 2:</label></li>
 								<li>
-									<input id="address2" class="address2" value="<?php echo $myBillingAddress2; ?>" name="address2" type="text" size="128" maxlength="256" />
+									<input id="address2" class="address2" value="<?php echo $myBillingAddress2; ?>" name="billing_address_2" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="leftListItem cityState">
-								<li><label for="cityStateZip">City &amp; State</label></li>
+								<li><label for="city">City &amp; State</label></li>
 								<li>
-									<input id="cityStateZip" class="cityStateZip" value="<?php echo $myCity; ?>" name="cityStateZip" type="text" maxlength="256" />
+									<input id="city" value="<?php echo $myCity; ?>" name="billing_city" type="text" maxlength="256" />
 								</li>
 								<li>
-									<select name="state">
-										<option selected="selected"><?php if ($myState) {echo $myState;} else {echo 'Choose One';}  ?></option>
+									<select name="billing_state">
+										<option selected="selected"><?php if ($myState) {echo $myState;} else {echo 'Choose One';} ?></option>
 										<option value="AL">AL</option>
 										<option value="AK">AK</option>
 										<option value="AZ">AZ</option>
@@ -203,9 +201,9 @@
 								</li>
 							</ul>
 							<ul class="leftListItem">
-								<li><label for="cityStateZip">Zip Code:</label></li>
+								<li><label for="zip">Zip Code:</label></li>
 								<li>
-									<input id="cityStateZip" class="cityStateZip" value="<?php echo $myZip; ?>" name="cityStateZip" type="text" maxlength="5" />
+									<input id="zip" value="<?php echo $myZip; ?>" name="billing_postcode" type="text" maxlength="5" />
 								</li>
 							</ul>
 						</div> <!-- rowTwoColumnOne -->
@@ -213,40 +211,40 @@
 							<ul class="rightListItem">
 								<li><label for="primaryEmail">Primary Email:</label></li>
 								<li>
-									<input id="primaryEmail" class="primaryEmail" value="<?php echo $myEmail; ?>" name="primaryEmail" type="text" size="128" maxlength="256" />
+									<input id="primaryEmail" class="primaryEmail" value="<?php echo $myEmail; ?>" name="Email" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="rightListItem">
 								<li><label for="additionalEmail">Additional Email:</label></li>
 								<li>
-									<input id="additionalEmail" class="primaryEmail" value="<?php echo $myAdditionalEmail; ?>" name="additionalEmail" type="text" size="128" maxlength="256" />
+									<input id="additionalEmail" class="primaryEmail" value="<?php echo $myAdditionalEmail; ?>" name="addl_email" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>							
 							<ul class="rightListItem">
 								<li><label for="role">Role:</label></li>
 								<li>
 									<select name="role" class="role" id="role">
-									  <option selected="selected"><?php if ($myRole) {echo $myRole;} else {echo 'Choose One';}  ?></option>		
-									  <option value="1">Subscriber</option>
-									  <option value="2">Follow-Up Emails Manager</option>
-									  <option value="3">Shop Manager</option>
-									  <option value="4">s2Member Level 4</option>
-									  <option value="5">s2Member Level 3</option>
-									  <option value="6">s2Member Level 2</option>
-									  <option value="7">s2Member Level 1</option>
-									  <option value="8">Client</option>
-									  <option value="9">Contributor</option>
-									  <option value="10">Author</option>
-									  <option value="11">Editor</option>
-									  <option value="12">Administrator</option>
-									  <option value="13">No role for this site</option>
+									  <option selected="selected"><?php if ($myRole) {echo $myRole;} else {echo 'Choose One';} ?></option>		
+									  <option value="Subscriber">Subscriber</option>
+									  <option value="Follow-Up Emails Manager">Follow-Up Emails Manager</option>
+									  <option value="Shop-Manager">Shop Manager</option>
+									  <option value="s2Member Level 4">s2Member Level 4</option>
+									  <option value="s2Member Level 3">s2Member Level 3</option>
+									  <option value="s2Member Level 2">s2Member Level 2</option>
+									  <option value="s2Member Level 1">s2Member Level 1</option>
+									  <option value="Client">Client</option>
+									  <option value="Contributor">Contributor</option>
+									  <option value="Author">Author</option>
+									  <option value="Editor">Editor</option>
+									  <option value="Administrator">Administrator</option>
+									  <option value="No-role-for-this-site">No role for this site</option>
 									</select>
 								</li>
 							</ul>
 							<ul class="rightListItem">
 								<li><label for="recruitedBy">Recruited by:</label></li>
 								<li>
-									<input id="recruitedBy" class="recruitedBy" value="<?php echo $myRecruitedBy; ?>" name="recruitedBy" type="text" size="128" maxlength="256" />
+									<input id="recruitedBy" class="recruitedBy" value="<?php echo $myRecruitedBy; ?>" name="recruited_by" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>							
 						</div> <!-- rowTwoColumnTwo -->
@@ -257,15 +255,15 @@
 							<ul class="leftListItem">
 								<li><label for="contactType">Contact Type</label></li>
 								<li>
-									<select name="contactType" class="contactType" id="contactType">
+									<select name="members_code" class="contactType" id="contactType">
 									  <option selected="selected"><?php if ($myMembersCode) {echo $myMembersCode;} else {echo 'Choose One';} ?></option>	
-									  <option value="1">M1 - Individual Corp.</option>
-									  <option value="2">M2 - Non-Profit Gov't. Mun</option>
-									  <option value="3">M3 - Corp. Mentor Sponsor</option>
-									  <option value="4">M4 - Legal Dept.</option>
-									  <option value="5">M5 - Corp. Underwriter</option>
-									  <option value="6">M6 - Displaced GC</option>
-									  <option value="7">M7 - GC Emeretus</option>
+									  <option value="M1">M1 - Individual Corp.</option>
+									  <option value="M2">M2 - Non-Profit Gov't. Mun</option>
+									  <option value="M3">M3 - Corp. Mentor Sponsor</option>
+									  <option value="M4">M4 - Legal Dept.</option>
+									  <option value="M5">M5 - Corp. Underwriter</option>
+									  <option value="M6">M6 - Displaced GC</option>
+									  <option value="M7">M7 - GC Emeretus</option>
 									</select>
 								</li>
 							</ul>
@@ -274,16 +272,16 @@
 								<li>	
 									<select name="chapter" class="chapter" id="chapter">
 									  <option selected="selected"><?php if ($myChapter) {echo $myChapter;} else {echo 'Choose One';} ?></option>											
-										<option value="1">Austin-San Antonio</option>
-										<option value="2">Dallas-Fort Worth</option>	
-									 	<option value="3">Houston</option>								
+										<option value="ASA">Austin-San Antonio</option>
+										<option value="DFW">Dallas-Fort Worth</option>	
+									 	<option value="HOU">Houston</option>								
 									</select>
 								</li>	
 							</ul>							
 							<ul class="leftListItem">								
 								<li><label for="territory">Territory:</label></li>
 								<li>
-									<input id="territory" class="territory" value="<?php echo $myTerritory; ?>" name="territory" type="text" size="128" maxlength="256" />
+									<input id="territory" class="territory" value="<?php echo $myTerritory; ?>" name="Territory" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 						</div> <!-- rowThreeColumnOne -->
@@ -291,7 +289,7 @@
 							<ul class="rightListItem">
 								<li><label for="joinDate">Join Date:</label></li>
 								<li>
-									<input id="joinDate" class="joinDate" value="<?php echo $myJoinDate; ?>" name="joinDate" type="text" size="128" maxlength="256" />
+									<input id="joinDate" class="joinDate" value="<?php echo $myJoinDate; ?>" name="date_i18n" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 							<ul class="rightListItem">
@@ -303,7 +301,7 @@
 							<ul class="rightListItem">
 								<li><label for="source">Source:</label></li>
 								<li>
-									<select name="source" class="source" id="source">
+									<select name="lead_source" class="source" id="source">
 									  <option selected="selected"><?php if ($mySource) {echo $mySource;} else {echo 'Choose One';} ?></option>											
 										<option value="AUS BIZ JOUR">Austin Business Journal</option>
  										<option value="BOD RECRU">BOD Recruitment</option>
@@ -348,7 +346,7 @@
 							<ul class="leftListItem">
 								<li><label for="assEmail">Assistant Email:</label></li>
 								<li>
-									<input id="assEmail" class="assEmail" value="<?php echo $myAssEmail; ?>" name="assEmail" type="text" size="128" maxlength="256" />
+									<input id="assEmail" class="assEmail" value="<?php echo $myAssEmail; ?>" name="assistant_email" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 						</div> <!-- rowFourColumnOne -->
@@ -356,7 +354,7 @@
 							<ul class="rightListItem">
 								<li><label for="assOffice">Assistant Office:</label></li>
 								<li>
-									<input id="assOffice" class="assOffice" value="<?php echo $myAssPhone; ?>" name="assOffice" type="text" size="128" maxlength="256" />
+									<input id="assOffice" class="assOffice" value="<?php echo $myAssPhone; ?>" name="assistant_phone" type="text" size="128" maxlength="256" />
 								</li>
 							</ul>
 						</div> <!-- rowFourColumnTwo -->	
@@ -367,7 +365,7 @@
 							<ul class="leftListItem">
 								<li><label for="attorneys">Attorneys in Dept:</label></li>
 								<li>
-									<select name="attorneys" class="attorneys" id="attorneys">
+									<select name="depart_size" class="attorneys" id="attorneys">
 									  <option selected="selected"><?php if ($myDeptSize) {echo $myDeptSize;} else {echo 'Choose One';} ?></option>																					
 									  <option value="1">Solo</option>
 									  <option value="2">Small 2-5 Lawyers</option>
@@ -459,47 +457,13 @@
 						<div class="rowSixColOne cf">
 							<ul class="leftListItem">
 								<li><label for="notes">Notes:</label></li>
-								<li><textarea name="notes" id="notes" cols="86" rows="12"><?php echo $myRemarks; ?></textarea></li>
+								<li><textarea name="remarks" id="notes" cols="86" rows="12"><?php echo $myRemarks; ?></textarea></li>
 							</ul>
 						</div>	<!-- rowSixColumnOne -->
 					</div> <!-- row six -->
 				</div> <!-- details -->
 				<button type="submit" class="saveButton">Save</button>
-				<button type="button" class="cancelButton" data-dismiss="modal">Close</button>
-				<input type="hidden" name="whichMember" value="<?php echo $whichMember; ?>" method="POST"/>
-				<input type="hidden" name="email" value="<?php echo $myEmail; ?>" method="POST"/>
-				<input type="hidden" name="firstName" value="<?php echo $myFirst; ?>" method="POST"/>
-				<input type="hidden" name="middle" value="<?php echo $myMiddle; ?>" method="POST"/>				
-				<input type="hidden" name="lastName" value="<?php echo $myLast; ?>" method="POST"/>
-				<input type="hidden" name="salutation" value="<?php echo $mySalutation; ?>" method="POST"/>
-				<input type="hidden" name="title" value="<?php echo $myTitle; ?>" method="POST"/>
-				<input type="hidden" name="company" value="<?php echo $myCompany; ?>" method="POST"/>
-				<input type="hidden" name="officePhone" value="<?php echo $myOfficePhone; ?>" method="POST"/>
-				<input type="hidden" name="billingAddress1" value="<?php echo $myBillingAddress1; ?>" method="POST"/>
-				<input type="hidden" name="billingAddress2" value="<?php echo $myBillingAddress2; ?>" method="POST"/>
-				<input type="hidden" name="nickname" value="<?php echo $myNickName; ?>" method="POST"/>
-				<input type="hidden" name="city" value="<?php echo $myCity; ?>" method="POST"/>
-				<input type="hidden" name="state" value="<?php echo $myState; ?>" method="POST"/>
-				<input type="hidden" name="zip" value="<?php echo $myZip; ?>" method="POST"/>
-				<input type="hidden" name="ass" value="<?php echo $myAss; ?>" method="POST"/>
-				<input type="hidden" name="assPhone" value="<?php echo $myAssPhone; ?>" method="POST"/>
-				<input type="hidden" name="assEmail" value="<?php echo $myAssEmail; ?>" method="POST"/>
-				<input type="hidden" name="deptSize" value="<?php echo $myDeptSize; ?>" method="POST"/>
-				<input type="hidden" name="territory" value="<?php echo $myTerritory; ?>" method="POST"/>
-				<input type="hidden" name="joinDate" value="<?php echo $myJoinDate; ?>" method="POST"/>
-				<input type="hidden" name="membersCode" value="<?php echo $myMembersCode; ?>" method="POST"/>
-				<input type="hidden" name="industry" value="<?php echo $myIndustry; ?>" method="POST"/>
-				<input type="hidden" name="remarks" value="<?php echo $myRemarks; ?>" method="POST"/>
-				<input type="hidden" name="recruitedBy" value="<?php echo $myRecruitedBy; ?>" method="POST"/>
-				<input type="hidden" name="mobilePhone" value="<?php echo $myMobilePhone; ?>" method="POST"/>
-				<input type="hidden" name="fax" value="<?php echo $myFax; ?>" method="POST"/>
-				<input type="hidden" name="home" value="<?php echo $myHome; ?>" method="POST"/>
-				<input type="hidden" name="role" value="<?php echo $myRole; ?>" method="POST"/>
-				<input type="hidden" name="additionalEmail" value="<?php echo $myAdditionalEmail; ?>" method="POST"/>
-				<input type="hidden" name="contactType" value="<?php echo $myContactType; ?>" method="POST"/>
-				<input type="hidden" name="source" value="<?php echo $mySource; ?>" method="POST"/>
-				<input type="hidden" name="chapter" value="<?php echo $myChapter; ?>" method="POST"/>
-				<input type="hidden" name="groups" value="<?php echo $myGroups; ?>" method="POST"/>							 				  								        		
+				<button type="button" class="cancelButton" data-dismiss="modal">Close</button>						 				  								        		
 			</form>			
 		</div> <!-- wrapperContainer -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

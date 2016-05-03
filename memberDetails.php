@@ -15,8 +15,9 @@
 			<?php
 				$whichQuery = 'memberDetails';
 				include ('queries.php');
-				include ('editMember.php');				
+				//include ('editMember.php');			
 				@$myEmail = $individualMemberData[0]['Email'];
+				@$myAdditionalEmail = $individualMemberData[0]['addl_email'];				
 				@$myFirst = $individualMemberData[0]['first_name'];
 				@$myMiddle = $individualMemberData[0]['Middle'];
 				@$myLast = $individualMemberData[0]['last_name'];
@@ -38,17 +39,13 @@
 				@$myJoinDate = $individualMemberData[0]['date_i18n'];
 				@$myMembersCode = $individualMemberData[0]['members_code'];
 				@$myIndustry = $individualMemberData[0]['industry'];
-				@$myRemarks = $individualMemberData[0]['remarks'];
 				@$myRecruitedBy = $individualMemberData[0]['recruited_by'];
 				@$myMobilePhone = $individualMemberData[0]['mobile-phone'];
 				@$myFax = $individualMemberData[0]['Fax'];
 				@$myHome = $individualMemberData[0]['Home'];
 				@$myRole = $individualMemberData[0]['role'];
-				@$myAdditionalEmail = $individualMemberData[0]['additionalEmail'];
-				@$myContactType = $individualMemberData[0]['contactType'];
 				@$mySource = $individualMemberData[0]['source'];
 				@$myChapter = $individualMemberData[0]['chapter'];
-				@$myJoinDate = $individualMemberData[0]['date_i18n'];
 				@$myGroups = $individualMemberData[0]['groups'];
 				@$myRemarks = $individualMemberData[0]['remarks'];
 			echo 
@@ -130,7 +127,7 @@
 							</ul>
 							<ul class=\"leftListItem\">
 								<li>Contact Type:</li>
-								<li>{$myContactType}</li>
+								<li>{$myMembersCode}</li>
 							</ul>
 							<ul class=\"leftListItem\">
 								<li>Chapter</li>
@@ -161,10 +158,6 @@
 							<ul class=\"rightListItem\">
 								<li>Industry:</li>
 								<li>{$myIndustry}</li>
-							</ul>
-							<ul class=\"rightListItem\">
-								<li>Members Code:</li>
-								<li>{$myMembersCode}</li>
 							</ul>
 						</div> <!-- rowThreeColumnTwo -->
 					</div> <!-- rowThree -->

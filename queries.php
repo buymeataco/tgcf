@@ -222,24 +222,8 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 		}
 		insertKeysOnly($resultInsertArray, $whichMember, $conn);
 
-		//Preps the insertQueryArray into two strings (meta_key and meta_value) suitable for a MySQL query.
-		function updateQueries($insertQueryArray) {
-			$insertKeysArray = [];
-			$insertValuesArray = [];
-
-			foreach ($insertQueryArray as $value) {
-				array_push($insertKeysArray, $value[0]);
-			}
-
-			foreach ($insertQueryArray as $value) {
-				array_push($insertValuesArray, $value[1]);
-			}
-			return array($insertKeysArray, $insertValuesArray);
-		}			
-		$resultInsertArray = updateQueries($insertQueryArray);
-
-
-
+		//Add update query here.
+		
 	} //betaQueryArray()
 	betaQueryArray($queryArrays, $alphaFormArray, $whichMember, $conn);
 

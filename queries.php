@@ -145,7 +145,7 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 
 	//combines predefined application meta keys with user submitted form values into an array
 	function combineFormValuesWithAppKeys($applicationMetaKeys, $userFormValues) {
-		$combinedKeysAndSubmittedValues = array_combine($applicationMetaKeys, $userFormValues);
+		@$combinedKeysAndSubmittedValues = array_combine($applicationMetaKeys, $userFormValues);
 		return $combinedKeysAndSubmittedValues;
 	}
 	$alphaFormArray = combineFormValuesWithAppKeys($applicationMetaKeys, $userFormValues);
@@ -208,21 +208,48 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 		}			
 		$resultInsertArray = insertQueries($insertQueryArray);
 
-		//Inserts meta_keys, then updates their correspodning values.
-		function insertKeysOnly($resultInsertArray, $whichMember, $conn) {
+		//Inserts meta_keys, then updates their correspodning values all from insertQueries().
+		function insertKeysAndValues($resultInsertArray, $whichMember, $conn) {
 			$i=0;
 			foreach ($resultInsertArray[0] as $value[0]) {
 				$query7 = "INSERT INTO metaTest (meta_key, user_id) VALUES ('$value[0]', '$whichMember')";			
-				$result7 = mysqli_query($conn,$query7) or die ("<br /><br />Could not execute query (7).");
+				//$result7 = mysqli_query($conn,$query7) or die ("<br /><br />Could not execute query (7).");
 				$conCatVar = $resultInsertArray[1]["$i"];
 				$query8 = "UPDATE metaTest SET meta_value='$conCatVar' WHERE meta_key='$value[0]' AND user_id = '$whichMember'";
-				$result8 = mysqli_query($conn,$query8) or die ("<br /><br />Could not execute query (8).");				
+				//$result8 = mysqli_query($conn,$query8) or die ("<br /><br />Could not execute query (8).");				
 				$i++;			
 			}		
 		}
-		insertKeysOnly($resultInsertArray, $whichMember, $conn);
+		insertKeysAndValues($resultInsertArray, $whichMember, $conn);
 
-		//Add update query here.
+		//Preps the updateQueryArray into two strings (meta_key and meta_value) suitable for a MySQL query.
+		function updateQueries($updateQueryArray) {
+			$updateKeysArray = [];
+			$updateValuesArray = [];
+
+			foreach ($updateQueryArray as $value) {
+				array_push($updateKeysArray, $value[0]);
+			}
+
+			foreach ($updateQueryArray as $value) {
+				array_push($updateValuesArray, $value[1]);
+			}
+			return array($updateKeysArray, $updateValuesArray);
+		}			
+		$resultUpdateArray = updateQueries($updateQueryArray);
+
+		//Updates meta_keys, then updates their correspodning values all from updateQueries().
+		function updateKeysAndValues($resultUpdateArray, $whichMember, $conn) {
+			foreach ($resultUpdateArray[0] as $value[0]) {		
+				$query9 = "UPDATE metaTest SET meta_value='$conCatVar' WHERE meta_key='$value[0]' AND user_id = '$whichMember'";
+				//$result8 = mysqli_query($conn,$query8) or die ("<br /><br />Could not execute query (8).");										
+			}		
+		}
+		updateKeysAndValues($resultUpdateArray, $whichMember, $conn);
+
+		 echo "<pre>";
+			print_r($resultUpdateArray);
+		 echo "<pre>";		
 		
 	} //betaQueryArray()
 	betaQueryArray($queryArrays, $alphaFormArray, $whichMember, $conn);

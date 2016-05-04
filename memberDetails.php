@@ -15,41 +15,41 @@
 			<?php
 				$whichQuery = 'memberDetails';
 				include ('queries.php');
-				//include ('editMember.php');			
-				@htmlspecialchars($myEmail = $individualMemberData[0]['Email']);
-				@htmlspecialchars($myAdditionalEmail = $individualMemberData[0]['addl_email']);				
-				@htmlspecialchars($myFirst = $individualMemberData[0]['first_name']);
-				@htmlspecialchars($myMiddle = $individualMemberData[0]['Middle']);
-				@htmlspecialchars($myLast = $individualMemberData[0]['last_name']);
-				@htmlspecialchars($mySalutation = $individualMemberData[0]['nickname']);
-				@htmlspecialchars($myTitle = $individualMemberData[0]['title']);
-				@htmlspecialchars($myCompany = $individualMemberData[0]['billing_company']);
-				@htmlspecialchars($myOfficePhone = $individualMemberData[0]['billing_phone']);
-				@htmlspecialchars($myBillingAddress1 = $individualMemberData[0]['billing_address_1']);
-				@htmlspecialchars($myBillingAddress2 = $individualMemberData[0]['billing_address_2']);
-				@htmlspecialchars($myNickName = $individualMemberData[0]['nickname']);
-				@htmlspecialchars($myCity = $individualMemberData[0]['billing_city']);
-				@htmlspecialchars($myState = $individualMemberData[0]['billing_state']);	
-				@htmlspecialchars($myZip = $individualMemberData[0]['billing_postcode']);
-				@htmlspecialchars($myAss = $individualMemberData[0]['assistant']);
-				@htmlspecialchars($myAssPhone = $individualMemberData[0]['assistant_phone']);	
-				@htmlspecialchars($myAssEmail = $individualMemberData[0]['assistant_email']);
-				@htmlspecialchars($myDeptSize = $individualMemberData[0]['depart_size']);
-				@htmlspecialchars($myTerritory = $individualMemberData[0]['Territory']);
-				@htmlspecialchars($myJoinDate = $individualMemberData[0]['date_i18n']);
-				@htmlspecialchars($myMembersCode = $individualMemberData[0]['members_code']);
-				@htmlspecialchars($myIndustry = $individualMemberData[0]['industry']);
-				@htmlspecialchars($myRecruitedBy = $individualMemberData[0]['recruited_by']);
-				@htmlspecialchars($myMobilePhone = $individualMemberData[0]['mobile-phone']);
-				@htmlspecialchars($myFax = $individualMemberData[0]['Fax']);
-				@htmlspecialchars($myHome = $individualMemberData[0]['Home']);
-				@htmlspecialchars($myRole = $individualMemberData[0]['role']);
-				@htmlspecialchars($mySource = $individualMemberData[0]['source']);
-				@htmlspecialchars($myChapter = $individualMemberData[0]['chapter']);
-				@htmlspecialchars($myGroups = $individualMemberData[0]['groups']);
-				@htmlspecialchars($myRemarks = $individualMemberData[0]['remarks']);
+				include ('editMember.php');			
+				@htmlspecialchars($myEmail = $combineDataArrays[0]['Email']);
+				@htmlspecialchars($myAdditionalEmail = $combineDataArrays[0]['addl_email']);				
+				@htmlspecialchars($myFirst = $combineDataArrays[0]['first_name']);
+				@htmlspecialchars($myMiddle = $combineDataArrays[0]['Middle']);
+				@htmlspecialchars($myLast = $combineDataArrays[0]['last_name']);
+				@htmlspecialchars($mySalutation = $combineDataArrays[0]['nickname']);
+				@htmlspecialchars($myTitle = $combineDataArrays[0]['title']);
+				@htmlspecialchars($myCompany = $combineDataArrays[0]['billing_company']);
+				@htmlspecialchars($myOfficePhone = $combineDataArrays[0]['billing_phone']);
+				@htmlspecialchars($myBillingAddress1 = $combineDataArrays[0]['billing_address_1']);
+				@htmlspecialchars($myBillingAddress2 = $combineDataArrays[0]['billing_address_2']);
+				@htmlspecialchars($myNickName = $combineDataArrays[0]['nickname']);
+				@htmlspecialchars($myCity = $combineDataArrays[0]['billing_city']);
+				@htmlspecialchars($myState = $combineDataArrays[0]['billing_state']);	
+				@htmlspecialchars($myZip = $combineDataArrays[0]['billing_postcode']);
+				@htmlspecialchars($myAss = $combineDataArrays[0]['assistant']);
+				@htmlspecialchars($myAssPhone = $combineDataArrays[0]['assistant_phone']);	
+				@htmlspecialchars($myAssEmail = $combineDataArrays[0]['assistant_email']);
+				@htmlspecialchars($myDeptSize = $combineDataArrays[0]['depart_size']);
+				@htmlspecialchars($myTerritory = $combineDataArrays[0]['Territory']);
+				@htmlspecialchars($myJoinDate = $combineDataArrays[0]['date_i18n']);
+				@htmlspecialchars($myMembersCode = $combineDataArrays[0]['members_code']);
+				@htmlspecialchars($myIndustry = $combineDataArrays[0]['industry']);
+				@htmlspecialchars($myRecruitedBy = $combineDataArrays[0]['recruited_by']);
+				@htmlspecialchars($myMobilePhone = $combineDataArrays[0]['mobile-phone']);
+				@htmlspecialchars($myFax = $combineDataArrays[0]['Fax']);
+				@htmlspecialchars($myHome = $combineDataArrays[0]['Home']);
+				@htmlspecialchars($myRole = $combineDataArrays[0]['role']);
+				@htmlspecialchars($mySource = $combineDataArrays[0]['source']);
+				@htmlspecialchars($myChapter = $combineDataArrays[0]['chapter']);
+				@htmlspecialchars($myGroups = $combineDataArrays[0]['groups']);
+				@htmlspecialchars($myRemarks = $combineDataArrays[0]['remarks']);
 			echo 
-"<button type=\"button\" class=\"editButton\" data-toggle=\"modal\" data-target=\"#myModal\">Edit</button>
+			"<button type=\"button\" class=\"editButton\" data-toggle=\"modal\" data-target=\"#myModal\">Edit</button>
 			<p class=\"fullName\">Profile for <span class=\"nameBold\">Mr. {$myFirst} {$myMiddle} {$myLast} or \"{$mySalutation}\" </span></p>
 			<hr class=\"searchRule\"/>
 				<div class=\"details\">

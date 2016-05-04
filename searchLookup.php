@@ -5,7 +5,7 @@ include('queries.php');
 function displaySearchResults($combinedKeyValuePairs, $scrubbedIdArray) {
 	$counter = 1;
 	$i=0;
-	$arrayLength = count((array_keys($combinedKeyValuePairs)), COUNT_RECURSIVE);
+	@$arrayLength = count((array_keys($combinedKeyValuePairs)), COUNT_RECURSIVE);
 	echo "<p class=\"resultCountIndexPage\">Your search returned {$arrayLength} result(s).</p>";
 			while ($i < $arrayLength) {			
 					$myFirstName = $combinedKeyValuePairs[$i]["first_name"];

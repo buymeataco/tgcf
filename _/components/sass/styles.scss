@@ -10,6 +10,10 @@ body {
 	font-family: $font-stack;
 	font-size: 1em;
 }
+p.error {
+	color: Red;
+	font-weight: bold;
+}
 .modal-body {
 	padding-top: 0;
 }
@@ -209,7 +213,8 @@ button.saveButton {
 	float: right;
 	padding: .5em;
 	margin-top: 0em;
-	margin-left: 10px;
+	margin-left: 8px;
+	margin-right: 120px;
     	&:hover {
     		color: #fff;
     		background-color: #28a428;
@@ -291,7 +296,7 @@ input[name=Middle] {
 	margin-bottom: .75em;
 	margin-right: .5em;	
 	height: 1.8em;
-	width: 15.4em;
+	width: 14.1em;
 	background-color: #fff;
 	color: #696969;
 	border: 1px solid #e6e6e6;

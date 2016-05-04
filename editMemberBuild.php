@@ -15,38 +15,38 @@
 			$whichQuery = 'memberDetails';
 			include ('queries.php');
 			$whichMember = $_GET['id'];
-			@$myEmail = $individualMemberData[0]['Email'];
-			@$myAdditionalEmail = $individualMemberData[0]['addl_email'];
-			@$myFirst = $individualMemberData[0]['first_name'];						
-			@$myMiddle = $individualMemberData[0]['Middle'];
-			@$myLast = $individualMemberData[0]['last_name'];
-			@$myGender = $individualMemberData[0]['gender'];
-			@$mySalutation = $individualMemberData[0]['nickname'];			
-			@$myTitle = $individualMemberData[0]['title'];
-			@$myCompany = $individualMemberData[0]['billing_company'];
-			@$myOfficePhone = $individualMemberData[0]['billing_phone'];
-			@$myBillingAddress1	= $individualMemberData[0]['billing_address_1'];
-			@$myBillingAddress2	= $individualMemberData[0]['billing_address_2'];
-			@$myCity = $individualMemberData[0]['billing_city'];
-			@$myState = $individualMemberData[0]['billing_state'];	
-			@$myZip = $individualMemberData[0]['billing_postcode'];
-			@$myAss	= $individualMemberData[0]['assistant'];
-			@$myAssPhone = $individualMemberData[0]['assistant_phone'];	
-			@$myAssEmail = $individualMemberData[0]['assistant_email'];
-			@$myDeptSize = $individualMemberData[0]['depart_size'];
-			@$myTerritory = $individualMemberData[0]['Territory'];
-			@$myJoinDate = $individualMemberData[0]['date_i18n'];
-			@$myMembersCode = $individualMemberData[0]['members_code'];
-			@$myIndustry = $individualMemberData[0]['industry'];
-			@$myRemarks = $individualMemberData[0]['remarks'];
-			@$myRecruitedBy = $individualMemberData[0]['recruited_by'];
-			@$myMobilePhone = $individualMemberData[0]['mobile-phone'];
-			@$myFax = $individualMemberData[0]['Fax'];
-			@$myHome = $individualMemberData[0]['Home'];
-			@$myRole = $individualMemberData[0]['role'];
-			@$mySource = $individualMemberData[0]['source'];
-			@$myChapter = $individualMemberData[0]['chapter'];
-			@$myGroups = $individualMemberData[0]['groups'];
+			@htmlspecialchars($myEmail = $individualMemberData[0]['Email']);
+			@htmlspecialchars($myAdditionalEmail = $individualMemberData[0]['addl_email']);
+			@htmlspecialchars($myFirst = $individualMemberData[0]['first_name']);						
+			@htmlspecialchars($myMiddle = $individualMemberData[0]['Middle']);
+			@htmlspecialchars($myLast = $individualMemberData[0]['last_name']);
+			@htmlspecialchars($myGender = $individualMemberData[0]['gender']);
+			@htmlspecialchars($mySalutation = $individualMemberData[0]['nickname']);			
+			@htmlspecialchars($myTitle = $individualMemberData[0]['title']);
+			@htmlspecialchars($myCompany = $individualMemberData[0]['billing_company']);
+			@htmlspecialchars($myOfficePhone = $individualMemberData[0]['billing_phone']);
+			@htmlspecialchars($myBillingAddress1 = $individualMemberData[0]['billing_address_1']);
+			@htmlspecialchars($myBillingAddress2 = $individualMemberData[0]['billing_address_2']);
+			@htmlspecialchars($myCity = $individualMemberData[0]['billing_city']);
+			@htmlspecialchars($myState = $individualMemberData[0]['billing_state']);	
+			@htmlspecialchars($myZip = $individualMemberData[0]['billing_postcode']);
+			@htmlspecialchars($myAss = $individualMemberData[0]['assistant']);
+			@htmlspecialchars($myAssPhone = $individualMemberData[0]['assistant_phone']);	
+			@htmlspecialchars($myAssEmail = $individualMemberData[0]['assistant_email']);
+			@htmlspecialchars($myDeptSize = $individualMemberData[0]['depart_size']);
+			@htmlspecialchars($myTerritory = $individualMemberData[0]['Territory']);
+			@htmlspecialchars($myJoinDate = $individualMemberData[0]['date_i18n']);
+			@htmlspecialchars($myMembersCode = $individualMemberData[0]['members_code']);
+			@htmlspecialchars($myIndustry = $individualMemberData[0]['industry']);
+			@htmlspecialchars($myRemarks = $individualMemberData[0]['remarks']);
+			@htmlspecialchars($myRecruitedBy = $individualMemberData[0]['recruited_by']);
+			@htmlspecialchars($myMobilePhone = $individualMemberData[0]['mobile-phone']);
+			@htmlspecialchars($myFax = $individualMemberData[0]['Fax']);
+			@htmlspecialchars($myHome = $individualMemberData[0]['Home']);
+			@htmlspecialchars($myRole = $individualMemberData[0]['role']);
+			@htmlspecialchars($mySource = $individualMemberData[0]['source']);
+			@htmlspecialchars($myChapter = $individualMemberData[0]['chapter']);
+			@htmlspecialchars($myGroups = $individualMemberData[0]['groups']);
       	?>
       	<!-- start HTML template -->
 		<div class="wrapperContainer">
@@ -62,15 +62,15 @@
 				</li>				
 				<li><label for="firstName">First:</label></li>
 				<li>
-					<input id="firstName" class="firstName" value="<?php echo htmlspecialchars($myFirst); ?>" name="first_name" type="text" size="128" maxlength="256" />
+					<input id="firstName" class="firstName" value="<?php echo $myFirst; ?>" name="first_name" type="text" size="128" maxlength="256" />
 				</li>
 				<li><label for="middleName">Middle:</label></li>
 				<li>
-					<input id="middleName" class="middleName" value="<?php echo htmlspecialchars($myMiddle); ?>" name="Middle" type="text" size="128" maxlength="256" />
+					<input id="middleName" class="middleName" value="<?php echo $myMiddle; ?>" name="Middle" type="text" size="128" maxlength="256" />
 				</li>
 				<li><label for="lastName">Last:</label></li>
 				<li>
-					<input id="lastName" class="lastName" value="<?php echo htmlspecialchars($myLast); ?>" name="last_name" type="text" size="128" maxlength="256" />
+					<input id="lastName" class="lastName" value="<?php echo $myLast; ?>" name="last_name" type="text" size="128" maxlength="256" />
 				</li>
 			</ul>
 				<hr class="searchRule"/>

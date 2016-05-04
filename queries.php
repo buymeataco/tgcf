@@ -131,7 +131,7 @@ $whichMember = $_GET['id'];
 //predefined application meta keys
 $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nickname', 'title', 'billing_company', 'billing_phone', 'moble-phone', 'Fax', 'home', 'billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode', 'Email', 'addl_email', 'role', 'recruited_by', 'members_code', 'chapter', 'Territory', 'date_i18n', 'groups', 'lead_source', 'assistant', 'assistant_email', 'assistant_phone', 'depart_size', 'industry', 'remarks');
 
-	//returns an array of user submitted form values
+	//Returns an array of user submitted form values.
 	function userSubmittedFormValues($conn) {
 		$submittedFormValues = [];
 		foreach ($_POST as $value) {
@@ -143,14 +143,14 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 	}
 	$userFormValues = userSubmittedFormValues($conn);
 
-	//combines predefined application meta keys with user submitted form values into an array
+	//Combines predefined application meta keys with user submitted form values into an array.
 	function combineFormValuesWithAppKeys($applicationMetaKeys, $userFormValues) {
 		@$combinedKeysAndSubmittedValues = array_combine($applicationMetaKeys, $userFormValues);
 		return $combinedKeysAndSubmittedValues;
 	}
 	$alphaFormArray = combineFormValuesWithAppKeys($applicationMetaKeys, $userFormValues);
 
-	//pulls all existing meta_keys from the specified user
+	//Pulls all existing meta_keys from the specified user.
 	function getExistingMetaKeys($whichMember, $conn) {
 		$existingMetaKeysArray = [];
 		$query = "SELECT DISTINCT meta_key FROM metaTest WHERE user_id = '$whichMember'";
@@ -163,7 +163,7 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 	}
 	$existingMetaKeys = getExistingMetaKeys($whichMember, $conn);
 
-	//Separates keys/value pairs into inserts vs. updates and returns them in a multi-d array
+	//Separates keys/value pairs into inserts vs. updates and returns them in a multi-d array.
 	function decideWhichQuery($existingMetaKeys, $applicationMetaKeys) {
 		$insertArray = [];
 		$updateArray = [];			
@@ -179,7 +179,7 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 	}
 	$queryArrays = (decideWhichQuery($existingMetaKeys, $applicationMetaKeys));
 
-	//Using the $queryArrays multi-d array, separates $alphaFormArray into inserts and updates arrays
+	//Using the $queryArrays multi-d array, separates $alphaFormArray into inserts and updates arrays.
 	function insertUpdateQueries($queryArrays, $alphaFormArray, $whichMember, $conn) {
 
 	//Generates insert vs. update query arrays.

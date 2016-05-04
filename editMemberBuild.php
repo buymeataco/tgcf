@@ -21,7 +21,7 @@
 			@$myMiddle = $individualMemberData[0]['Middle'];
 			@$myLast = $individualMemberData[0]['last_name'];
 			@$myGender = $individualMemberData[0]['gender'];
-			@$mySalutation = $individualMemberData[0]['salutation'];			
+			@$mySalutation = $individualMemberData[0]['nickname'];			
 			@$myTitle = $individualMemberData[0]['title'];
 			@$myCompany = $individualMemberData[0]['billing_company'];
 			@$myOfficePhone = $individualMemberData[0]['billing_phone'];
@@ -62,15 +62,15 @@
 				</li>				
 				<li><label for="firstName">First:</label></li>
 				<li>
-					<input id="firstName" class="firstName" value="<?php echo $myFirst; ?>" name="first_name" type="text" size="128" maxlength="256" />
+					<input id="firstName" class="firstName" value="<?php echo htmlspecialchars($myFirst); ?>" name="first_name" type="text" size="128" maxlength="256" />
 				</li>
 				<li><label for="middleName">Middle:</label></li>
 				<li>
-					<input id="middleName" class="middleName" value="<?php echo $myMiddle; ?>" name="Middle" type="text" size="128" maxlength="256" />
+					<input id="middleName" class="middleName" value="<?php echo htmlspecialchars($myMiddle); ?>" name="Middle" type="text" size="128" maxlength="256" />
 				</li>
 				<li><label for="lastName">Last:</label></li>
 				<li>
-					<input id="lastName" class="lastName" value="<?php echo $myLast; ?>" name="last_name" type="text" size="128" maxlength="256" />
+					<input id="lastName" class="lastName" value="<?php echo htmlspecialchars($myLast); ?>" name="last_name" type="text" size="128" maxlength="256" />
 				</li>
 			</ul>
 				<hr class="searchRule"/>

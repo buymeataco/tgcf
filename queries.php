@@ -1,4 +1,3 @@
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
 include('dbConnect.php');
 
@@ -17,7 +16,7 @@ function getUserID($smartSearchParameter, $conn) {
 	$idArray = [];
 	$scrubbedIdArray = [];
 	$scrubbedKeyArray = [];
-	$acceptableKeys = ['first_name', 'last_name', 'billing_company', 'title'];
+	$acceptableKeys = ['first_name', 'Middle', 'last_name', 'billing_company', 'title'];
 	while ($row = mysqli_fetch_array($result)) {
 		extract ($row);
 		array_push($idArray, $user_id);
@@ -27,7 +26,7 @@ function getUserID($smartSearchParameter, $conn) {
 			array_push($scrubbedIdArray, $checkValue);
 		}	
 	}
-return array($scrubbedIdArray, $acceptableKeys);
+	return array($scrubbedIdArray, $acceptableKeys);
 cleanup1($result, $idArray, $scrubbedIdArray, $scrubbedKeyArray, $acceptableKeys);
 }
 $userID = getUserID($smartSearchParameter, $conn);
@@ -43,7 +42,7 @@ function getMemberDetails($scrubbedIdArray, $acceptableKeys, $conn) {
 		$combinedKeyValuePairs = [];
 
 		foreach ($scrubbedIdArray as $value) {
-			$query = "SELECT meta_value FROM metaTest WHERE meta_key IN ('first_name','last_name','billing_company','title') AND user_id = '$value'";
+			$query = "SELECT meta_value FROM metaTest WHERE meta_key IN ('first_name','Middle','last_name','billing_company','title') AND user_id = '$value'";
 			$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (2).");	
 			while ($row = mysqli_fetch_array($result)) {
 				extract ($row);
@@ -100,11 +99,11 @@ checkLookupID($lookupUserId);
 //Returns meta_values in a nested array.
 function nestedMetaValues($lookupUserId, $conn) {	
 	$nestedMetaValues = [];
-	$query = "SELECT meta_value FROM metaTest WHERE meta_key IN ('first_name','last_name','billing_company','title', 'salutation', 'Middle', 'nickname', 'billing_phone', 'Email', 'addl_email', 'moble-phone', 'Fax', 'chapter', 'recruited_by', 'billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode', 'assistant', 'assistant_phone', 'assistant_email', 'Territory', 'industry', 'depart_size', 'date_i18n', 'members_code', 'remarks', 'role', 'home', 'lead_source', 'groups') AND user_id = '$lookupUserId'";
+	$query = "SELECT meta_value FROM metaTest WHERE meta_key IN ('gender','first_name', 'Middle', 'last_name', 'nickname', 'title', 'billing_company', 'billing_phone', 'moble-phone', 'Fax', 'home', 'billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode', 'Email', 'addl_email', 'role', 'recruited_by', 'members_code', 'chapter', 'Territory', 'date_i18n', 'groups', 'lead_source', 'assistant', 'assistant_email', 'assistant_phone', 'depart_size', 'industry', 'remarks') AND user_id = '$lookupUserId'";
 	$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (2).");	
 	while ($row = mysqli_fetch_array($result)) {
 		extract ($row);
-			array_push($nestedMetaValues, $row[0]);
+			array_push($nestedMetaValues, addslashes($row[0]));
 	}
 	return $nestedMetaValues;
 	cleanup2point1($result, $nestedMetaValues);
@@ -137,12 +136,11 @@ function getUserKeys($nestedMetaValues, $conn, $lookupUserId) {
 }
 $getUserKeysAndValues = getUserKeys($nestedMetaValues, $conn, $lookupUserId);
 
-//Combines separate arrays & deletes empty pockets. Halts script if user if absent in db.
+//Combines separate arrays & deletes empty pockets.
 function combineDataArrays($userMetaKeys, $userMetaValues) {
 	$i=0;
 	$individualMemberData = [];
 	$lengthOfArray = count((array_values($userMetaKeys)), COUNT_RECURSIVE);
-
 		while ($lengthOfArray > $i) {
 			@$combinedArrays = array_combine($userMetaKeys[$i], $userMetaValues[$i]);
 				if (!empty($combinedArrays)) {
@@ -163,22 +161,22 @@ $whichMember = $_GET['id'];
 $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nickname', 'title', 'billing_company', 'billing_phone', 'moble-phone', 'Fax', 'home', 'billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode', 'Email', 'addl_email', 'role', 'recruited_by', 'members_code', 'chapter', 'Territory', 'date_i18n', 'groups', 'lead_source', 'assistant', 'assistant_email', 'assistant_phone', 'depart_size', 'industry', 'remarks');
 
 	//Returns an array of user submitted form values.
-	function userSubmittedFormValues($conn) {
+	function userSubmittedFormValues() {
 		$submittedFormValues = [];
 		foreach ($_POST as $value) {
 			if (isset($value)) {
-				array_push($submittedFormValues, mysqli_real_escape_string($conn, $value));
+				array_push($submittedFormValues, $value);
 			}			
-		} //foreach
+		}
 		return $submittedFormValues;
 		cleanup4($submittedFormValues);
 	}
-	$userFormValues = userSubmittedFormValues($conn);
+	$userFormValues = userSubmittedFormValues();
 
 	//Combines predefined application meta keys with user submitted form values into an array.
 	function combineFormValuesWithAppKeys($applicationMetaKeys, $userFormValues) {
 		@$combinedKeysAndSubmittedValues = array_combine($applicationMetaKeys, $userFormValues);
-		return $combinedKeysAndSubmittedValues;
+		return $combinedKeysAndSubmittedValues;	
 		cleanup5($combinedKeysAndSubmittedValues);
 	}
 	$alphaFormArray = combineFormValuesWithAppKeys($applicationMetaKeys, $userFormValues);
@@ -208,8 +206,8 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 				array_push($insertArray, $value);
 			}
 		}
-		$referenceQueryArray = [$insertArray, $updateArray];
-		return $referenceQueryArray;
+		//$referenceQueryArray = [$insertArray, $updateArray];		
+		return array($insertArray, $updateArray);
 		cleanup7($insertArray, $updateArray);
 	}
 	$queryArrays = (decideWhichQuery($existingMetaKeys, $applicationMetaKeys));
@@ -233,6 +231,7 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 					array_push($updateQueryArray, explode(".: ",  $pocketTemp2));
 				}
 			}
+
 			return array($insertQueryArray, $updateQueryArray);
 			cleanup8($insertQueryArray, $updateQueryArray);
 	}
@@ -266,43 +265,37 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 			$result2 = mysqli_query($conn,$query2) or die ("<br /><br />Could not execute query (8).");	
 			$i++;			
 		}
-		cleanup10($result, $result2);
+		//cleanup10($result, $result2);
 	}
 	insertKeysAndValues($resultInsertArray, $whichMember, $conn);
 
-	//Separates querySetupArray into 2 strings (meta_key & meta_value) suitable for a MySQL query.
+	//Separates querySetupArray.
 	function updateQueries($querySetupArray) {
-			$updateKeysArray = [];
-			$updateValuesArray = [];
+		$updateKeysArray = [];
+		$updateValuesArray = [];
 
-			foreach ($querySetupArray as $value) {
-				array_push($updateKeysArray, $value[0]);
-			}
-			$updateKeysString = implode(", ", $updateKeysArray);
+		foreach ($querySetupArray as $value) {
+			array_push($updateKeysArray, $value[0]);
+		}
 
-			foreach ($querySetupArray as $value) {
-				$wrapEachValueInQuotes = "'" . $value[1] . "'";				
-				array_push($updateValuesArray, $wrapEachValueInQuotes);
-			}
-			$updateValuesString = implode(", ", $updateValuesArray);
-
-			return array($updateKeysArray, $updateValuesArray);
-			cleanup11($updateKeysArray, $updateValuesArray);
+		foreach ($querySetupArray as $value) {
+			array_push($updateValuesArray, $value[1]);
+		}
+		return array($updateKeysArray, $updateValuesArray);
+		//cleanup11($updateKeysArray, $updateValuesArray);
 	}			
 	$resultUpdateArray = updateQueries($querySetupArray[1]);
 
 	//Updates meta_keys, then updates their correspodning values, deletes empty values all from updateQueries().
 	function updateKeysAndValues($resultUpdateArray, $whichMember, $conn) {
-			$combinedUpdateKeysAndValues = array_combine($resultUpdateArray[0], $resultUpdateArray[1]);
-			$comboUpdateKeysAndValues = array_filter($combinedUpdateKeysAndValues, function($a) {
-   			return is_string($a) && trim($a) !== '\'\'';
-			});
-
-			foreach ($comboUpdateKeysAndValues as $key => $value) {
-				$query = "UPDATE metaTest SET meta_value=$value WHERE  meta_key='$key' AND user_id = '$whichMember'";
-				$result = mysqli_query($conn,$query) or die ("<br /><br />Could not execute query (9).");
-			}
-			cleanup12($result, $combinedUpdateKeysAndValues, $comboUpdateKeysAndValues);
+		$combinedUpdateKeysAndValues = array_combine($resultUpdateArray[0], $resultUpdateArray[1]);
+		foreach ($combinedUpdateKeysAndValues as $key => $value) {
+			$escapedString = mysqli_real_escape_string($conn, $value);
+			$query = "UPDATE metaTest SET meta_value = '$escapedString' WHERE meta_key = '$key' AND user_id = '$whichMember'";
+			$result = mysqli_query($conn,$query) or die ("<br /><br />Could not execute query (9).");
+		}
+		header("Location: http://tgcf/memberDetails.php?id=$whichMember");
+		//cleanup12($result, $combinedUpdateKeysAndValues, $comboUpdateKeysAndValues);
 	}
 	updateKeysAndValues($resultUpdateArray, $whichMember, $conn);
 
@@ -316,7 +309,6 @@ function cleanup1($result, $idArray, $scrubbedIdArray, $scrubbedKeyArray, $accep
 		unset($idArray, $scrubbedIdArray, $scrubbedKeyArray, $acceptableKeys);
 	}
  	mysqli_free_result($result);
- 	closeConn();  	
 }
 function cleanup2($result, $result2, $userMetaValues, $userMetaKeys, $combinedKeyValuePairs, $nestedMetaValues, $nestedKeys) {
 	if (isset($result, $result2, $userMetaValues, $userMetaKeys, $combinedKeyValuePairs, $nestedMetaValues, $nestedKeys)) {
@@ -324,27 +316,23 @@ function cleanup2($result, $result2, $userMetaValues, $userMetaKeys, $combinedKe
 	}
  	mysqli_free_result($result);
  	mysqli_free_result($result2);
- 	closeConn();  		
 }
 function cleanup2point1($result, $nestedMetaValues) {
 	if (isset($nestedMetaValues)) {
 		unset($nestedMetaValues);
 	}
  	mysqli_free_result($result);	
- 	closeConn(); 
 }
 function cleanup2point2($result, $nestedKeys, $userMetaKeys, $userMetaValues) {
 	if (isset($nestedKeys, $userMetaKeys, $userMetaValues)) {
 		unset($nestedKeys, $userMetaKeys, $userMetaValues);
 	}
  	mysqli_free_result($result);	
- 	closeConn(); 
 }
 function cleanup2point3($individualMemberData, $combinedArrays) {
 	if (isset($individualMemberData, $combinedArrays)) {
 		unset($individualMemberData, $combinedArrays);
 	}
- 	closeConn(); 
 }
 function cleanup3($result, $result2, $userMetaValues, $userMetaKeys, $nestedKeys, $nestedMetaValues, $combinedArrays) {
 	if (isset($userMetaValues, $userMetaKeys, $nestedKeys, $nestedMetaValues, $combinedArrays)) {
@@ -352,68 +340,57 @@ function cleanup3($result, $result2, $userMetaValues, $userMetaKeys, $nestedKeys
 	}
  	mysqli_free_result($result);
  	mysqli_free_result($result2);
- 	closeConn(); 	
 }
 function cleanup4($submittedFormValues) {
 	if (isset($submittedFormValues)) {
 		unset($submittedFormValues);
 	}
- 	closeConn(); 	
 }
 function cleanup5($combinedKeysAndSubmittedValues) {
 	if (isset($combinedKeysAndSubmittedValues)) {
 		unset($combinedKeysAndSubmittedValues);
 	}
- 	closeConn(); 	
 }
 function cleanup6($existingMetaKeysArray, $result) {
 	if (isset($existingMetaKeysArray)) {
 		unset($existingMetaKeysArray);
 	}
  	mysqli_free_result($result);	
- 	closeConn(); 
 }
 function cleanup7($insertArray, $updateArray) {
 	if (isset($insertArray, $updateArray)) {
 		unset($insertArray, $updateArray);
 	}
- 	closeConn();
 }
 function cleanup8($insertQueryArray, $updateQueryArray) {
 	if (isset($insertQueryArray, $insertQueryArray)) {
 		unset($insertQueryArray, $insertQueryArray);
 	}
- 	closeConn();
 }
 function cleanup9($insertKeysArray, $insertValuesArray) {
 	if (isset($insertKeysArray, $insertValuesArray)) {
 		unset($insertKeysArray, $insertValuesArray);
 	}
- 	closeConn();
 }
 function cleanup10($result, $result2) {
 	if (isset($result, $result2)) {
 		unset($result, $result2);
 	}
- 	closeConn();
 }
 function cleanup11($updateKeysArray, $updateValuesArray) {
 	if (isset($updateKeysArray, $updateValuesArray)) {
 		unset($updateKeysArray, $updateValuesArray);
 	}
- 	closeConn();
 }
 function cleanup12($result, $combinedUpdateKeysAndValues, $comboUpdateKeysAndValues) {
 	if (isset($combinedUpdateKeysAndValues, $comboUpdateKeysAndValues)) {
 		unset($combinedUpdateKeysAndValues, $comboUpdateKeysAndValues);
 	}
  	mysqli_free_result($result);	
- 	closeConn();
 }
-function closeConn() {
-	if (isset($conn)) {
-		mysqli_close($conn);
-	}
+
+if (isset($conn)) {
+	mysqli_close($conn);
 }
 	
 ?>

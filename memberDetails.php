@@ -16,74 +16,70 @@
 				$whichQuery = 'memberDetails';
 				include ('queries.php');
 				include ('editMember.php');			
-				@htmlspecialchars($myEmail = $combineDataArrays[0]['Email']);
-				@htmlspecialchars($myAdditionalEmail = $combineDataArrays[0]['addl_email']);				
-				@htmlspecialchars($myFirst = $combineDataArrays[0]['first_name']);
-				@htmlspecialchars($myMiddle = $combineDataArrays[0]['Middle']);
-				@htmlspecialchars($myLast = $combineDataArrays[0]['last_name']);
-				@htmlspecialchars($mySalutation = $combineDataArrays[0]['nickname']);
-				@htmlspecialchars($myTitle = $combineDataArrays[0]['title']);
-				@htmlspecialchars($myCompany = $combineDataArrays[0]['billing_company']);
-				@htmlspecialchars($myOfficePhone = $combineDataArrays[0]['billing_phone']);
-				@htmlspecialchars($myBillingAddress1 = $combineDataArrays[0]['billing_address_1']);
-				@htmlspecialchars($myBillingAddress2 = $combineDataArrays[0]['billing_address_2']);
-				@htmlspecialchars($myNickName = $combineDataArrays[0]['nickname']);
-				@htmlspecialchars($myCity = $combineDataArrays[0]['billing_city']);
-				@htmlspecialchars($myState = $combineDataArrays[0]['billing_state']);	
-				@htmlspecialchars($myZip = $combineDataArrays[0]['billing_postcode']);
-				@htmlspecialchars($myAss = $combineDataArrays[0]['assistant']);
-				@htmlspecialchars($myAssPhone = $combineDataArrays[0]['assistant_phone']);	
-				@htmlspecialchars($myAssEmail = $combineDataArrays[0]['assistant_email']);
-				@htmlspecialchars($myDeptSize = $combineDataArrays[0]['depart_size']);
-				@htmlspecialchars($myTerritory = $combineDataArrays[0]['Territory']);
-				@htmlspecialchars($myJoinDate = $combineDataArrays[0]['date_i18n']);
-				@htmlspecialchars($myMembersCode = $combineDataArrays[0]['members_code']);
-				@htmlspecialchars($myIndustry = $combineDataArrays[0]['industry']);
-				@htmlspecialchars($myRecruitedBy = $combineDataArrays[0]['recruited_by']);
-				@htmlspecialchars($myMobilePhone = $combineDataArrays[0]['mobile-phone']);
-				@htmlspecialchars($myFax = $combineDataArrays[0]['Fax']);
-				@htmlspecialchars($myHome = $combineDataArrays[0]['Home']);
-				@htmlspecialchars($myRole = $combineDataArrays[0]['role']);
-				@htmlspecialchars($mySource = $combineDataArrays[0]['source']);
-				@htmlspecialchars($myChapter = $combineDataArrays[0]['chapter']);
-				@htmlspecialchars($myGroups = $combineDataArrays[0]['groups']);
-				@htmlspecialchars($myRemarks = $combineDataArrays[0]['remarks']);
+				@$myEscapedEmail = stripslashes(htmlspecialchars($myEmail = $combineDataArrays[0]['Email']));
+				@$myEscapedAdditionalEmail = stripslashes(htmlspecialchars($myAdditionalEmail = $combineDataArrays[0]['addl_email']));				
+				@$myEscapedFirst = stripslashes(htmlspecialchars($myFirst = $combineDataArrays[0]['first_name']));
+				@$myEscapedMiddle = stripslashes(htmlspecialchars($myMiddle = $combineDataArrays[0]['Middle']));
+				@$myEscapedLast = stripslashes(htmlspecialchars($myLast = $combineDataArrays[0]['last_name']));
+				@$myEscapedGender = stripslashes(htmlspecialchars($myGender = $combineDataArrays[0]['gender']));
+				@$myEscapedSalutation = stripslashes(htmlspecialchars($mySalutation = $combineDataArrays[0]['nickname']));
+				@$myEscapedTitle = stripslashes(htmlspecialchars($myTitle = $combineDataArrays[0]['title']));
+				@$myEscapedCompany = stripslashes(htmlspecialchars($myCompany = $combineDataArrays[0]['billing_company']));
+				@$myEscapedOfficePhone = stripslashes(htmlspecialchars($myOfficePhone = $combineDataArrays[0]['billing_phone']));
+				@$myEscapedBillingAddress1 = stripslashes(htmlspecialchars($myBillingAddress1 = $combineDataArrays[0]['billing_address_1']));
+				@$myEscapedBillingAddress2 = stripslashes(htmlspecialchars($myBillingAddress2 = $combineDataArrays[0]['billing_address_2']));
+				@$myEscapedCity = stripslashes(htmlspecialchars($myCity = $combineDataArrays[0]['billing_city']));
+				@$myEscapedState = stripslashes(htmlspecialchars($myState = $combineDataArrays[0]['billing_state']));	
+				@$myEscapedZip = stripslashes(htmlspecialchars($myZip = $combineDataArrays[0]['billing_postcode']));
+				@$myEscapedAss = stripslashes(htmlspecialchars($myAss = $combineDataArrays[0]['assistant']));
+				@$myEscapedAssPhone = stripslashes(htmlspecialchars($myAssPhone = $combineDataArrays[0]['assistant_phone']));	
+				@$myEscapedAssEmail = stripslashes(htmlspecialchars($myAssEmail = $combineDataArrays[0]['assistant_email']));
+				@$myEscapedDeptSize = stripslashes(htmlspecialchars($myDeptSize = $combineDataArrays[0]['depart_size']));
+				@$myEscapedTerritory = stripslashes(htmlspecialchars($myTerritory = $combineDataArrays[0]['Territory']));
+				@$myEscapedJoinDate = stripslashes(htmlspecialchars($myJoinDate = $combineDataArrays[0]['date_i18n']));
+				@$myEscapedMembersCode = stripslashes(htmlspecialchars($myMembersCode = $combineDataArrays[0]['members_code']));
+				@$myEscapedIndustry = stripslashes(htmlspecialchars($myIndustry = $combineDataArrays[0]['industry']));
+				@$myEscapedRecruitedBy = stripslashes(htmlspecialchars($myRecruitedBy = $combineDataArrays[0]['recruited_by']));
+				@$myEscapedMobilePhone = stripslashes(htmlspecialchars($myMobilePhone = $combineDataArrays[0]['moble-phone']));
+				@$myEscapedFax = stripslashes(htmlspecialchars($myFax = $combineDataArrays[0]['Fax']));
+				@$myEscapedHome = stripslashes(htmlspecialchars($myHome = $combineDataArrays[0]['home']));
+				@$myEscapedRole = stripslashes(htmlspecialchars($myRole = $combineDataArrays[0]['role']));
+				@$myEscapedSource = stripslashes(htmlspecialchars($mySource = $combineDataArrays[0]['lead_source']));
+				@$myEscapedChapter = stripslashes(htmlspecialchars($myChapter = $combineDataArrays[0]['chapter']));
+				@$myEscapedGroups = stripslashes(htmlspecialchars($myGroups = $combineDataArrays[0]['groups']));
+				@$myEscapedRemarks = stripslashes(htmlspecialchars($myRemarks = $combineDataArrays[0]['remarks']));
 			echo 
 			"<button type=\"button\" class=\"editButton\" data-toggle=\"modal\" data-target=\"#myModal\">Edit</button>
-			<p class=\"fullName\">Profile for <span class=\"nameBold\">Mr. {$myFirst} {$myMiddle} {$myLast} or \"{$mySalutation}\" </span></p>
+			<p class=\"fullName\">Profile for <span class=\"nameBold\">{$myGender} {$myFirst} {$myMiddle} {$myLast} or \"{$mySalutation}\" </span></p>
 			<hr class=\"searchRule\"/>
 				<div class=\"details\">
 					<div class=\"rowOne cf\">
 						<div class=\"rowOneColOne cf\">
 							<ul class=\"leftListItem\">
-								<li>Preferred Name:</li>
-								<li>{$myNickName}</li>
-							</ul>
-							<ul class=\"leftListItem\">
 								<li>Title:</li>
-								<li>{$myTitle}</li>
+								<li>{$myEscapedTitle}</li>
 							</ul>
 							<ul class=\"leftListItem\">
 								<li>Company:</li>
-								<li>{$myCompany}</li>
+								<li>{$myEscapedCompany}</li>
 							</ul>
+							<ul class=\"leftListItem\">
+								<li>Office:</li>
+								<li>{$myEscapedOfficePhone}</li>
+							</ul>							
 						</div> <!-- rowOneColumnOne -->
 						<div class=\"rowOneColTwo cf\">
 							<ul class=\"rightListItem\">
-								<li>Office:</li>
-								<li>{$myOfficePhone}</li>
-							</ul>
-							<ul class=\"rightListItem\">
 								<li>Cell:</li>
-								<li>{$myMobilePhone}</li>
+								<li>{$myEscapedMobilePhone}</li>
 							</ul>
 							<ul class=\"rightListItem\">
 								<li>Fax:</li>
-								<li>{$myFax}</li>
+								<li>{$myEscapedFax}</li>
 							</ul>
 							<ul class=\"rightListItem\">
 								<li>Home:</li>
-								<li>{$myHome}</li>
+								<li>{$myEscapedHome}</li>
 							</ul>
 						</div> <!-- rowOneColumnTwo -->
 					</div> <!--rowOne -->
@@ -92,29 +88,29 @@
 						<div class=\"rowTwoColOne cf\">
 							<ul class=\"leftListItem\">
 								<li>Address Line 1:</li>
-								<li>{$myBillingAddress1}</li>
+								<li>{$myEscapedBillingAddress1}</li>
 							</ul>
 							<ul class=\"leftListItem\">
 								<li>Address Line 2:</li>
-								<li>{$myBillingAddress2}</li>
+								<li>{$myEscapedBillingAddress2}</li>
 							</ul>
 							<ul class=\"leftListItem\">
-								<li>City, State & Zip</li>
-								<li>{$myCity}, {$myState} {$myZip}</li>
+								<li>City, State &amp; Zip</li>
+								<li>{$myEscapedCity}, {$myEscapedState} {$myEscapedZip}</li>
 							</ul>
 						</div> <!-- rowTwoColumnOne -->
 						<div class=\"rowTwoColTwo cf\">
 							<ul class=\"rightListItem\">
 								<li>Primary Email:</li>
-								<li>{$myEmail}</li>
+								<li>{$myEscapedEmail}</li>
 							</ul>
 								<ul class=\"rightListItem\">
 								<li>Additional Email:</li>
-								<li>{$myAdditionalEmail}</li>
+								<li>{$myEscapedAdditionalEmail}</li>
 							</ul>
 							<ul class=\"rightListItem\">
 								<li>Role:</li>
-								<li>{$myRole}</li>
+								<li>{$myEscapedRole}</li>
 							</ul>
 						</div> <!-- rowTwoColumnTwo -->
 					</div> <!-- rowTwo -->
@@ -123,41 +119,41 @@
 						<div class=\"rowThreeColOne cf\">
 							<ul class=\"leftListItem\">
 								<li>Recruited by:</li>
-								<li>{$myRecruitedBy}</li>
+								<li>{$myEscapedRecruitedBy}</li>
 							</ul>
 							<ul class=\"leftListItem\">
 								<li>Contact Type:</li>
-								<li>{$myMembersCode}</li>
+								<li>{$myEscapedMembersCode}</li>
 							</ul>
 							<ul class=\"leftListItem\">
 								<li>Chapter</li>
-								<li>{$myChapter}</li>
+								<li>{$myEscapedChapter}</li>
 							</ul>
 							<ul class=\"leftListItem\">
 								<li>Territory</li>
-								<li>{$myTerritory}</li>
+								<li>{$myEscapedTerritory}</li>
 							</ul>							
 							<ul class=\"leftListItem\">
 								<li>Source:</li>
-								<li>{$mySource}</li>
+								<li>{$myEscapedSource}</li>
 							</ul>
 						</div> <!-- rowThreeColumnOne -->
 						<div class=\"rowThreeColTwo cf\">
 							<ul class=\"rightListItem\">
 								<li>Join Date:</li>
-								<li>{$myJoinDate}</li>
+								<li>{$myEscapedJoinDate}</li>
 							</ul>
 							<ul class=\"rightListItem\">
 								<li>Groups:</li>
-								<li>{$myGroups}</li>
+								<li>{$myEscapedGroups}</li>
 							</ul>
 							<ul class=\"rightListItem\">
 								<li>Attorneys in Dept:</li>
-								<li>{$myDeptSize}</li>
+								<li>{$myEscapedDeptSize}</li>
 							</ul>
 							<ul class=\"rightListItem\">
 								<li>Industry:</li>
-								<li>{$myIndustry}</li>
+								<li>{$myEscapedIndustry}</li>
 							</ul>
 						</div> <!-- rowThreeColumnTwo -->
 					</div> <!-- rowThree -->
@@ -166,17 +162,17 @@
 						<div class=\"rowFourColOne cf\">
 							<ul class=\"leftListItem\">
 								<li>Assistant:</li>
-								<li>{$myAss}</li>
+								<li>{$myEscapedAss}</li>
 							</ul>
 							<ul class=\"leftListItem\">
 								<li>Assistant Email:</li>
-								<li>{$myAssEmail}</li>
+								<li>{$myEscapedAssEmail}</li>
 							</ul>
 						</div> <!-- rowFourColumnOne -->
 						<div class=\"rowFourColTwo cf\">
 							<ul class=\"rightListItem\">
 								<li>Assistant Office:</li>
-								<li>{$myAssPhone}</li>
+								<li>{$myEscapedAssPhone}</li>
 							</ul>
 						</div> <!-- rowFourColumnTwo -->	
 					</div> <!-- row four -->
@@ -185,7 +181,7 @@
 						<div class=\"rowFiveColOne cf\">
 							<ul class=\"leftListItem\">
 								<li>Notes:</li>
-								<li>{$myRemarks}</li>
+								<li>{$myEscapedRemarks}</li>
 							</ul>
 						</div> <!-- rowFiveColumnOne -->					
 					</div> <!-- row five -->

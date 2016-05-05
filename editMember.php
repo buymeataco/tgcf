@@ -10,45 +10,45 @@
         <?php
           $whichQuery = 'memberDetails';
           $whichMember = $_GET['id'];
-          @htmlspecialchars($myEmail = $combineDataArrays[0]['Email']);
-          @htmlspecialchars($myAdditionalEmail = $combineDataArrays[0]['addl_email']);
-          @htmlspecialchars($myFirst = $combineDataArrays[0]['first_name']);           
-          @htmlspecialchars($myMiddle = $combineDataArrays[0]['Middle']);
-          @htmlspecialchars($myLast = $combineDataArrays[0]['last_name']);
-          @htmlspecialchars($myGender = $combineDataArrays[0]['gender']);
-          @htmlspecialchars($mySalutation = $combineDataArrays[0]['nickname']);      
-          @htmlspecialchars($myTitle = $combineDataArrays[0]['title']);
-          @htmlspecialchars($myCompany = $combineDataArrays[0]['billing_company']);
-          @htmlspecialchars($myOfficePhone = $combineDataArrays[0]['billing_phone']);
-          @htmlspecialchars($myBillingAddress1 = $combineDataArrays[0]['billing_address_1']);
-          @htmlspecialchars($myBillingAddress2 = $combineDataArrays[0]['billing_address_2']);
-          @htmlspecialchars($myCity = $combineDataArrays[0]['billing_city']);
-          @htmlspecialchars($myState = $combineDataArrays[0]['billing_state']);  
-          @htmlspecialchars($myZip = $combineDataArrays[0]['billing_postcode']);
-          @htmlspecialchars($myAss = $combineDataArrays[0]['assistant']);
-          @htmlspecialchars($myAssPhone = $combineDataArrays[0]['assistant_phone']); 
-          @htmlspecialchars($myAssEmail = $combineDataArrays[0]['assistant_email']);
-          @htmlspecialchars($myDeptSize = $combineDataArrays[0]['depart_size']);
-          @htmlspecialchars($myTerritory = $combineDataArrays[0]['Territory']);
-          @htmlspecialchars($myJoinDate = $combineDataArrays[0]['date_i18n']);
-          @htmlspecialchars($myMembersCode = $combineDataArrays[0]['members_code']);
-          @htmlspecialchars($myIndustry = $combineDataArrays[0]['industry']);
-          @htmlspecialchars($myRemarks = $combineDataArrays[0]['remarks']);
-          @htmlspecialchars($myRecruitedBy = $combineDataArrays[0]['recruited_by']);
-          @htmlspecialchars($myMobilePhone = $combineDataArrays[0]['mobile-phone']);
-          @htmlspecialchars($myFax = $combineDataArrays[0]['Fax']);
-          @htmlspecialchars($myHome = $combineDataArrays[0]['Home']);
-          @htmlspecialchars($myRole = $combineDataArrays[0]['role']);
-          @htmlspecialchars($mySource = $combineDataArrays[0]['source']);
-          @htmlspecialchars($myChapter = $combineDataArrays[0]['chapter']);
-          @htmlspecialchars($myGroups = $combineDataArrays[0]['groups']);
-        ?>    
+          @$myEscapedEmail = stripslashes(htmlspecialchars($myEmail = $combineDataArrays[0]['Email']));
+          @$myEscapedAdditionalEmail = stripslashes(htmlspecialchars($myAdditionalEmail = $combineDataArrays[0]['addl_email']));
+          @$myEscapedFirst = stripslashes(htmlspecialchars($myFirst = $combineDataArrays[0]['first_name']));           
+          @$myEscapedMiddle = stripslashes(htmlspecialchars($myMiddle = $combineDataArrays[0]['Middle']));
+          @$myEscapedLast = stripslashes(htmlspecialchars($myLast = $combineDataArrays[0]['last_name']));
+          @$myEscapedGender = stripslashes(htmlspecialchars($myGender = $combineDataArrays[0]['gender']));
+          @$myEscapedSalutation = stripslashes(htmlspecialchars($mySalutation = $combineDataArrays[0]['nickname']));      
+          @$myEscapedTitle = stripslashes(htmlspecialchars($myTitle = $combineDataArrays[0]['title']));
+          @$myEscapedCompany = stripslashes(htmlspecialchars($myCompany = $combineDataArrays[0]['billing_company']));
+          @$myEscapedOfficePhone = stripslashes(htmlspecialchars($myOfficePhone = $combineDataArrays[0]['billing_phone']));
+          @$myEscapedBillingAddress1 = stripslashes(htmlspecialchars($myBillingAddress1 = $combineDataArrays[0]['billing_address_1']));
+          @$myEscapedBillingAddress2 = stripslashes(htmlspecialchars($myBillingAddress2 = $combineDataArrays[0]['billing_address_2']));
+          @$myEscapedCity = stripslashes(htmlspecialchars($myCity = $combineDataArrays[0]['billing_city']));
+          @$myEscapedState = stripslashes(htmlspecialchars($myState = $combineDataArrays[0]['billing_state']));  
+          @$myEscapedZip = stripslashes(htmlspecialchars($myZip = $combineDataArrays[0]['billing_postcode']));
+          @$myEscapedAss = stripslashes(htmlspecialchars($myAss = $combineDataArrays[0]['assistant']));
+          @$myEscapedAssPhone = stripslashes(htmlspecialchars($myAssPhone = $combineDataArrays[0]['assistant_phone'])); 
+          @$myEscapedAssEmail = stripslashes(htmlspecialchars($myAssEmail = $combineDataArrays[0]['assistant_email']));
+          @$myEscapedDeptSize = stripslashes(htmlspecialchars($myDeptSize = $combineDataArrays[0]['depart_size']));
+          @$myEscapedTerritory = stripslashes(htmlspecialchars($myTerritory = $combineDataArrays[0]['Territory']));
+          @$myEscapedJoinDate = stripslashes(htmlspecialchars($myJoinDate = $combineDataArrays[0]['date_i18n']));
+          @$myEscapedMembersCode = stripslashes(htmlspecialchars($myMembersCode = $combineDataArrays[0]['members_code']));
+          @$myEscapedIndustry = stripslashes(htmlspecialchars($myIndustry = $combineDataArrays[0]['industry']));
+          @$myEscapedRemarks = stripslashes(htmlspecialchars($myRemarks = $combineDataArrays[0]['remarks']));
+          @$myEscapedRecruitedBy = stripslashes(htmlspecialchars($myRecruitedBy = $combineDataArrays[0]['recruited_by']));
+          @$myEscapedMobilePhone = stripslashes(htmlspecialchars($myMobilePhone = $combineDataArrays[0]['moble-phone']));
+          @$myEscapedFax = stripslashes(htmlspecialchars($myFax = $combineDataArrays[0]['Fax']));
+          @$myEscapedHome = stripslashes(htmlspecialchars($myHome = $combineDataArrays[0]['home']));
+          @$myEscapedRole = stripslashes(htmlspecialchars($myRole = $combineDataArrays[0]['role']));
+          @$myEscapedSource = stripslashes(htmlspecialchars($mySource = $combineDataArrays[0]['lead_source']));
+          @$myEscapedChapter = stripslashes(htmlspecialchars($myChapter = $combineDataArrays[0]['chapter']));
+          @$myEscapedGroups = stripslashes(htmlspecialchars($myGroups = $combineDataArrays[0]['groups']));
+        ?>
 		<div class="wrapperContainer">
-			<form action="queries.php?query=updateMember&id=<?php echo $whichMember; ?>" method="POST">
+      <form action="queries.php?query=updateMember&id=<?php echo $whichMember; ?>" method="POST">
       <ul class="fullName">
         <li>
           <select name="gender" class="gender" id="gender">
-            <option selected="selected"><?php if ($myGender) {echo $myGender;} else {echo 'Choose One';}  ?></option> 
+            <option selected="selected"><?php if ($myEscapedGender) {echo $myEscapedGender;} else {echo 'Choose One';}  ?></option> 
             <option value="Mr.">Mr.</option>
             <option value="Ms.">Ms.</option>
             <option value="Mrs.">Mrs.</option>
@@ -56,15 +56,15 @@
         </li>       
         <li><label for="firstName">First:</label></li>
         <li>
-          <input id="firstName" class="firstName" value="<?php echo $myFirst; ?>" name="first_name" type="text" size="128" maxlength="256" />
+          <input id="firstName" class="firstName" value="<?php echo $myEscapedFirst; ?>" name="first_name" type="text" size="128" maxlength="256" />
         </li>
         <li><label for="middleName">Middle:</label></li>
         <li>
-          <input id="middleName" class="middleName" value="<?php echo $myMiddle; ?>" name="Middle" type="text" size="128" maxlength="256" />
+          <input id="middleName" class="middleName" value="<?php echo $myEscapedMiddle; ?>" name="Middle" type="text" size="128" maxlength="256" />
         </li>
         <li><label for="lastName">Last:</label></li>
         <li>
-          <input id="lastName" class="lastName" value="<?php echo $myLast; ?>" name="last_name" type="text" size="128" maxlength="256" />
+          <input id="lastName" class="lastName" value="<?php echo $myEscapedLast; ?>" name="last_name" type="text" size="128" maxlength="256" />
         </li>
       </ul>
         <hr class="searchRule"/>
@@ -72,47 +72,47 @@
           <div class="rowOne cf">
             <div class="rowOneColOne cf">
               <ul class="leftListItem">
-                <li><label for="salutation">Salutation:</label></li>
+                <li><label for="salutation">Preferred Name:</label></li>
                 <li>
-                  <input id="salutation" class="salutation" value="<?php echo $mySalutation; ?>" name="nickname" type="text" size="128" maxlength="256" />
+                  <input id="salutation" class="salutation" value="<?php echo $myEscapedSalutation; ?>" name="nickname" type="text" size="128" maxlength="256" />
                 </li>
-              </ul>             
+              </ul>                       
               <ul class="leftListItem">
                 <li><label for="title">Title:</label></li>
                 <li>
-                  <input id="title" class="title" value="<?php echo $myTitle; ?>" name="title" type="text" size="128" maxlength="256" />
+                  <input id="title" class="title" value="<?php echo $myEscapedTitle; ?>" name="title" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
               <ul class="leftListItem">
                 <li><label for="company">Company:</label></li>
                 <li>
-                  <input id="company" class="company" value="<?php echo $myCompany; ?>" name="billing_company" type="text" size="128" maxlength="256" />
+                  <input id="company" class="company" value="<?php echo $myEscapedCompany; ?>" name="billing_company" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
+              <ul class="leftListItem">
+                <li><label for="office">Office:</label></li>
+                <li>
+                  <input id="office" class="office" value="<?php echo $myEscapedOfficePhone; ?>" name="billing_phone" type="text" size="128" maxlength="256" />
+                </li>
+              </ul>               
             </div> <!-- rowOneColumnOne -->
             <div class="rowOneColTwo cf">
               <ul class="rightListItem">
-                <li><label for="office">Office:</label></li>
-                <li>
-                  <input id="office" class="office" value="<?php echo $myOfficePhone; ?>" name="billing_phone" type="text" size="128" maxlength="256" />
-                </li>
-              </ul>
-              <ul class="rightListItem">
                 <li><label for="cell">Cell:</label></li>
                 <li>
-                  <input id="cell" class="cell" value="<?php echo $myMobilePhone; ?>" name="moble-phone" type="text" size="128" maxlength="256" />
+                  <input id="cell" placeholder="(000) 000-0000" class="cell" value="<?php echo $myEscapedMobilePhone; ?>" name="moble-phone" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
               <ul class="rightListItem">
                 <li><label for="fax">Fax:</label></li>
                 <li>
-                  <input id="fax" class="fax" value="<?php echo $myFax; ?>" name="Fax" type="text" size="128" maxlength="256" />
+                  <input id="fax" class="fax" value="<?php echo $myEscapedFax; ?>" name="Fax" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
               <ul class="rightListItem">
                 <li><label for="home">Home:</label></li>
                 <li>
-                  <input id="home" class="home" value="<?php echo $myHome; ?>" name="home" type="text" size="128" maxlength="256" />
+                  <input id="home" placeholder="(000) 000-0000" class="home" value="<?php echo $myEscapedHome; ?>" name="home" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
             </div> <!-- rowOneColumnTwo -->
@@ -123,23 +123,23 @@
               <ul class="leftListItem">
                 <li><label for="address1">Address Line 1:</label></li>
                 <li>
-                  <input id="address1" class="address1" value="<?php echo $myBillingAddress1; ?>" name="billing_address_1" type="text" size="128" maxlength="256" />
+                  <input id="address1" class="address1" value="<?php echo $myEscapedBillingAddress1; ?>" name="billing_address_1" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
               <ul class="leftListItem">
                 <li><label for="address2">Address Line 2:</label></li>
                 <li>
-                  <input id="address2" class="address2" value="<?php echo $myBillingAddress2; ?>" name="billing_address_2" type="text" size="128" maxlength="256" />
+                  <input id="address2" class="address2" value="<?php echo $myEscapedBillingAddress2; ?>" name="billing_address_2" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
               <ul class="leftListItem cityState">
                 <li><label for="city">City &amp; State</label></li>
                 <li>
-                  <input id="city" value="<?php echo $myCity; ?>" name="billing_city" type="text" maxlength="256" />
+                  <input id="city" value="<?php echo $myEscapedCity; ?>" name="billing_city" type="text" maxlength="256" />
                 </li>
                 <li>
                   <select name="billing_state">
-                    <option selected="selected"><?php if ($myState) {echo $myState;} else {echo 'Choose One';} ?></option>
+                    <option selected="selected"><?php if ($myEscapedState) {echo $myEscapedState;} else {echo 'Choose One';} ?></option>
                     <option value="AL">AL</option>
                     <option value="AK">AK</option>
                     <option value="AZ">AZ</option>
@@ -197,7 +197,7 @@
               <ul class="leftListItem">
                 <li><label for="zip">Zip Code:</label></li>
                 <li>
-                  <input id="zip" value="<?php echo $myZip; ?>" name="billing_postcode" type="text" maxlength="5" />
+                  <input id="zip" value="<?php echo $myEscapedZip; ?>" name="billing_postcode" type="text" maxlength="5" />
                 </li>
               </ul>
             </div> <!-- rowTwoColumnOne -->
@@ -205,7 +205,7 @@
               <ul class="rightListItem">
                 <li><label for="primaryEmail">Primary Email:</label></li>
                 <li>
-                  <input id="primaryEmail" class="primaryEmail" value="<?php echo $myEmail; ?>" name="Email" type="text" size="128" maxlength="256" />
+                  <input id="txtEmail" class="primaryEmail" value="<?php echo $myEscapedEmail; ?>" name="Email" type="text" size="128" maxlength="256"/>
                 </li>
               </ul>
               <ul class="rightListItem">
@@ -218,7 +218,7 @@
                 <li><label for="role">Role:</label></li>
                 <li>
                   <select name="role" class="role" id="role">
-                    <option selected="selected"><?php if ($myRole) {echo $myRole;} else {echo 'Choose One';} ?></option>    
+                    <option selected="selected"><?php if ($myEscapedRole) {echo $myEscapedRole;} else {echo 'Choose One';} ?></option>    
                     <option value="Subscriber">Subscriber</option>
                     <option value="Follow-Up Emails Manager">Follow-Up Emails Manager</option>
                     <option value="Shop-Manager">Shop Manager</option>
@@ -238,7 +238,7 @@
               <ul class="rightListItem">
                 <li><label for="recruitedBy">Recruited by:</label></li>
                 <li>
-                  <input id="recruitedBy" class="recruitedBy" value="<?php echo $myRecruitedBy; ?>" name="recruited_by" type="text" size="128" maxlength="256" />
+                  <input id="recruitedBy" class="recruitedBy" value="<?php echo $myEscapedRecruitedBy; ?>" name="recruited_by" type="text" size="128" maxlength="256" />
                 </li>
               </ul>             
             </div> <!-- rowTwoColumnTwo -->
@@ -250,14 +250,14 @@
                 <li><label for="contactType">Contact Type</label></li>
                 <li>
                   <select name="members_code" class="contactType" id="contactType">
-                    <option selected="selected"><?php if ($myMembersCode) {echo $myMembersCode;} else {echo 'Choose One';} ?></option>  
-                    <option value="M1">M1 - Individual Corp.</option>
-                    <option value="M2">M2 - Non-Profit Gov't. Mun</option>
-                    <option value="M3">M3 - Corp. Mentor Sponsor</option>
-                    <option value="M4">M4 - Legal Dept.</option>
-                    <option value="M5">M5 - Corp. Underwriter</option>
-                    <option value="M6">M6 - Displaced GC</option>
-                    <option value="M7">M7 - GC Emeretus</option>
+                    <option selected="selected"><?php if ($myEscapedMembersCode) {echo $myEscapedMembersCode;} else {echo 'Choose One';} ?></option>  
+                    <option value="M1: Individual Corp.">M1: Individual Corp.</option>
+                    <option value="M2: Non-Profit Gov't. Mun">M2: Non-Profit Gov't. Mun</option>
+                    <option value="M3: Corp. Mentor Sponsor">M3: Corp. Mentor Sponsor</option>
+                    <option value="M4: Legal Dept.">M4: Legal Dept.</option>
+                    <option value="M5: Corp. Underwriter">M5: Corp. Underwriter</option>
+                    <option value="M6: Displaced GC">M6: Displaced GC</option>
+                    <option value="M7: GC Emeretus">M7: GC Emeretus</option>
                   </select>
                 </li>
               </ul>
@@ -265,7 +265,7 @@
                 <li><label for="chapter">Chapter:</label></li>
                 <li>  
                   <select name="chapter" class="chapter" id="chapter">
-                    <option selected="selected"><?php if ($myChapter) {echo $myChapter;} else {echo 'Choose One';} ?></option>                      
+                    <option selected="selected"><?php if ($myEscapedChapter) {echo $myEscapedChapter;} else {echo 'Choose One';} ?></option>                      
                     <option value="ASA">Austin-San Antonio</option>
                     <option value="DFW">Dallas-Fort Worth</option>  
                     <option value="HOU">Houston</option>                
@@ -275,7 +275,7 @@
               <ul class="leftListItem">               
                 <li><label for="territory">Territory:</label></li>
                 <li>
-                  <input id="territory" class="territory" value="<?php echo $myTerritory; ?>" name="Territory" type="text" size="128" maxlength="256" />
+                  <input id="territory" class="territory" value="<?php echo $myEscapedTerritory; ?>" name="Territory" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
             </div> <!-- rowThreeColumnOne -->
@@ -283,20 +283,20 @@
               <ul class="rightListItem">
                 <li><label for="joinDate">Join Date:</label></li>
                 <li>
-                  <input id="joinDate" class="joinDate" value="<?php echo $myJoinDate; ?>" name="date_i18n" type="text" size="128" maxlength="256" />
+                  <input id="joinDate" placeholder="00/00/00" class="joinDate" value="<?php echo $myEscapedJoinDate; ?>" name="date_i18n" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
               <ul class="rightListItem">
                 <li><label for="groups">Groups:</label></li>
                 <li>
-                  <input id="groups" class="groups" value="<?php echo $myGroups; ?>" name="groups" type="text" size="128" maxlength="256" />
+                  <input id="groups" class="groups" value="<?php echo $myEscapedGroups; ?>" name="groups" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
               <ul class="rightListItem">
                 <li><label for="source">Source:</label></li>
                 <li>
                   <select name="lead_source" class="source" id="source">
-                    <option selected="selected"><?php if ($mySource) {echo $mySource;} else {echo 'Choose One';} ?></option>                      
+                    <option selected="selected"><?php if ($myEscapedSource) {echo $myEscapedSource;} else {echo 'Choose One';} ?></option>                      
                     <option value="AUS BIZ JOUR">Austin Business Journal</option>
                     <option value="BOD RECRU">BOD Recruitment</option>
                     <option value="CONFERENCE">Joined to attend Conference</option>
@@ -334,13 +334,13 @@
               <ul class="leftListItem">
                 <li><label for="assistant">Assistant:</label></li>
                 <li>
-                  <input id="assistant" class="assistant" value="<?php echo $myAss; ?>" name="assistant" type="text" size="128" maxlength="256" />
+                  <input id="assistant" class="assistant" value="<?php echo $myEscapedAss; ?>" name="assistant" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
               <ul class="leftListItem">
                 <li><label for="assEmail">Assistant Email:</label></li>
                 <li>
-                  <input id="assEmail" class="assEmail" value="<?php echo $myAssEmail; ?>" name="assistant_email" type="text" size="128" maxlength="256" />
+                  <input id="assEmail" class="assEmail" value="<?php echo $myEscapedAssEmail; ?>" name="assistant_email" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
             </div> <!-- rowFourColumnOne -->
@@ -348,7 +348,7 @@
               <ul class="rightListItem">
                 <li><label for="assOffice">Assistant Office:</label></li>
                 <li>
-                  <input id="assOffice" class="assOffice" value="<?php echo $myAssPhone; ?>" name="assistant_phone" type="text" size="128" maxlength="256" />
+                  <input id="assOffice" class="assOffice" value="<?php echo $myEscapedAssPhone; ?>" name="assistant_phone" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
             </div> <!-- rowFourColumnTwo -->  
@@ -360,11 +360,11 @@
                 <li><label for="attorneys">Attorneys in Dept:</label></li>
                 <li>
                   <select name="depart_size" class="attorneys" id="attorneys">
-                    <option selected="selected"><?php if ($myDeptSize) {echo $myDeptSize;} else {echo 'Choose One';} ?></option>                                          
-                    <option value="1">Solo</option>
-                    <option value="2">Small 2-5 Lawyers</option>
-                    <option value="3">Medium 6-9 Lawyers</option>
-                    <option value="4">Large 11 or more Lawyers</option>
+                    <option selected="selected"><?php if ($myEscapedDeptSize) {echo $myEscapedDeptSize;} else {echo 'Choose One';} ?></option>                                          
+                    <option value="Solo">Solo</option>
+                    <option value="Small: 2-5 Lawyers">Small: 2-5 Lawyers</option>
+                    <option value="Medium: 6-9 Lawyers">Medium: 6-9 Lawyers</option>
+                    <option value="Large: 11 or more Lawyers">Large: 11 or more Lawyers</option>
                   </select>
                 </li>
               </ul>
@@ -372,7 +372,7 @@
                 <li class="industryLabel"><label for="industry">Industry:</label></li>
                 <li>
                   <select name="industry" class="industry" id="industry">
-                      <option selected="selected"><?php if ($myIndustry) {echo $myIndustry;} else {echo 'Choose One';} ?></option>                                                                              
+                      <option selected="selected"><?php if ($myEscapedIndustry) {echo $myEscapedIndustry;} else {echo 'Choose One';} ?></option>                                                                              
                     <option value="Agriculture &amp; Forestry Sector">Agriculture &amp; Forestry Sector</option>
                     <option value="Arts Entertainment &amp; Recreation Sector">Arts Entertainment &amp; Recreation Sector</option>
                     <option value="Beverage Manufacturing">Beverage Manufacturing</option>
@@ -451,7 +451,7 @@
             <div class="rowSixColOne cf">
               <ul class="leftListItem">
                 <li><label for="notes">Notes:</label></li>
-                <li><textarea name="remarks" id="notes" cols="86" rows="12"><?php echo $myRemarks; ?></textarea></li>
+                <li><textarea name="remarks" id="notes" cols="86" rows="12"><?php echo $myEscapedRemarks; ?></textarea></li>
               </ul>
             </div>  <!-- rowSixColumnOne -->
           </div> <!-- row six -->
@@ -463,8 +463,6 @@
 		<!-- end HTML template -->
       </div> <!-- end modal-body -->
       <div class="modal-footer">
-<!--       	<button type="button" class="saveButton">Save</button>
-        <button type="button" class="cancelButton" data-dismiss="modal">Close</button> -->
       </div>
     </div>
   </div>

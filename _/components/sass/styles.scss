@@ -29,7 +29,7 @@ p.error {
 	border-top: 0px;
 }
 .wrapperContainer {
-	width: 960px;
+	width: 870px;
 	margin: 0 auto;
 	padding-top: .5em;
 }
@@ -92,9 +92,10 @@ li.listResultEmployer,
 	font-weight: 500;
 	font-size: .8em;
 	display: inline;
-	width: 300px;
+	width: 235px;
 	float: left;
 	padding-top: 3px;
+	margin-right: 35px;
 }
 hr.searchRuleIndexPage, .memberDetailsPage {
 	border: 0;
@@ -130,12 +131,12 @@ span.nameBold {
 }
 .rowOneColOne, .rowTwoColOne, .rowThreeColOne,
 .rowFourColOne, .rowFiveColOne {
-	width: 465px;
+	width: 435px;
 	float: left;
 }
 .rowOneColTwo, .rowTwoColTwo, .rowThreeColTwo,
 .rowFourColTwo, .rowFiveColTwo {
-	width: 465px;
+	width: 435px;
 	float: left;
 }
 ul.rightListItem li, ul.leftListItem li {
@@ -296,7 +297,7 @@ input[name=Middle] {
 	margin-bottom: .75em;
 	margin-right: .5em;	
 	height: 1.8em;
-	width: 14.1em;
+	width: 15.4em;
 	background-color: #fff;
 	color: #696969;
 	border: 1px solid #e6e6e6;

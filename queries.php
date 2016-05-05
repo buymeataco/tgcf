@@ -27,7 +27,6 @@ function getUserID($smartSearchParameter, $conn) {
 		}	
 	}
 	return array($scrubbedIdArray, $acceptableKeys);
-cleanup1($result, $idArray, $scrubbedIdArray, $scrubbedKeyArray, $acceptableKeys);
 }
 $userID = getUserID($smartSearchParameter, $conn);
 
@@ -76,7 +75,6 @@ function getMemberDetails($scrubbedIdArray, $acceptableKeys, $conn) {
 		}
 	}
 	return array(@$combinedKeyValuePairs, $scrubbedIdArray);
-	cleanup2($result, $result2, $userMetaValues, $userMetaKeys, $combinedKeyValuePairs, $nestedMetaValues, $nestedKeys);
 }
 $memberDetails = getMemberDetails($userID[0], $userID[1], $conn);
 
@@ -106,7 +104,6 @@ function nestedMetaValues($lookupUserId, $conn) {
 			array_push($nestedMetaValues, addslashes($row[0]));
 	}
 	return $nestedMetaValues;
-	cleanup2point1($result, $nestedMetaValues);
 }
 $nestedMetaValues = nestedMetaValues($lookupUserId, $conn);
 
@@ -132,7 +129,6 @@ function getUserKeys($nestedMetaValues, $conn, $lookupUserId) {
 	array_push($userMetaKeys, $nestedKeys);
 	array_push($userMetaValues, $nestedMetaValues);
 	return array($userMetaKeys, $userMetaValues);
-	cleanup2point2($result, $nestedKeys, $userMetaKeys, $userMetaValues);
 }
 $getUserKeysAndValues = getUserKeys($nestedMetaValues, $conn, $lookupUserId);
 
@@ -148,8 +144,7 @@ function combineDataArrays($userMetaKeys, $userMetaValues) {
 				} 
 			$i++;	
 		}
-	return $individualMemberData;
-	cleanup2point3($individualMemberData, $combinedArrays);
+		return $individualMemberData;
 }
 $combineDataArrays = combineDataArrays($getUserKeysAndValues[0], $getUserKeysAndValues[1]);
 
@@ -158,7 +153,7 @@ case 'updateMember':
 $whichMember = $_GET['id'];
 
 //predefined application meta keys
-$applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nickname', 'title', 'billing_company', 'billing_phone', 'moble-phone', 'Fax', 'home', 'billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode', 'Email', 'addl_email', 'role', 'recruited_by', 'members_code', 'chapter', 'Territory', 'date_i18n', 'groups', 'lead_source', 'assistant', 'assistant_email', 'assistant_phone', 'depart_size', 'industry', 'remarks');
+$applicationMetaKeys = array('gender','first_name', 'Middle', 'last_name', 'nickname', 'title', 'billing_company', 'billing_phone', 'moble-phone', 'Fax', 'home', 'billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode', 'Email', 'addl_email', 'role', 'recruited_by', 'members_code', 'chapter', 'Territory', 'date_i18n', 'groups', 'depart_size', 'lead_source', 'assistant', 'assistant_email', 'assistant_phone', 'industry', 'remarks');
 
 	//Returns an array of user submitted form values.
 	function userSubmittedFormValues() {
@@ -169,7 +164,6 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 			}			
 		}
 		return $submittedFormValues;
-		cleanup4($submittedFormValues);
 	}
 	$userFormValues = userSubmittedFormValues();
 
@@ -177,7 +171,6 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 	function combineFormValuesWithAppKeys($applicationMetaKeys, $userFormValues) {
 		@$combinedKeysAndSubmittedValues = array_combine($applicationMetaKeys, $userFormValues);
 		return $combinedKeysAndSubmittedValues;	
-		cleanup5($combinedKeysAndSubmittedValues);
 	}
 	$alphaFormArray = combineFormValuesWithAppKeys($applicationMetaKeys, $userFormValues);
 
@@ -191,7 +184,6 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 					array_push($existingMetaKeysArray, $row[0]);
 			}
 			return $existingMetaKeysArray;
-			cleanup6($existingMetaKeysArray, $result);
 	}
 	$existingMetaKeys = getExistingMetaKeys($whichMember, $conn);
 
@@ -206,9 +198,7 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 				array_push($insertArray, $value);
 			}
 		}
-		//$referenceQueryArray = [$insertArray, $updateArray];		
 		return array($insertArray, $updateArray);
-		cleanup7($insertArray, $updateArray);
 	}
 	$queryArrays = (decideWhichQuery($existingMetaKeys, $applicationMetaKeys));
 
@@ -217,6 +207,7 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 
 	//Generates insert vs. update query arrays.
 	function setupEachQueryArray($queryArrays, $alphaFormArray) {
+
 			$insertQueryArray = [];
 			$updateQueryArray = [];
 			foreach ($queryArrays[0] as $value) {
@@ -231,26 +222,23 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 					array_push($updateQueryArray, explode(".: ",  $pocketTemp2));
 				}
 			}
-
 			return array($insertQueryArray, $updateQueryArray);
-			cleanup8($insertQueryArray, $updateQueryArray);
 	}
 	$querySetupArray = setupEachQueryArray($queryArrays, $alphaFormArray);
 
 	//Separates querySetupArray into 2 strings (meta_key & meta_value) suitable for a MySQL query.
 	function insertQueries($querySetupArray) {
-			$insertKeysArray = [];
-			$insertValuesArray = [];
+		$insertKeysArray = [];
+		$insertValuesArray = [];
 
-			foreach ($querySetupArray as $value) {
-				array_push($insertKeysArray, $value[0]);
-			}
+		foreach ($querySetupArray as $value) {
+			array_push($insertKeysArray, $value[0]);
+		}
 
-			foreach ($querySetupArray as $value) {
-				array_push($insertValuesArray, $value[1]);
-			}
-			return array($insertKeysArray, $insertValuesArray);
-			cleanup9($insertKeysArray, $insertValuesArray);
+		foreach ($querySetupArray as $value) {
+			array_push($insertValuesArray, $value[1]);
+		}
+		return array($insertKeysArray, $insertValuesArray);
 	}			
 	$resultInsertArray = insertQueries($querySetupArray[0]);
 
@@ -265,7 +253,6 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 			$result2 = mysqli_query($conn,$query2) or die ("<br /><br />Could not execute query (8).");	
 			$i++;			
 		}
-		//cleanup10($result, $result2);
 	}
 	insertKeysAndValues($resultInsertArray, $whichMember, $conn);
 
@@ -282,20 +269,20 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 			array_push($updateValuesArray, $value[1]);
 		}
 		return array($updateKeysArray, $updateValuesArray);
-		//cleanup11($updateKeysArray, $updateValuesArray);
 	}			
 	$resultUpdateArray = updateQueries($querySetupArray[1]);
 
-	//Updates meta_keys, then updates their correspodning values, deletes empty values all from updateQueries().
+	//Updates meta_keys, then updates their correspodning values from resultUpdateArray().
 	function updateKeysAndValues($resultUpdateArray, $whichMember, $conn) {
 		$combinedUpdateKeysAndValues = array_combine($resultUpdateArray[0], $resultUpdateArray[1]);
+
 		foreach ($combinedUpdateKeysAndValues as $key => $value) {
 			$escapedString = mysqli_real_escape_string($conn, $value);
+
 			$query = "UPDATE metaTest SET meta_value = '$escapedString' WHERE meta_key = '$key' AND user_id = '$whichMember'";
 			$result = mysqli_query($conn,$query) or die ("<br /><br />Could not execute query (9).");
 		}
 		header("Location: http://tgcf/memberDetails.php?id=$whichMember");
-		//cleanup12($result, $combinedUpdateKeysAndValues, $comboUpdateKeysAndValues);
 	}
 	updateKeysAndValues($resultUpdateArray, $whichMember, $conn);
 
@@ -304,93 +291,12 @@ $applicationMetaKeys = array('gender', 'first_name', 'Middle', 'last_name', 'nic
 break;
 } //end case switch
 
-function cleanup1($result, $idArray, $scrubbedIdArray, $scrubbedKeyArray, $acceptableKeys) {
-	if (isset($idArray, $scrubbedIdArray, $scrubbedKeyArray, $acceptableKeys)) {
-		unset($idArray, $scrubbedIdArray, $scrubbedKeyArray, $acceptableKeys);
-	}
- 	mysqli_free_result($result);
-}
-function cleanup2($result, $result2, $userMetaValues, $userMetaKeys, $combinedKeyValuePairs, $nestedMetaValues, $nestedKeys) {
-	if (isset($result, $result2, $userMetaValues, $userMetaKeys, $combinedKeyValuePairs, $nestedMetaValues, $nestedKeys)) {
-		unset($result, $result2, $userMetaValues, $userMetaKeys, $combinedKeyValuePairs, $nestedMetaValues, $nestedKeys);
-	}
- 	mysqli_free_result($result);
- 	mysqli_free_result($result2);
-}
-function cleanup2point1($result, $nestedMetaValues) {
-	if (isset($nestedMetaValues)) {
-		unset($nestedMetaValues);
-	}
- 	mysqli_free_result($result);	
-}
-function cleanup2point2($result, $nestedKeys, $userMetaKeys, $userMetaValues) {
-	if (isset($nestedKeys, $userMetaKeys, $userMetaValues)) {
-		unset($nestedKeys, $userMetaKeys, $userMetaValues);
-	}
- 	mysqli_free_result($result);	
-}
-function cleanup2point3($individualMemberData, $combinedArrays) {
-	if (isset($individualMemberData, $combinedArrays)) {
-		unset($individualMemberData, $combinedArrays);
-	}
-}
-function cleanup3($result, $result2, $userMetaValues, $userMetaKeys, $nestedKeys, $nestedMetaValues, $combinedArrays) {
-	if (isset($userMetaValues, $userMetaKeys, $nestedKeys, $nestedMetaValues, $combinedArrays)) {
-		unset($userMetaValues, $userMetaKeys, $nestedKeys, $nestedMetaValues, $combinedArrays);
-	}
- 	mysqli_free_result($result);
- 	mysqli_free_result($result2);
-}
-function cleanup4($submittedFormValues) {
-	if (isset($submittedFormValues)) {
-		unset($submittedFormValues);
-	}
-}
-function cleanup5($combinedKeysAndSubmittedValues) {
-	if (isset($combinedKeysAndSubmittedValues)) {
-		unset($combinedKeysAndSubmittedValues);
-	}
-}
-function cleanup6($existingMetaKeysArray, $result) {
-	if (isset($existingMetaKeysArray)) {
-		unset($existingMetaKeysArray);
-	}
- 	mysqli_free_result($result);	
-}
-function cleanup7($insertArray, $updateArray) {
-	if (isset($insertArray, $updateArray)) {
-		unset($insertArray, $updateArray);
-	}
-}
-function cleanup8($insertQueryArray, $updateQueryArray) {
-	if (isset($insertQueryArray, $insertQueryArray)) {
-		unset($insertQueryArray, $insertQueryArray);
-	}
-}
-function cleanup9($insertKeysArray, $insertValuesArray) {
-	if (isset($insertKeysArray, $insertValuesArray)) {
-		unset($insertKeysArray, $insertValuesArray);
-	}
-}
-function cleanup10($result, $result2) {
-	if (isset($result, $result2)) {
-		unset($result, $result2);
-	}
-}
-function cleanup11($updateKeysArray, $updateValuesArray) {
-	if (isset($updateKeysArray, $updateValuesArray)) {
-		unset($updateKeysArray, $updateValuesArray);
-	}
-}
-function cleanup12($result, $combinedUpdateKeysAndValues, $comboUpdateKeysAndValues) {
-	if (isset($combinedUpdateKeysAndValues, $comboUpdateKeysAndValues)) {
-		unset($combinedUpdateKeysAndValues, $comboUpdateKeysAndValues);
-	}
- 	mysqli_free_result($result);	
+if (isset($idArray, $scrubbedIdArray, $scrubbedKeyArray, $acceptableKeys, $userMetaValues, $userMetaKeys, $combinedKeyValuePairs, $nestedMetaValues, $nestedKeys, $individualMemberData, $combinedArrays, $submittedFormValues, $combinedKeysAndSubmittedValues, $existingMetaKeysArray, $insertArray, $updateArray, $insertQueryArray, $updateQueryArray, $insertKeysArray, $insertValuesArray, $updateKeysArray, $updateValuesArray, $combinedUpdateKeysAndValues, $comboUpdateKeysAndValues)) {
+		unset($idArray, $scrubbedIdArray, $scrubbedKeyArray, $acceptableKeys, $userMetaValues, $userMetaKeys, $combinedKeyValuePairs, $nestedMetaValues, $nestedKeys, $individualMemberData, $combinedArrays, $submittedFormValues, $combinedKeysAndSubmittedValues, $existingMetaKeysArray, $insertArray, $updateArray, $insertQueryArray, $updateQueryArray, $insertKeysArray, $insertValuesArray, $updateKeysArray, $updateValuesArray, $combinedUpdateKeysAndValues, $comboUpdateKeysAndValues);
 }
 
-if (isset($conn)) {
-	mysqli_close($conn);
-}
-	
+if (isset($result)) {mysqli_free_result($result);}
+if (isset($result2)) {mysqli_free_result($result);}	
+if (isset($conn)) {mysqli_close($conn);}
+
 ?>

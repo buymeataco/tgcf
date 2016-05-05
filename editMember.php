@@ -44,7 +44,7 @@
           @$myEscapedGroups = stripslashes(htmlspecialchars($myGroups = $combineDataArrays[0]['groups']));
         ?>
 		<div class="wrapperContainer">
-      <form action="queries.php?query=updateMember&id=<?php echo $whichMember; ?>" method="POST">
+      <form action="queries.php?query=updateMember&id=<?php echo $whichMember; ?>" method="POST" name="form1">
       <ul class="fullName">
         <li>
           <select name="gender" class="gender" id="gender">
@@ -205,7 +205,7 @@
               <ul class="rightListItem">
                 <li><label for="primaryEmail">Primary Email:</label></li>
                 <li>
-                  <input id="txtEmail" class="primaryEmail" value="<?php echo $myEscapedEmail; ?>" name="Email" type="text" size="128" maxlength="256"/>
+                  <input id="txtEmail" class="primaryEmail" value="<?php echo $myEscapedEmail; ?>" name="Email" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
               <ul class="rightListItem">
@@ -231,21 +231,21 @@
                     <option value="Author">Author</option>
                     <option value="Editor">Editor</option>
                     <option value="Administrator">Administrator</option>
-                    <option value="No-role-for-this-site">No role for this site</option>
+                    <option value="No role for this site.">No role for this site.</option>
                   </select>
                 </li>
-              </ul>
-              <ul class="rightListItem">
-                <li><label for="recruitedBy">Recruited by:</label></li>
-                <li>
-                  <input id="recruitedBy" class="recruitedBy" value="<?php echo $myEscapedRecruitedBy; ?>" name="recruited_by" type="text" size="128" maxlength="256" />
-                </li>
-              </ul>             
+              </ul>            
             </div> <!-- rowTwoColumnTwo -->
           </div> <!-- rowTwo -->
         <hr class="rowRule"/>
           <div class="rowThree cf">
             <div class="rowThreeColOne cf">
+              <ul class="leftListItem">
+                <li><label for="recruitedBy">Recruited by:</label></li>
+                <li>
+                  <input id="recruitedBy" class="recruitedBy" value="<?php echo $myEscapedRecruitedBy; ?>" name="recruited_by" type="text" size="128" maxlength="256" />
+                </li>
+              </ul>               
               <ul class="leftListItem">
                 <li><label for="contactType">Contact Type</label></li>
                 <li>
@@ -292,6 +292,18 @@
                   <input id="groups" class="groups" value="<?php echo $myEscapedGroups; ?>" name="groups" type="text" size="128" maxlength="256" />
                 </li>
               </ul>
+              <ul class="rightListItem">
+                <li><label for="attorneys">Attorneys in Dept:</label></li>
+                <li>
+                  <select name="depart_size" class="attorneys" id="attorneys">
+                    <option selected="selected"><?php if ($myEscapedDeptSize) {echo $myEscapedDeptSize;} else {echo 'Choose One';} ?></option>                                          
+                    <option value="Solo">Solo</option>
+                    <option value="Small: 2-5 Lawyers">Small: 2-5 Lawyers</option>
+                    <option value="Medium: 6-9 Lawyers">Medium: 6-9 Lawyers</option>
+                    <option value="Large: 11 or more Lawyers">Large: 11 or more Lawyers</option>
+                  </select>
+                </li>
+              </ul>              
               <ul class="rightListItem">
                 <li><label for="source">Source:</label></li>
                 <li>
@@ -357,18 +369,6 @@
           <div class="rowFive cf">
             <div class="rowFiveColOne cf">
               <ul class="leftListItem">
-                <li><label for="attorneys">Attorneys in Dept:</label></li>
-                <li>
-                  <select name="depart_size" class="attorneys" id="attorneys">
-                    <option selected="selected"><?php if ($myEscapedDeptSize) {echo $myEscapedDeptSize;} else {echo 'Choose One';} ?></option>                                          
-                    <option value="Solo">Solo</option>
-                    <option value="Small: 2-5 Lawyers">Small: 2-5 Lawyers</option>
-                    <option value="Medium: 6-9 Lawyers">Medium: 6-9 Lawyers</option>
-                    <option value="Large: 11 or more Lawyers">Large: 11 or more Lawyers</option>
-                  </select>
-                </li>
-              </ul>
-              <ul class="leftListItem">
                 <li class="industryLabel"><label for="industry">Industry:</label></li>
                 <li>
                   <select name="industry" class="industry" id="industry">
@@ -387,7 +387,6 @@
                     <option value="Consumer Products Manufacturing">Consumer Products Manufacturing</option>
                     <option value="Consumer Services">Consumer Services</option>
                     <option value="Contract Electronics Manufacturing">Contract Electronics Manufacturing</option>
-                    <option value="Control Electromedical Measuring &amp; Navigational Instruments Manufacturing">Control Electromedical Measuring &amp; Navigational Instruments Manufacturing</option>
                     <option value="Education Sector">Education Sector</option>
                     <option value="Electric Power Generation">Electric Power Generation</option>
                     <option value="Electric Utilities">Electric Utilities</option>
@@ -451,7 +450,7 @@
             <div class="rowSixColOne cf">
               <ul class="leftListItem">
                 <li><label for="notes">Notes:</label></li>
-                <li><textarea name="remarks" id="notes" cols="86" rows="12"><?php echo $myEscapedRemarks; ?></textarea></li>
+                <li><textarea name="remarks" id="notes" cols="86" rows="6"><?php echo $myEscapedRemarks; ?></textarea></li>
               </ul>
             </div>  <!-- rowSixColumnOne -->
           </div> <!-- row six -->

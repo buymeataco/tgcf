@@ -11,74 +11,58 @@ $smartSearchParameter = $_POST['smartSearch'];
 
 //Get user ID.
 function getUserID($smartSearchParameter, $conn) {
-	$query = "SELECT user_id FROM metaTest WHERE meta_value LIKE '%$smartSearchParameter%'";
+	$query = "SELECT user_id FROM wp_uqzn_usermeta WHERE meta_value LIKE '%$smartSearchParameter%'";
 	$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (1).");
 	$idArray = [];
-	$scrubbedIdArray = [];
-	$scrubbedKeyArray = [];
-	$acceptableKeys = ['first_name', 'Middle', 'last_name', 'billing_company', 'title'];
+	$uniqueIDArray = [];
+	//$scrubbedKeyArray = [];
+
 	while ($row = mysqli_fetch_array($result)) {
 		extract ($row);
 		array_push($idArray, $user_id);
 	}
-	foreach ($idArray as $checkValue) {
-		if (!in_array($checkValue, $scrubbedIdArray)) {
-			array_push($scrubbedIdArray, $checkValue);
+
+	foreach ($idArray as $value) {
+		if (!in_array($value, $uniqueIDArray)) {
+			array_push($uniqueIDArray, $value);
 		}	
-	}
-	return array($scrubbedIdArray, $acceptableKeys);
+	}	
+	return array($uniqueIDArray);
 }
-$userID = getUserID($smartSearchParameter, $conn);
+$uniqueUserIDs = getUserID($smartSearchParameter, $conn);
 
 //Get all associated info and meta_keys for matching user ID. Combines separate arrays & deletes empty pockets.			
-function getMemberDetails($scrubbedIdArray, $acceptableKeys, $conn) {
-	if (!empty($scrubbedIdArray)) {
+function getMemberDetails($uniqueUserIDs, $conn) {
 
-		$userMetaValues = [];
-		$userMetaKeys = [];
-		$nestedMetaValues = [];
-		$nestedKeys = [];	
-		$combinedKeyValuePairs = [];
+	if (empty($uniqueUserIDs)) {
+		return;
+	}
 
-		foreach ($scrubbedIdArray as $value) {
-			$query = "SELECT meta_value FROM metaTest WHERE meta_key IN ('first_name','Middle','last_name','billing_company','title') AND user_id = '$value'";
-			$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (2).");	
-			while ($row = mysqli_fetch_array($result)) {
-				extract ($row);
-					array_push($nestedMetaValues, $row[0]);
-			}
-		}
+	$acceptableKeys = ['first_name', 'Middle', 'last_name', 'billing_company', 'title'];
 
-		foreach ($nestedMetaValues as $value2) {
-			$query2 = "SELECT meta_key FROM metaTest WHERE user_id = '$value' AND meta_value = '$value2'";
-			$result2 = mysqli_query($conn,$query2) or die ("<p class=\"resultCountIndexPage\">Your search returned no results (3).</p>");
-				while ($row2 = mysqli_fetch_array($result2)) {
-					extract($row2);
-							if (in_array($row2[0], $acceptableKeys)) {
-									array_push($nestedKeys, $row2[0]);
-							}	
+	function getSearchMetaValues($uniqueUserIDs, $conn) {
+	$searchMetaValues = [];
+		foreach ($uniqueUserIDs as $value) {
+			$query = "SELECT meta_value FROM wp_uqzn_usermeta WHERE meta_key IN ('first_name', 'Middle', 'last_name', 'billing_company', 'title') AND user_id = '$value'";	
+			$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (2).");
+				while ($row = mysqli_fetch_array($result)) {
+					extract($row);
+					array_push($searchMetaValues, $row[0]);
 				}
 		}
-
-	array_push($userMetaKeys, $nestedKeys);
-	array_push($userMetaValues, $nestedMetaValues);	
-
-	$lengthOfArray = count((array_keys($userMetaKeys)), COUNT_RECURSIVE);
-	$i=0;
-
-		while ($lengthOfArray > $i) {
-				@$combinedArrays = array_combine($userMetaKeys[$i], $userMetaValues[$i]);
-					if (!empty($combinedArrays)) {
-						array_push($combinedKeyValuePairs, $combinedArrays);
-					}
-			$i++;	
-		}
+	return $searchMetaValues;	
 	}
-	return array(@$combinedKeyValuePairs, $scrubbedIdArray);
-}
-$memberDetails = getMemberDetails($userID[0], $userID[1], $conn);
+	$searchMetaValuesArray = getSearchMetaValues($uniqueUserIDs[0], $conn);
 
-displaySearchResults($memberDetails[0], $memberDetails[1]);
+		echo "<pre>";
+			print_r($searchMetaValuesArray);
+		echo "</pre>";
+}	
+$memberDetails = getMemberDetails($uniqueUserIDs, $conn);
+
+
+
+//displaySearchResults($memberDetails[0], $memberDetails[1]);
 
 break;
 case 'memberDetails':
@@ -97,7 +81,7 @@ checkLookupID($lookupUserId);
 //Returns meta_values in a nested array.
 function nestedMetaValues($lookupUserId, $conn) {	
 	$nestedMetaValues = [];
-	$query = "SELECT meta_value FROM metaTest WHERE meta_key IN ('gender','first_name', 'Middle', 'last_name', 'nickname', 'title', 'billing_company', 'billing_phone', 'moble-phone', 'Fax', 'home', 'billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode', 'Email', 'addl_email', 'role', 'recruited_by', 'members_code', 'chapter', 'Territory', 'date_i18n', 'groups', 'lead_source', 'assistant', 'assistant_email', 'assistant_phone', 'depart_size', 'industry', 'remarks') AND user_id = '$lookupUserId'";
+	$query = "SELECT meta_value FROM wp_uqzn_usermeta WHERE meta_key IN ('myGender','first_name', 'Middle', 'last_name', 'nickname', 'title', 'billing_company', 'billing_phone', 'moble-phone', 'Fax', 'home', 'billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode', 'Email', 'addl_email', 'role', 'recruited_by', 'members_code', 'chapter', 'Territory', 'date_i18n', 'groups', 'lead_source', 'assistant', 'assistant_email', 'assistant_phone', 'depart_size', 'industry', 'remarks') AND user_id = '$lookupUserId'";
 	$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (2).");	
 	while ($row = mysqli_fetch_array($result)) {
 		extract ($row);
@@ -114,7 +98,7 @@ function getUserKeys($nestedMetaValues, $conn, $lookupUserId) {
 	$userMetaValues = [];	
 	foreach ($nestedMetaValues as $value) {
 		$i=0;
-		$query = "SELECT meta_key FROM metaTest WHERE user_id = '$lookupUserId' AND meta_value = '$value'";
+		$query = "SELECT meta_key FROM wp_uqzn_usermeta WHERE user_id = '$lookupUserId' AND meta_value = '$value'";
 		$result = mysqli_query($conn,$query) or die ("<p class=\"resultCountIndexPage\">Your search returned 0 result(s) (5).</p>");
 			while ($row = mysqli_fetch_array($result)) {
 				extract($row);
@@ -153,7 +137,7 @@ case 'updateMember':
 $whichMember = $_GET['id'];
 
 //predefined application meta keys
-$applicationMetaKeys = array('gender','first_name', 'Middle', 'last_name', 'nickname', 'title', 'billing_company', 'billing_phone', 'moble-phone', 'Fax', 'home', 'billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode', 'Email', 'addl_email', 'role', 'recruited_by', 'members_code', 'chapter', 'Territory', 'date_i18n', 'groups', 'depart_size', 'lead_source', 'assistant', 'assistant_email', 'assistant_phone', 'industry', 'remarks');
+$applicationMetaKeys = array('myGender','first_name', 'Middle', 'last_name', 'nickname', 'title', 'billing_company', 'billing_phone', 'moble-phone', 'Fax', 'home', 'billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode', 'Email', 'addl_email', 'role', 'recruited_by', 'members_code', 'chapter', 'Territory', 'date_i18n', 'groups', 'depart_size', 'lead_source', 'assistant', 'assistant_email', 'assistant_phone', 'industry', 'remarks');
 
 	//Returns an array of user submitted form values.
 	function userSubmittedFormValues() {
@@ -177,7 +161,7 @@ $applicationMetaKeys = array('gender','first_name', 'Middle', 'last_name', 'nick
 	//Pulls all existing meta_keys from the specified user.
 	function getExistingMetaKeys($whichMember, $conn) {
 		$existingMetaKeysArray = [];
-		$query = "SELECT DISTINCT meta_key FROM metaTest WHERE user_id = '$whichMember'";
+		$query = "SELECT DISTINCT meta_key FROM wp_uqzn_usermeta WHERE user_id = '$whichMember'";
 		$result = mysqli_query($conn,$query) or die ("<p class=\"resultCountIndexPage\">Your search returned 0 result(s) (6).</p>");
 			while ($row = mysqli_fetch_array($result)) {
 				extract($row);			
@@ -246,10 +230,10 @@ $applicationMetaKeys = array('gender','first_name', 'Middle', 'last_name', 'nick
 	function insertKeysAndValues($resultInsertArray, $whichMember, $conn) {
 		$i=0;
 		foreach ($resultInsertArray[0] as $value[0]) {
-			$query1 = "INSERT INTO metaTest (meta_key, user_id) VALUES ('$value[0]', '$whichMember')";
+			$query1 = "INSERT INTO wp_uqzn_usermeta (meta_key, user_id) VALUES ('$value[0]', '$whichMember')";
 			$result = mysqli_query($conn,$query1) or die ("<br /><br />Could not execute query (7).");
 			$conCatVar = $resultInsertArray[1]["$i"];
-			$query2 = "UPDATE metaTest SET meta_value='$conCatVar' WHERE meta_key='$value[0]' AND user_id = '$whichMember'";
+			$query2 = "UPDATE wp_uqzn_usermeta SET meta_value='$conCatVar' WHERE meta_key='$value[0]' AND user_id = '$whichMember'";
 			$result2 = mysqli_query($conn,$query2) or die ("<br /><br />Could not execute query (8).");	
 			$i++;			
 		}
@@ -279,7 +263,7 @@ $applicationMetaKeys = array('gender','first_name', 'Middle', 'last_name', 'nick
 		foreach ($combinedUpdateKeysAndValues as $key => $value) {
 			$escapedString = mysqli_real_escape_string($conn, $value);
 
-			$query = "UPDATE metaTest SET meta_value = '$escapedString' WHERE meta_key = '$key' AND user_id = '$whichMember'";
+			$query = "UPDATE wp_uqzn_usermeta SET meta_value = '$escapedString' WHERE meta_key = '$key' AND user_id = '$whichMember'";
 			$result = mysqli_query($conn,$query) or die ("<br /><br />Could not execute query (9).");
 		}
 		header("Location: http://tgcf/memberDetails.php?id=$whichMember");

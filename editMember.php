@@ -15,7 +15,7 @@
           @$myEscapedFirst = stripslashes(htmlspecialchars($myFirst = $combineDataArrays[0]['first_name']));           
           @$myEscapedMiddle = stripslashes(htmlspecialchars($myMiddle = $combineDataArrays[0]['Middle']));
           @$myEscapedLast = stripslashes(htmlspecialchars($myLast = $combineDataArrays[0]['last_name']));
-          @$myEscapedGender = stripslashes(htmlspecialchars($myGender = $combineDataArrays[0]['gender']));
+          @$myEscapedGenderNow = stripslashes(htmlspecialchars($myGender = $combineDataArrays[0]['myGender']));
           @$myEscapedSalutation = stripslashes(htmlspecialchars($mySalutation = $combineDataArrays[0]['nickname']));      
           @$myEscapedTitle = stripslashes(htmlspecialchars($myTitle = $combineDataArrays[0]['title']));
           @$myEscapedCompany = stripslashes(htmlspecialchars($myCompany = $combineDataArrays[0]['billing_company']));
@@ -48,7 +48,7 @@
       <ul class="fullName">
         <li>
           <select name="gender" class="gender" id="gender">
-            <option selected="selected"><?php if ($myEscapedGender) {echo $myEscapedGender;} else {echo 'Choose One';}  ?></option> 
+            <option selected="selected"><?php if ($myEscapedGenderNow) {echo $myEscapedGenderNow;} else {echo 'Choose One';}  ?></option> 
             <option value="Mr.">Mr.</option>
             <option value="Ms.">Ms.</option>
             <option value="Mrs.">Mrs.</option>

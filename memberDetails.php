@@ -21,7 +21,7 @@
 				@$myEscapedFirst = stripslashes(htmlspecialchars($myFirst = $combineDataArrays[0]['first_name']));
 				@$myEscapedMiddle = stripslashes(htmlspecialchars($myMiddle = $combineDataArrays[0]['Middle']));
 				@$myEscapedLast = stripslashes(htmlspecialchars($myLast = $combineDataArrays[0]['last_name']));
-				@$myEscapedGender = stripslashes(htmlspecialchars($myGender = $combineDataArrays[0]['gender']));
+				@$myEscapedGenderNow = stripslashes(htmlspecialchars($myGenderNow = $combineDataArrays[0]['myGender']));
 				@$myEscapedSalutation = stripslashes(htmlspecialchars($mySalutation = $combineDataArrays[0]['nickname']));
 				@$myEscapedTitle = stripslashes(htmlspecialchars($myTitle = $combineDataArrays[0]['title']));
 				@$myEscapedCompany = stripslashes(htmlspecialchars($myCompany = $combineDataArrays[0]['billing_company']));
@@ -50,7 +50,7 @@
 				@$myEscapedRemarks = stripslashes(htmlspecialchars($myRemarks = $combineDataArrays[0]['remarks']));
 			echo 
 			"<button type=\"button\" class=\"editButton\" data-toggle=\"modal\" data-target=\"#myModal\">Edit</button>
-			<p class=\"fullName\">Profile for <span class=\"nameBold\">{$myGender} {$myFirst} {$myMiddle} {$myLast} or \"{$mySalutation}\" </span></p>
+			<p class=\"fullName\">Profile for <span class=\"nameBold\">{$myEscapedGenderNow} {$myEscapedFirst} {$myEscapedMiddle} {$myEscapedLast} or \"{$myEscapedSalutation}\" </span></p>
 			<hr class=\"searchRule\"/>
 				<div class=\"details\">
 					<div class=\"rowOne cf\">

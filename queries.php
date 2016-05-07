@@ -2,14 +2,18 @@
 //Written by Thomas Rowley. May 2015. tom@buymeataco.com
 include('dbConnect.php');
 
-if (!isset($_GET['id'])) {
+if (!isset($_GET['query']) && isset($_POST['smartSearch'])) {
 	$whichQuery = 'searchPageResults';
+} else {
+	if (isset($_GET['query']) && !isset($_POST['smartSearch'])) {
+		$whichQuery = $_GET['query'];
+	}
 }
 
 switch($whichQuery) {
 case 'searchPageResults':
 $smartSearchParameter = $_POST['smartSearch'];
-
+echo "<strong>Search Parameter: </strong>" . $smartSearchParameter;
 //Get user ID.
 function getUserID($smartSearchParameter, $conn) {
 	$query = "SELECT user_id FROM wp_uqzn_usermeta WHERE meta_value LIKE '%$smartSearchParameter%'";
@@ -119,7 +123,7 @@ function displayResults($masterKeyValueArray, $uniqueUserIDs) {
 					$myUserId = $value;
 			 		$counter++;
 					$rowColor = ($counter & 1) ? $rowColor = 'resultDCDCDC' : $rowColor = 'resultC8DAE8';
-					echo "<a href=\"memberDetails.php?id={$myUserId}\">
+					echo "<a href=\"memberDetails.php?query=memberDetails&id={$myUserId}\">
 							<div class=\"{$rowColor} cf\">
 								<ul class=\"resultListLoop\">
 									<li class=\"listResultName\">{$myFirstName} {$myMiddleName} {$myLastName}</li>
@@ -136,7 +140,6 @@ displayResults($masterKeyValueArray, $uniqueUserIDs);
 
 } //getMemberDetails
 $memberDetails = getMemberDetails($uniqueUserIDs, $conn);
-
 break;
 case 'memberDetails':
 $lookupUserId = $_GET["id"];
@@ -182,13 +185,12 @@ function getUserKeys($nestedMetaValues, $conn, $lookupUserId) {
 					} 	
 				$i++;		
 			}
-			return $result;
 	}
 	array_push($userMetaKeys, $nestedKeys);
 	array_push($userMetaValues, $nestedMetaValues);
-	return array($userMetaKeys, $userMetaValues);
+	return array($userMetaKeys, $userMetaValues, $result);
 }
-$getUserKeysAndValues = getUserKeys($nestedMetaValues, $conn, $lookupUserId);
+$getUserKeysAndValues = getUserKeys($nestedMetaValues[0], $conn, $lookupUserId);
 
 //Combines separate arrays & deletes empty pockets.
 function combineDataArrays($userMetaKeys, $userMetaValues) {
@@ -205,7 +207,6 @@ function combineDataArrays($userMetaKeys, $userMetaValues) {
 		return $individualMemberData;
 }
 $combineDataArrays = combineDataArrays($getUserKeysAndValues[0], $getUserKeysAndValues[1]);
-
 break;
 case 'updateMember':
 $whichMember = $_GET['id'];
@@ -334,7 +335,6 @@ function updateKeysAndValues($resultUpdateArray, $whichMember, $conn) {
 			$query = "UPDATE wp_uqzn_usermeta SET meta_value = '$escapedString' WHERE meta_key = '$key' AND user_id = '$whichMember'";
 			$result = mysqli_query($conn,$query) or die ("<br /><br />Could not execute query (9).");
 		}
-		return $result;
 		header("Location: http://tgcf/memberDetails.php?id=$whichMember");
 }
 updateKeysAndValues($resultUpdateArray, $whichMember, $conn);

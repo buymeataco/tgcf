@@ -33,10 +33,6 @@ function getUserID($smartSearchParameter, $conn) {
 	}
 
 	echo "<pre>";
-		print_r($idArray);
-	echo "</pre>";
-	echo "<br />";
-	echo "<pre>";
 		print_r($uniqueIDArray);
 	echo "</pre>";
 
@@ -106,25 +102,13 @@ function getMemberDetails($uniqueUserIDs, $conn) {
 		$finalCombinedSearchResults = [];
 			while ($lengthOfArray > $i) {
 				foreach ($uniqueUserIDs[0] as $value) {
-					$combinedSearchArrays = array_combine($searchMetaKeysArray[0][$i], $searchMetaValuesArray[$value]);
+					@$combinedSearchArrays = array_combine($searchMetaKeysArray[0][$i], $searchMetaValuesArray[$value]);
 					array_push($combinedSearchResults, $combinedSearchArrays);
 					$i++;
 				}
 			}
 			$finalCombined = array_combine($uniqueUserIDs[0], $combinedSearchResults);
 			array_push($finalCombinedSearchResults, $finalCombined);
-
-				// echo "<pre>";
-				// 	print_r($searchMetaKeysArray);
-				// echo "</pre>";
-				// echo "<br />";
-				// echo "<pre>";
-				// 	print_r($searchMetaValuesArray);
-				// echo "</pre>";
-				// echo "<br />";
-				// echo "<pre>";
-				// 	print_r($finalCombinedSearchResults);
-				// echo "</pre>";
 
 			return $finalCombinedSearchResults;											
 }

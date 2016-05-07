@@ -13,7 +13,6 @@ if (!isset($_GET['query']) && isset($_POST['smartSearch'])) {
 switch($whichQuery) {
 case 'searchPageResults':
 $smartSearchParameter = $_POST['smartSearch'];
-echo "<strong>Search Parameter: </strong>" . $smartSearchParameter;
 //Get user ID.
 function getUserID($smartSearchParameter, $conn) {
 	$query = "SELECT user_id FROM wp_uqzn_usermeta WHERE meta_value LIKE '%$smartSearchParameter%'";
@@ -28,10 +27,7 @@ function getUserID($smartSearchParameter, $conn) {
 		if (!in_array($value, $uniqueIDArray)) {
 			array_push($uniqueIDArray, $value);
 		}	
-	}
-	echo "<pre>";
-		print_r($uniqueIDArray);
-	echo "</pre>";
+	}	
 	if (empty($uniqueIDArray)) {
 		echo "<p class=\"resultCountIndexPage\">Your search returned 0 result(s).</p>";
 		exit;
@@ -52,7 +48,7 @@ function getMemberDetails($uniqueUserIDs, $conn) {
 			$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (B).");
 				while ($row = mysqli_fetch_array($result)) {
 					extract($row);
-					array_push($searchResultArray, $row[0]);	
+					array_push($searchResultArray, mysqli_real_escape_string($conn, $row[0]));	
 				}
 		array_push($nestedResultArray, $searchResultArray);
 		}
@@ -90,7 +86,7 @@ function getMemberDetails($uniqueUserIDs, $conn) {
 
 	//Combines the keys and values to be echoed on the search results page.
 	function combineSearchKeysAndValues($searchMetaKeysArray, $searchMetaValuesArray, $uniqueUserIDs) {
-		$lengthOfArray = count(array_keys($uniqueUserIDs), COUNT_RECURSIVE);
+		$lengthOfArray = count(array_keys($uniqueUserIDs[0]), COUNT_RECURSIVE);
 		$i=0;
 		$combinedSearchResults = [];
 		$finalCombinedSearchResults = [];
@@ -215,16 +211,16 @@ $whichMember = $_GET['id'];
 $applicationMetaKeys = array('myGender','first_name', 'Middle', 'last_name', 'nickname', 'title', 'billing_company', 'billing_phone', 'moble-phone', 'Fax', 'home', 'billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode', 'Email', 'addl_email', 'role', 'recruited_by', 'members_code', 'chapter', 'Territory', 'date_i18n', 'groups', 'depart_size', 'lead_source', 'assistant', 'assistant_email', 'assistant_phone', 'industry', 'remarks');
 
 //Returns an array of user submitted form values.
-function userSubmittedFormValues() {
+function userSubmittedFormValues($conn) {
 		$submittedFormValues = [];
 		foreach ($_POST as $value) {
 			if (isset($value)) {
-				array_push($submittedFormValues, $value);
+				array_push($submittedFormValues, mysqli_real_escape_string($conn, $value));
 			}			
 		}
 		return $submittedFormValues;
 }
-$userFormValues = userSubmittedFormValues();
+$userFormValues = userSubmittedFormValues($conn);
 
 //Combines predefined application meta keys with user submitted form values into an array.
 function combineFormValuesWithAppKeys($applicationMetaKeys, $userFormValues) {
@@ -293,7 +289,7 @@ function insertQueries($querySetupArray) {
 		}
 		foreach ($querySetupArray as $value) {
 			array_push($insertValuesArray, $value[1]);
-		}
+		}		
 		return array($insertKeysArray, $insertValuesArray);
 }			
 $resultInsertArray = insertQueries($querySetupArray[0]);
@@ -302,11 +298,11 @@ $resultInsertArray = insertQueries($querySetupArray[0]);
 function insertKeysAndValues($resultInsertArray, $whichMember, $conn) {
 		$i=0;
 		foreach ($resultInsertArray[0] as $value[0]) {
-			$query1 = "INSERT INTO wp_uqzn_usermeta (meta_key, user_id) VALUES ('$value[0]', '$whichMember')";
-			$result = mysqli_query($conn,$query1) or die ("<br /><br />Could not execute query (7).");
+			$query = "INSERT INTO wp_uqzn_usermeta (meta_key, user_id) VALUES ('$value[0]', '$whichMember')";		
+			$result = mysqli_query($conn,$query) or die ("<br /><br />Could not execute query (7).");			
 			$conCatVar = $resultInsertArray[1]["$i"];
-			$query2 = "UPDATE wp_uqzn_usermeta SET meta_value='$conCatVar' WHERE meta_key='$value[0]' AND user_id = '$whichMember'";
-			$result2 = mysqli_query($conn,$query2) or die ("<br /><br />Could not execute query (8).");	
+			$query2 = "UPDATE wp_uqzn_usermeta SET meta_value='$conCatVar' WHERE meta_key='$value[0]' AND user_id = '$whichMember'";				
+			$result2 = mysqli_query($conn,$query2) or die ("<br /><br />Could not execute query (8).");		
 			$i++;			
 		}
 		return array($result, $result2);

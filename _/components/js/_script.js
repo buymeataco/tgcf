@@ -5,7 +5,7 @@ function processForm() {
 
 function submitXMLhttpRequest(submittedSearchString) {
     var hr = new XMLHttpRequest();
-    var url = "searchLookup.php";
+    var url = "queries.php";
     var vars = "smartSearch="+submittedSearchString;
     hr.open("POST", url, true);
     hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

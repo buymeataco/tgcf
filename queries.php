@@ -1,8 +1,12 @@
 <?php
 include('dbConnect.php');
 
-if (!isset($whichQuery)) {
-	$whichQuery = $_GET['query'];
+// if (!isset($whichQuery)) {
+// 	$whichQuery = $_POST['query'];
+// }
+
+if (!isset($_GET['id'])) {
+	$whichQuery = 'searchPageResults';
 }
 
 switch($whichQuery) {
@@ -12,10 +16,10 @@ $smartSearchParameter = $_POST['smartSearch'];
 //Get user ID.
 function getUserID($smartSearchParameter, $conn) {
 	$query = "SELECT user_id FROM wp_uqzn_usermeta WHERE meta_value LIKE '%$smartSearchParameter%'";
-	$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (1).");
+	$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (A).");
+
 	$idArray = [];
 	$uniqueIDArray = [];
-	//$scrubbedKeyArray = [];
 
 	while ($row = mysqli_fetch_array($result)) {
 		extract ($row);
@@ -26,7 +30,21 @@ function getUserID($smartSearchParameter, $conn) {
 		if (!in_array($value, $uniqueIDArray)) {
 			array_push($uniqueIDArray, $value);
 		}	
-	}	
+	}
+
+	echo "<pre>";
+		print_r($idArray);
+	echo "</pre>";
+	echo "<br />";
+	echo "<pre>";
+		print_r($uniqueIDArray);
+	echo "</pre>";
+
+	if (empty($uniqueIDArray)) {
+		echo "<p class=\"resultCountIndexPage\">Your search returned 0 result(s).</p>";
+		exit;
+	}
+
 	return array($uniqueIDArray);
 }
 $uniqueUserIDs = getUserID($smartSearchParameter, $conn);
@@ -34,35 +52,117 @@ $uniqueUserIDs = getUserID($smartSearchParameter, $conn);
 //Get all associated info and meta_keys for matching user ID. Combines separate arrays & deletes empty pockets.			
 function getMemberDetails($uniqueUserIDs, $conn) {
 
-	if (empty($uniqueUserIDs)) {
-		return;
-	}
-
-	$acceptableKeys = ['first_name', 'Middle', 'last_name', 'billing_company', 'title'];
-
+	//Gets all meta_values for the potential search matches.
 	function getSearchMetaValues($uniqueUserIDs, $conn) {
-	$searchMetaValues = [];
+	$nestedResultArray = [];
 		foreach ($uniqueUserIDs as $value) {
-			$query = "SELECT meta_value FROM wp_uqzn_usermeta WHERE meta_key IN ('first_name', 'Middle', 'last_name', 'billing_company', 'title') AND user_id = '$value'";	
-			$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (2).");
+			$searchResultArray = [];
+			$query = "SELECT meta_value FROM wp_uqzn_usermeta WHERE meta_key IN ('first_name', 'Middle', 'last_name', 'billing_company', 'title') AND user_id = '$value'";
+			$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (B).");
 				while ($row = mysqli_fetch_array($result)) {
 					extract($row);
-					array_push($searchMetaValues, $row[0]);
+					array_push($searchResultArray, $row[0]);	
 				}
+		array_push($nestedResultArray, $searchResultArray);
 		}
-	return $searchMetaValues;	
+		$combinedSearchArray = array_combine($uniqueUserIDs, $nestedResultArray);
+
+		return $combinedSearchArray;
 	}
-	$searchMetaValuesArray = getSearchMetaValues($uniqueUserIDs[0], $conn);
+	$searchMetaValuesArray = getSearchMetaValues($uniqueUserIDs[0], $conn);	
 
-		echo "<pre>";
-			print_r($searchMetaValuesArray);
-		echo "</pre>";
-}	
+	//Gets all meta_keys for search matches and deletes the mismatches.
+	function getSearchMetaKeys($searchMetaValuesArray, $conn) {
+		$acceptableKeys = ['first_name', 'Middle', 'last_name', 'billing_company', 'title'];
+		$i=0;
+		$searchMetaValuesArrayKeysOnly = array_keys($searchMetaValuesArray);
+		$searchMetaKeys = [];
+			foreach ($searchMetaValuesArray as $nestedArray[0]) {
+				$uniqueUserIDsCounter = $searchMetaValuesArrayKeysOnly[$i];
+				$searchMetaKeysTemp = [];
+					foreach ($nestedArray[0] as $value1) {
+						$query = "SELECT meta_key FROM wp_uqzn_usermeta WHERE meta_value = '$value1' AND user_id = $uniqueUserIDsCounter";
+						$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (C).");
+							while ($row = mysqli_fetch_array($result)) {
+								extract($row);
+									//The db contains similar meta_key names which PHP was matching (e.g., first_name & billing_first_name), so I had to restrict the pulled values to the ones in the $acceptableKeys array that I was using.
+									if (in_array($row[0], $acceptableKeys)) {
+										array_push($searchMetaKeysTemp, $row[0]);
+									}
+							}
+					}
+					$i++;
+					array_push($searchMetaKeys, $searchMetaKeysTemp);
+			}
+			return array($searchMetaKeys);
+	}
+	$searchMetaKeysArray = getSearchMetaKeys($searchMetaValuesArray, $conn);
+
+	//Combines the keys and values to be echoed on the search results page.
+	function combineSearchKeysAndValues($searchMetaKeysArray, $searchMetaValuesArray, $uniqueUserIDs) {
+		$lengthOfArray = count(array_keys($uniqueUserIDs), COUNT_RECURSIVE);
+		$i=0;
+		$combinedSearchResults = [];
+		$finalCombinedSearchResults = [];
+			while ($lengthOfArray > $i) {
+				foreach ($uniqueUserIDs[0] as $value) {
+					$combinedSearchArrays = array_combine($searchMetaKeysArray[0][$i], $searchMetaValuesArray[$value]);
+					array_push($combinedSearchResults, $combinedSearchArrays);
+					$i++;
+				}
+			}
+			$finalCombined = array_combine($uniqueUserIDs[0], $combinedSearchResults);
+			array_push($finalCombinedSearchResults, $finalCombined);
+
+				// echo "<pre>";
+				// 	print_r($searchMetaKeysArray);
+				// echo "</pre>";
+				// echo "<br />";
+				// echo "<pre>";
+				// 	print_r($searchMetaValuesArray);
+				// echo "</pre>";
+				// echo "<br />";
+				// echo "<pre>";
+				// 	print_r($finalCombinedSearchResults);
+				// echo "</pre>";
+
+			return $finalCombinedSearchResults;											
+}
+$masterKeyValueArray = combineSearchKeysAndValues($searchMetaKeysArray, $searchMetaValuesArray, $uniqueUserIDs);
+
+function displayResults($masterKeyValueArray, $uniqueUserIDs) {
+	$counter = 1;
+	$i=0;
+	$arrayLength = count((array_keys($masterKeyValueArray)), COUNT_RECURSIVE);
+	$resultCount = count((array_keys($masterKeyValueArray[0])), COUNT_RECURSIVE);	
+	echo "<p class=\"resultCountIndexPage\">Your search returned {$resultCount} result(s).</p>";
+			while ($i < $arrayLength) {
+				foreach($uniqueUserIDs[0] as $value) {
+					@$myFirstName = $masterKeyValueArray[0][$value]["first_name"];
+					@$myMiddleName = $masterKeyValueArray[0][$value]["Middle"];
+					@$myLastName = $masterKeyValueArray[0][$value]["last_name"];
+					@$myTitle = $masterKeyValueArray[0][$value]["title"];
+					@$myBilling_company = $masterKeyValueArray[0][$value]["billing_company"];
+					$myUserId = $value;
+			 		$counter++;
+					$rowColor = ($counter & 1) ? $rowColor = 'resultDCDCDC' : $rowColor = 'resultC8DAE8';
+					echo "<a href=\"memberDetails.php?id={$myUserId}\">
+							<div class=\"{$rowColor} cf\">
+								<ul class=\"resultListLoop\">
+									<li class=\"listResultName\">{$myFirstName} {$myMiddleName} {$myLastName}</li>
+									<li class=\"listResultTitle\">{$myTitle}</li>
+									<li class=\"listResultTitle\">{$myBilling_company}</li>
+								</ul>
+					 		</div>
+					 	  </a>";
+					} 	  
+			$i++;
+			}
+} // end displaySearchResults()
+displayResults($masterKeyValueArray, $uniqueUserIDs);		
+
+} //getMemberDetails
 $memberDetails = getMemberDetails($uniqueUserIDs, $conn);
-
-
-
-//displaySearchResults($memberDetails[0], $memberDetails[1]);
 
 break;
 case 'memberDetails':
@@ -275,9 +375,9 @@ $applicationMetaKeys = array('myGender','first_name', 'Middle', 'last_name', 'ni
 break;
 } //end case switch
 
-if (isset($idArray, $scrubbedIdArray, $scrubbedKeyArray, $acceptableKeys, $userMetaValues, $userMetaKeys, $combinedKeyValuePairs, $nestedMetaValues, $nestedKeys, $individualMemberData, $combinedArrays, $submittedFormValues, $combinedKeysAndSubmittedValues, $existingMetaKeysArray, $insertArray, $updateArray, $insertQueryArray, $updateQueryArray, $insertKeysArray, $insertValuesArray, $updateKeysArray, $updateValuesArray, $combinedUpdateKeysAndValues, $comboUpdateKeysAndValues)) {
-		unset($idArray, $scrubbedIdArray, $scrubbedKeyArray, $acceptableKeys, $userMetaValues, $userMetaKeys, $combinedKeyValuePairs, $nestedMetaValues, $nestedKeys, $individualMemberData, $combinedArrays, $submittedFormValues, $combinedKeysAndSubmittedValues, $existingMetaKeysArray, $insertArray, $updateArray, $insertQueryArray, $updateQueryArray, $insertKeysArray, $insertValuesArray, $updateKeysArray, $updateValuesArray, $combinedUpdateKeysAndValues, $comboUpdateKeysAndValues);
-}
+// if (isset($idArray, $scrubbedIdArray, $scrubbedKeyArray, $acceptableKeys, $userMetaValues, $userMetaKeys, $combinedKeyValuePairs, $nestedMetaValues, $nestedKeys, $individualMemberData, $combinedArrays, $submittedFormValues, $combinedKeysAndSubmittedValues, $existingMetaKeysArray, $insertArray, $updateArray, $insertQueryArray, $updateQueryArray, $insertKeysArray, $insertValuesArray, $updateKeysArray, $updateValuesArray, $combinedUpdateKeysAndValues, $comboUpdateKeysAndValues)) {
+// 		unset($idArray, $scrubbedIdArray, $scrubbedKeyArray, $acceptableKeys, $userMetaValues, $userMetaKeys, $combinedKeyValuePairs, $nestedMetaValues, $nestedKeys, $individualMemberData, $combinedArrays, $submittedFormValues, $combinedKeysAndSubmittedValues, $existingMetaKeysArray, $insertArray, $updateArray, $insertQueryArray, $updateQueryArray, $insertKeysArray, $insertValuesArray, $updateKeysArray, $updateValuesArray, $combinedUpdateKeysAndValues, $comboUpdateKeysAndValues);
+// }
 
 if (isset($result)) {mysqli_free_result($result);}
 if (isset($result2)) {mysqli_free_result($result);}	

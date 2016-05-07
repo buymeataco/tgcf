@@ -2,7 +2,7 @@
 $whichQuery = 'searchPageResults';
 include('queries.php');
 
-function displaySearchResults($combinedKeyValuePairs, $scrubbedIdArray) {
+function displaySearchResults($masterKeyValueArray) {
 	$counter = 1;
 	$i=0;
 	@$arrayLength = count((array_keys($combinedKeyValuePairs)), COUNT_RECURSIVE);

@@ -36,9 +36,8 @@ function getUserID($smartSearchParameter, $conn) {
 }
 $uniqueUserIDs = getUserID($smartSearchParameter, $conn);
 
-//Get all associated info and meta_keys for matching user ID. Combines separate arrays & deletes empty pockets.			
+//Get all associated meta_values for matching user ID. Combines separate arrays & deletes empty pockets.			
 function getMemberDetails($uniqueUserIDs, $conn) {
-
 	//Gets all meta_values for the potential search matches.
 	function getSearchMetaValues($uniqueUserIDs, $conn) {
 	$nestedResultArray = [];
@@ -48,18 +47,18 @@ function getMemberDetails($uniqueUserIDs, $conn) {
 			$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (B).");
 				while ($row = mysqli_fetch_array($result)) {
 					extract($row);
-					array_push($searchResultArray, mysqli_real_escape_string($conn, $row[0]));	
+					array_push($searchResultArray, addslashes($row[0]));
 				}
 		array_push($nestedResultArray, $searchResultArray);
 		}
 		$combinedSearchArray = array_combine($uniqueUserIDs, $nestedResultArray);
-		return array($combinedSearchArray, $result);
+		return $combinedSearchArray;
 	}
 	$searchMetaValuesArray = getSearchMetaValues($uniqueUserIDs[0], $conn);	
 
 	//Gets all meta_keys for search matches and deletes the mismatches.
 	function getSearchMetaKeys($searchMetaValuesArray, $conn) {
-		$acceptableKeys = ['first_name', 'Middle', 'last_name', 'billing_company', 'title'];
+		$acceptableKeys = array('first_name', 'Middle', 'last_name', 'billing_company', 'title');
 		$i=0;
 		$searchMetaValuesArrayKeysOnly = array_keys($searchMetaValuesArray);
 		$searchMetaKeys = [];
@@ -82,7 +81,7 @@ function getMemberDetails($uniqueUserIDs, $conn) {
 			}
 			return array($searchMetaKeys);
 	}
-	$searchMetaKeysArray = getSearchMetaKeys($searchMetaValuesArray[0], $conn);
+	$searchMetaKeysArray = getSearchMetaKeys($searchMetaValuesArray, $conn);
 
 	//Combines the keys and values to be echoed on the search results page.
 	function combineSearchKeysAndValues($searchMetaKeysArray, $searchMetaValuesArray, $uniqueUserIDs) {
@@ -101,7 +100,7 @@ function getMemberDetails($uniqueUserIDs, $conn) {
 			array_push($finalCombinedSearchResults, $finalCombined);
 			return $finalCombinedSearchResults;										
 }
-$masterKeyValueArray = combineSearchKeysAndValues($searchMetaKeysArray, $searchMetaValuesArray[0], $uniqueUserIDs);
+$masterKeyValueArray = combineSearchKeysAndValues($searchMetaKeysArray, $searchMetaValuesArray, $uniqueUserIDs);
 
 function displayResults($masterKeyValueArray, $uniqueUserIDs) {
 	$counter = 1;
@@ -111,11 +110,11 @@ function displayResults($masterKeyValueArray, $uniqueUserIDs) {
 	echo "<p class=\"resultCountIndexPage\">Your search returned {$resultCount} result(s).</p>";
 			while ($i < $arrayLength) {
 				foreach($uniqueUserIDs[0] as $value) {
-					@$myFirstName = $masterKeyValueArray[0][$value]["first_name"];
-					@$myMiddleName = $masterKeyValueArray[0][$value]["Middle"];
-					@$myLastName = $masterKeyValueArray[0][$value]["last_name"];
-					@$myTitle = $masterKeyValueArray[0][$value]["title"];
-					@$myBilling_company = $masterKeyValueArray[0][$value]["billing_company"];
+					@$myFirstName = stripslashes($masterKeyValueArray[0][$value]["first_name"]);
+					@$myMiddleName = stripslashes($masterKeyValueArray[0][$value]["Middle"]);
+					@$myLastName = stripslashes($masterKeyValueArray[0][$value]["last_name"]);
+					@$myTitle = stripslashes($masterKeyValueArray[0][$value]["title"]);
+					@$myBilling_company = stripslashes($masterKeyValueArray[0][$value]["billing_company"]);
 					$myUserId = $value;
 			 		$counter++;
 					$rowColor = ($counter & 1) ? $rowColor = 'resultDCDCDC' : $rowColor = 'resultC8DAE8';
@@ -157,7 +156,7 @@ function nestedMetaValues($lookupUserId, $conn) {
 	$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (2).");	
 	while ($row = mysqli_fetch_array($result)) {
 		extract ($row);
-			array_push($nestedMetaValues, addslashes($row[0]));
+			array_push($nestedMetaValues, $row[0]);			
 	}
 	return array($nestedMetaValues, $result);
 }
@@ -170,7 +169,8 @@ function getUserKeys($nestedMetaValues, $conn, $lookupUserId) {
 	$userMetaValues = [];	
 	foreach ($nestedMetaValues as $value) {
 		$i=0;
-		$query = "SELECT meta_key FROM wp_uqzn_usermeta WHERE user_id = '$lookupUserId' AND meta_value = '$value'";
+		$escapedValue = mysqli_real_escape_string($conn, $value);
+		$query = "SELECT meta_key FROM wp_uqzn_usermeta WHERE user_id = '$lookupUserId' AND meta_value = '$escapedValue'";
 		$result = mysqli_query($conn,$query) or die ("<p class=\"resultCountIndexPage\">Your search returned 0 result(s) (5).</p>");
 			while ($row = mysqli_fetch_array($result)) {
 				extract($row);
@@ -184,7 +184,7 @@ function getUserKeys($nestedMetaValues, $conn, $lookupUserId) {
 	}
 	array_push($userMetaKeys, $nestedKeys);
 	array_push($userMetaValues, $nestedMetaValues);
-	return array($userMetaKeys, $userMetaValues, $result);
+	return array($userMetaKeys, $userMetaValues);
 }
 $getUserKeysAndValues = getUserKeys($nestedMetaValues[0], $conn, $lookupUserId);
 
@@ -202,7 +202,7 @@ function combineDataArrays($userMetaKeys, $userMetaValues) {
 		}
 		return $individualMemberData;
 }
-$combineDataArrays = combineDataArrays($getUserKeysAndValues[0], $getUserKeysAndValues[1]);
+$combinedDataArrays = combineDataArrays($getUserKeysAndValues[0], $getUserKeysAndValues[1]);
 break;
 case 'updateMember':
 $whichMember = $_GET['id'];
@@ -215,7 +215,7 @@ function userSubmittedFormValues($conn) {
 		$submittedFormValues = [];
 		foreach ($_POST as $value) {
 			if (isset($value)) {
-				array_push($submittedFormValues, mysqli_real_escape_string($conn, $value));
+				array_push($submittedFormValues, $value);
 			}			
 		}
 		return $submittedFormValues;
@@ -237,7 +237,7 @@ function getExistingMetaKeys($whichMember, $conn) {
 			while ($row = mysqli_fetch_array($result)) {
 				extract($row);			
 					array_push($existingMetaKeysArray, $row[0]);
-			}
+			}		
 			return array($existingMetaKeysArray, $result);
 }
 $existingMetaKeys = getExistingMetaKeys($whichMember, $conn);
@@ -252,15 +252,15 @@ function decideWhichQuery($existingMetaKeys, $applicationMetaKeys) {
 			} else {
 				array_push($insertArray, $value);
 			}
-		}
+		}				
 		return array($insertArray, $updateArray);
 }
-$queryArrays = (decideWhichQuery($existingMetaKeys, $applicationMetaKeys));
+$queryArrays = (decideWhichQuery($existingMetaKeys[0], $applicationMetaKeys));
 
 //Using the $queryArrays multi-d array, separates $alphaFormArray into inserts and updates arrays.
 function insertUpdateQueries($queryArrays, $alphaFormArray, $whichMember, $conn) {
 
-//Generates insert vs. update query arrays.
+//Generates insert vs. update query MD array. Keys in the first MDpocket, values in the second.
 function setupEachQueryArray($queryArrays, $alphaFormArray) {
 			$insertQueryArray = [];
 			$updateQueryArray = [];
@@ -276,66 +276,49 @@ function setupEachQueryArray($queryArrays, $alphaFormArray) {
 					array_push($updateQueryArray, explode(".: ",  $pocketTemp2));
 				}
 			}
-			return array($insertQueryArray, $updateQueryArray);
+		return array($insertQueryArray, $updateQueryArray);
 }
 $querySetupArray = setupEachQueryArray($queryArrays, $alphaFormArray);
 
-//Separates querySetupArray into 2 strings (meta_key & meta_value) suitable for a MySQL query.
-function insertQueries($querySetupArray) {
-		$insertKeysArray = [];
-		$insertValuesArray = [];
-		foreach ($querySetupArray as $value) {
-			array_push($insertKeysArray, $value[0]);
+//Inserts meta_keys, then updates their correspodning values, all from querySetupArray().
+function insertKeysAndUpdateValues($querySetupArray, $whichMember, $conn) {
+	if (empty($querySetupArray[0])) {
+		return;
+	}
+	$metaKeyInsert = [];
+	$i=0;
+		foreach ($querySetupArray[0] as $value[1][0]) {
+			array_push($metaKeyInsert, $value[1][0][0]);
+			$query = "INSERT INTO wp_uqzn_usermeta (meta_key, user_id) VALUES ('{$value[1][0][0]}', '$whichMember')";
+			$result = mysqli_query($conn,$query) or die ("<br /><br />Could not execute query (7).");
 		}
-		foreach ($querySetupArray as $value) {
-			array_push($insertValuesArray, $value[1]);
-		}		
-		return array($insertKeysArray, $insertValuesArray);
-}			
-$resultInsertArray = insertQueries($querySetupArray[0]);
-
-//Inserts meta_keys, then updates their correspodning values, all from insertQueries().
-function insertKeysAndValues($resultInsertArray, $whichMember, $conn) {
-		$i=0;
-		foreach ($resultInsertArray[0] as $value[0]) {
-			$query = "INSERT INTO wp_uqzn_usermeta (meta_key, user_id) VALUES ('$value[0]', '$whichMember')";		
-			$result = mysqli_query($conn,$query) or die ("<br /><br />Could not execute query (7).");			
-			$conCatVar = $resultInsertArray[1]["$i"];
-			$query2 = "UPDATE wp_uqzn_usermeta SET meta_value='$conCatVar' WHERE meta_key='$value[0]' AND user_id = '$whichMember'";				
-			$result2 = mysqli_query($conn,$query2) or die ("<br /><br />Could not execute query (8).");		
-			$i++;			
-		}
-		return array($result, $result2);
-}
-insertKeysAndValues($resultInsertArray, $whichMember, $conn);
-
-//Separates querySetupArray.
-function updateQueries($querySetupArray) {
-		$updateKeysArray = [];
-		$updateValuesArray = [];
-		foreach ($querySetupArray as $value) {
-			array_push($updateKeysArray, $value[0]);
-		}
-		foreach ($querySetupArray as $value) {
-			array_push($updateValuesArray, $value[1]);
-		}
-		return array($updateKeysArray, $updateValuesArray);
-}			
-$resultUpdateArray = updateQueries($querySetupArray[1]);
-
-//Updates meta_keys, then updates their correspodning values from resultUpdateArray().
-function updateKeysAndValues($resultUpdateArray, $whichMember, $conn) {
-		$combinedUpdateKeysAndValues = array_combine($resultUpdateArray[0], $resultUpdateArray[1]);
-		foreach ($combinedUpdateKeysAndValues as $key => $value) {
-			$escapedString = mysqli_real_escape_string($conn, $value);
-			$query = "UPDATE wp_uqzn_usermeta SET meta_value = '$escapedString' WHERE meta_key = '$key' AND user_id = '$whichMember'";
-			$result = mysqli_query($conn,$query) or die ("<br /><br />Could not execute query (9).");
+		foreach ($querySetupArray[0] as $value[1][0]) {
+		$insertMetaKey = $metaKeyInsert[$i];
+		$escapedValue = mysqli_real_escape_string($conn, $value[1][0][1]);
+		$query = "UPDATE wp_uqzn_usermeta SET meta_value='$escapedValue' WHERE meta_key='$insertMetaKey' AND user_id = '$whichMember'";
+		$result = mysqli_query($conn,$query) or die ("<br /><br />Could not execute query (8).");
+		$i++;				
 		}
 		header("Location: http://tgcf/memberDetails.php?id=$whichMember");
 }
-updateKeysAndValues($resultUpdateArray, $whichMember, $conn);
+insertKeysAndUpdateValues($querySetupArray, $whichMember, $conn);
+
+//Updates meta_keys, then updates their correspodning values from querySetupArray().
+function updateValues($querySetupArray, $whichMember, $conn) {
+		if (!empty($querySetupArray[0])) {
+			return;
+		}
+		foreach ($querySetupArray[1] as $value[1][0]) {
+			$escapedValue = mysqli_real_escape_string($conn, $value[1][0][1]);
+			$query = "UPDATE wp_uqzn_usermeta SET meta_value='$escapedValue' WHERE meta_key='{$value[1][0][0]}' AND user_id = '$whichMember'";
+			$result = mysqli_query($conn,$query) or die ("<br /><br />Could not execute query (8).");
+		}
+		header("Location: http://tgcf/memberDetails.php?id=$whichMember");
+}
+updateValues($querySetupArray, $whichMember, $conn);
 } //insertUpdateQueries()
-	insertUpdateQueries($queryArrays, $alphaFormArray, $whichMember, $conn);
+
+insertUpdateQueries($queryArrays, $alphaFormArray, $whichMember, $conn);
 break;
 } //end case switch
 

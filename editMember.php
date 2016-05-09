@@ -10,38 +10,38 @@
         <?php
           $whichQuery = 'memberDetails';
           $whichMember = $_GET['id'];
-          @$myEscapedEmail = stripslashes($myEmail = $combineDataArrays[0]['Email']);
-          @$myEscapedAdditionalEmail = stripslashes($myAdditionalEmail = $combineDataArrays[0]['addl_email']);
-          @$myEscapedFirst = stripslashes($myFirst = $combineDataArrays[0]['first_name']);           
-          @$myEscapedMiddle = stripslashes($myMiddle = $combineDataArrays[0]['Middle']);
-          @$myEscapedLast = stripslashes($myLast = $combineDataArrays[0]['last_name']);
-          @$myEscapedGenderNow = stripslashes($myGender = $combineDataArrays[0]['myGender']);
-          @$myEscapedSalutation = stripslashes($mySalutation = $combineDataArrays[0]['nickname']);      
-          @$myEscapedTitle = stripslashes($myTitle = $combineDataArrays[0]['title']);
-          @$myEscapedCompany = stripslashes($myCompany = $combineDataArrays[0]['billing_company']);
-          @$myEscapedOfficePhone = stripslashes($myOfficePhone = $combineDataArrays[0]['billing_phone']);
-          @$myEscapedBillingAddress1 = stripslashes($myBillingAddress1 = $combineDataArrays[0]['billing_address_1']);
-          @$myEscapedBillingAddress2 = stripslashes($myBillingAddress2 = $combineDataArrays[0]['billing_address_2']);
-          @$myEscapedCity = stripslashes($myCity = $combineDataArrays[0]['billing_city']);
-          @$myEscapedState = stripslashes($myState = $combineDataArrays[0]['billing_state']);  
-          @$myEscapedZip = stripslashes($myZip = $combineDataArrays[0]['billing_postcode']);
-          @$myEscapedAss = stripslashes($myAss = $combineDataArrays[0]['assistant']);
-          @$myEscapedAssPhone = stripslashes($myAssPhone = $combineDataArrays[0]['assistant_phone']); 
-          @$myEscapedAssEmail = stripslashes($myAssEmail = $combineDataArrays[0]['assistant_email']);
-          @$myEscapedDeptSize = stripslashes($myDeptSize = $combineDataArrays[0]['depart_size']);
-          @$myEscapedTerritory = stripslashes($myTerritory = $combineDataArrays[0]['Territory']);
-          @$myEscapedJoinDate = stripslashes($myJoinDate = $combineDataArrays[0]['date_i18n']);
-          @$myEscapedMembersCode = stripslashes($myMembersCode = $combineDataArrays[0]['members_code']);
-          @$myEscapedIndustry = stripslashes($myIndustry = $combineDataArrays[0]['industry']);
-          @$myEscapedRemarks = stripslashes($myRemarks = $combineDataArrays[0]['remarks']);
-          @$myEscapedRecruitedBy = stripslashes($myRecruitedBy = $combineDataArrays[0]['recruited_by']);
-          @$myEscapedMobilePhone = stripslashes($myMobilePhone = $combineDataArrays[0]['moble-phone']);
-          @$myEscapedFax = stripslashes($myFax = $combineDataArrays[0]['Fax']);
-          @$myEscapedHome = stripslashes($myHome = $combineDataArrays[0]['home']);
-          @$myEscapedRole = stripslashes($myRole = $combineDataArrays[0]['role']);
-          @$myEscapedSource = stripslashes($mySource = $combineDataArrays[0]['lead_source']);
-          @$myEscapedChapter = stripslashes($myChapter = $combineDataArrays[0]['chapter']);
-          @$myEscapedGroups = stripslashes($myGroups = $combineDataArrays[0]['groups']);
+          @$myEscapedEmail = stripslashes($combinedDataArrays[0]['Email']);
+          @$myEscapedAdditionalEmail = stripslashes($combinedDataArrays[0]['addl_email']);
+          @$myEscapedFirst = stripslashes($combinedDataArrays[0]['first_name']);
+          @$myEscapedMiddle = stripslashes($combinedDataArrays[0]['Middle']);
+          @$myEscapedLast = stripslashes($combinedDataArrays[0]['last_name']);
+          @$myEscapedGenderNow = stripslashes($combinedDataArrays[0]['myGender']);
+          @$myEscapedSalutation = stripslashes($combinedDataArrays[0]['nickname']);
+          @$myEscapedTitle = stripslashes($combinedDataArrays[0]['title']);
+          @$myEscapedCompany = stripslashes($combinedDataArrays[0]['billing_company']);
+          @$myEscapedOfficePhone = stripslashes($combinedDataArrays[0]['billing_phone']);
+          @$myEscapedBillingAddress1 = stripslashes($combinedDataArrays[0]['billing_address_1']);
+          @$myEscapedBillingAddress2 = stripslashes($combinedDataArrays[0]['billing_address_2']);
+          @$myEscapedCity = stripslashes($combinedDataArrays[0]['billing_city']);
+          @$myEscapedState = stripslashes($combinedDataArrays[0]['billing_state']);
+          @$myEscapedZip = stripslashes($combinedDataArrays[0]['billing_postcode']);
+          @$myEscapedAss = stripslashes($combinedDataArrays[0]['assistant']);
+          @$myEscapedAssPhone = stripslashes($combinedDataArrays[0]['assistant_phone']);
+          @$myEscapedAssEmail = stripslashes($combinedDataArrays[0]['assistant_email']);
+          @$myEscapedDeptSize = stripslashes($combinedDataArrays[0]['depart_size']);
+          @$myEscapedTerritory = stripslashes($combinedDataArrays[0]['Territory']);
+          @$myEscapedJoinDate = stripslashes($combinedDataArrays[0]['date_i18n']);
+          @$myEscapedMembersCode = stripslashes($combinedDataArrays[0]['members_code']);
+          @$myEscapedIndustry = stripslashes($combinedDataArrays[0]['industry']);
+          @$myEscapedRemarks = stripslashes($combinedDataArrays[0]['remarks']);
+          @$myEscapedRecruitedBy = stripslashes($combinedDataArrays[0]['recruited_by']);
+          @$myEscapedMobilePhone = stripslashes($combinedDataArrays[0]['moble-phone']);
+          @$myEscapedFax = stripslashes($combinedDataArrays[0]['Fax']);
+          @$myEscapedHome = stripslashes($combinedDataArrays[0]['home']);
+          @$myEscapedRole = stripslashes($combinedDataArrays[0]['role']);
+          @$myEscapedSource = stripslashes($combinedDataArrays[0]['lead_source']);
+          @$myEscapedChapter = stripslashes($combinedDataArrays[0]['chapter']);
+          @$myEscapedGroups = stripslashes($combinedDataArrays[0]['groups']);
         ?>
 		<div class="wrapperContainer">
       <form action="queries.php?query=updateMember&id=<?php echo $whichMember; ?>" method="POST" name="form1">
@@ -211,7 +211,7 @@
               <ul class="rightListItem">
                 <li><label for="additionalEmail">Additional Email:</label></li>
                 <li>
-                  <input id="additionalEmail" class="primaryEmail" value="<?php echo $myAdditionalEmail; ?>" name="addl_email" type="text" size="128" maxlength="256" />
+                  <input id="additionalEmail" class="primaryEmail" value="<?php echo $myEscapedAdditionalEmail; ?>" name="addl_email" type="text" size="128" maxlength="256" />
                 </li>
               </ul>             
               <ul class="rightListItem">

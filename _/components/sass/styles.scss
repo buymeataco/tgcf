@@ -189,6 +189,27 @@ a {
 			background-color: #28a428;
 		}
 }
+.backButton {
+	height: 1.9em;
+	width: 4em;
+	background-color: #228B22;
+	border: none;
+	border-radius: 8px;
+	font-size: 1em;
+	float: right;
+	cursor: pointer;
+	float: right;
+	margin-left: 1em;
+	padding-top: .35em;
+	padding-left: .8em;	
+		&:hover {
+			background-color: #28a428;
+		}
+		a {
+			color: #fff;
+			text-decoration: none;
+		}
+}
 .btn-primary {
 	height: 1.9em;
 	width: 4em;

@@ -49,7 +49,8 @@
 				@$myEscapedGroups = stripslashes($combinedDataArrays[0]['groups']);
 				@$myEscapedRemarks = stripslashes($combinedDataArrays[0]['remarks']);
 			echo 
-			"<button type=\"button\" class=\"editButton\" data-toggle=\"modal\" data-target=\"#myModal\">Edit</button>
+			"<p class=\"backButton\"><a href=\"index.php\">Back</a></p>
+			<button type=\"button\" class=\"editButton\" data-toggle=\"modal\" data-target=\"#myModal\">Edit</button>
 			<p class=\"fullName\">Profile for <span class=\"nameBold\">{$myEscapedGenderNow} {$myEscapedFirst} {$myEscapedMiddle} {$myEscapedLast} or \"{$myEscapedSalutation}\" </span></p>
 			<hr class=\"searchRule\"/>
 				<div class=\"details\">

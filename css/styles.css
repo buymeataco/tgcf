@@ -416,19 +416,19 @@ ul.cityState li:nth-child(2) {
   width: 170px;
 }
 
-/* line 279, ../_/components/sass/styles.scss */
+/* line 278, ../_/components/sass/styles.scss */
 select[name=role], select[name=chapter],
 select[name=contactType] {
   width: 14.063em;
 }
 
-/* line 283, ../_/components/sass/styles.scss */
+/* line 282, ../_/components/sass/styles.scss */
 select[name=gender] {
   margin-right: 1.25em;
   font-size: .8em;
 }
 
-/* line 287, ../_/components/sass/styles.scss */
+/* line 286, ../_/components/sass/styles.scss */
 input[name=nickname], input[name=title],
 input[name=billing_company], input[name=billing_phone],
 input[name=moble-phone], input[name=Fax],
@@ -452,7 +452,7 @@ input[name=nih], input[name=address2] {
   font-size: 1em;
 }
 
-/* line 309, ../_/components/sass/styles.scss */
+/* line 308, ../_/components/sass/styles.scss */
 input[name=billing_city], input[name=billing_postcode] {
   padding-left: .3em;
   height: 1.8em;
@@ -463,7 +463,7 @@ input[name=billing_city], input[name=billing_postcode] {
   font-size: 1em;
 }
 
-/* line 318, ../_/components/sass/styles.scss */
+/* line 317, ../_/components/sass/styles.scss */
 input[name=first_name], input[name=last_name],
 input[name=Middle] {
   padding-left: .3em;
@@ -477,31 +477,31 @@ input[name=Middle] {
   font-size: .8em;
 }
 
-/* line 330, ../_/components/sass/styles.scss */
+/* line 329, ../_/components/sass/styles.scss */
 input[name=search] {
   background: url(../images/userSearchMagnifyingGlass.png) no-repeat 0.8em 0.6em;
   padding-left: 3em !important;
   font-size: 14px;
-  width: 50%;
+  width: 35%;
   height: 2.5em;
   background-color: #fff;
   color: #000;
   border: 1px solid #e6e6e6 !important;
 }
 
-/* line 340, ../_/components/sass/styles.scss */
+/* line 342, ../_/components/sass/styles.scss */
 .cf:before,
 .cf:after {
   content: " ";
   display: table;
 }
 
-/* line 345, ../_/components/sass/styles.scss */
+/* line 347, ../_/components/sass/styles.scss */
 .cf:after {
   clear: both;
 }
 
-/* line 348, ../_/components/sass/styles.scss */
+/* line 350, ../_/components/sass/styles.scss */
 .cf {
   *zoom: 1;
 }

@@ -275,7 +275,6 @@ ul.cityState li {
 		width: 170px;
 	}
 }
-
 select[name=role], select[name=chapter],
 select[name=contactType]  {
 	width: 14.063em;
@@ -331,11 +330,14 @@ input[name=search] {
 	background: url(../images/userSearchMagnifyingGlass.png) no-repeat .8em .6em;
 	padding-left: 3em !important;
 	font-size: 14px;
-	width: 50%;
+	width: 35%;
 	height: 2.5em;
 	background-color: #fff;
 	color: #000;
 	border: 1px solid #e6e6e6 !important;
+}
+input[type=checkbox] {
+	//padding-top: -3em;
 }
 .cf:before,
 .cf:after {

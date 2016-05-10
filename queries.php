@@ -12,10 +12,16 @@ if (!isset($_GET['query']) && isset($_POST['smartSearch'])) {
 
 switch($whichQuery) {
 case 'searchPageResults':
+$checkBoxState = $_POST['checkBoxState'];
 $smartSearchParameter = $_POST['smartSearch'];
 //Get user ID.
-function getUserID($smartSearchParameter, $conn) {
-	$query = "SELECT user_id FROM wp_uqzn_usermeta WHERE meta_value LIKE '%$smartSearchParameter%'";
+function getUserID($smartSearchParameter, $checkBoxState, $conn) {
+	if ($checkBoxState == 'false') {
+		$searchTolerance = "SELECT user_id FROM wp_uqzn_usermeta WHERE meta_value = '{$smartSearchParameter}' AND meta_key = 'last_name'";
+	} else {
+		$searchTolerance = "SELECT user_id FROM wp_uqzn_usermeta WHERE meta_value LIKE '%{$smartSearchParameter}%'";		
+	}
+	$query = $searchTolerance;
 	$result = mysqli_query($conn,$query) or die ("<br />Could not execute query (A).");
 	$idArray = [];
 	$uniqueIDArray = [];
@@ -34,7 +40,7 @@ function getUserID($smartSearchParameter, $conn) {
 	}
 	return array($uniqueIDArray, $result);
 }
-$uniqueUserIDs = getUserID($smartSearchParameter, $conn);
+$uniqueUserIDs = getUserID($smartSearchParameter, $checkBoxState, $conn);
 
 //Get all associated meta_values for matching user ID. Combines separate arrays & deletes empty pockets.			
 function getMemberDetails($uniqueUserIDs, $conn) {

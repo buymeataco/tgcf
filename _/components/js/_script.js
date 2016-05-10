@@ -1,12 +1,15 @@
 function processForm() {
 	var submittedSearchString = document.getElementById("search").value;
-	submitXMLhttpRequest(submittedSearchString);
+    var checkBoxchecked = document.getElementById("strictSearch").checked;
+	submitXMLhttpRequest(submittedSearchString, checkBoxchecked);
 }
 
-function submitXMLhttpRequest(submittedSearchString) {
+function submitXMLhttpRequest(submittedSearchString, checkBoxchecked) {
     var hr = new XMLHttpRequest();
     var url = "queries.php";
-    var vars = "smartSearch="+submittedSearchString;
+    var vars1 = "smartSearch="+submittedSearchString;
+    var vars2 = "&checkBoxState="+checkBoxchecked;
+    var vars = vars1+vars2;
     hr.open("POST", url, true);
     hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     hr.onreadystatechange = function() {

@@ -9,7 +9,8 @@
 	<body>
 		<div class="wrapperContainer">
 			<div class="entryForm">
-				<input name="search" id="search" type="text" value="Smart Search" size="128" maxlength="256" onkeydown="if (event.keyCode==13) return processForm();"/>
+				<input name="search" id="search" type="text" value="Smart Search" size="98" maxlength="256" onkeydown="if (event.keyCode==13) return processForm();" />
+				<input name="checkBox" type="checkbox" id="strictSearch"/> Smart Search<P>
 				<hr class="searchRuleIndexPage" />
 			</div>
 			<div id="results"></div>

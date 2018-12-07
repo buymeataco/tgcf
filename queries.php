@@ -1,7 +1,8 @@
 <?php
-//Written by Thomas Rowley. May 2015. tom@buymeataco.com
+//Written by Thomas Rowley. May 2016. tom@buymeataco.com Be sure to collapse all the functions for much easier updating and troubleshooting.
 include('dbConnect.php');
 
+//The combination of $_GET and $_POST variables determine which search to use. (Search by last name only of for all occurences.)
 if (!isset($_GET['query']) && isset($_POST['smartSearch'])) {
 	$whichQuery = 'searchPageResults';
 } else {
@@ -140,7 +141,7 @@ function displayResults($masterKeyValueArray, $uniqueUserIDs) {
 displayResults($masterKeyValueArray, $uniqueUserIDs);		
 
 } //getMemberDetails
-$memberDetails = getMemberDetails($uniqueUserIDs, $conn);
+getMemberDetails($uniqueUserIDs, $conn);
 break;
 case 'memberDetails':
 $lookupUserId = $_GET["id"];
@@ -241,9 +242,9 @@ function getExistingMetaKeys($whichMember, $conn) {
 		$query = "SELECT DISTINCT meta_key FROM wp_uqzn_usermeta WHERE user_id = '$whichMember'";
 		$result = mysqli_query($conn,$query) or die ("<p class=\"resultCountIndexPage\">Your search returned 0 result(s) (6).</p>");
 			while ($row = mysqli_fetch_array($result)) {
-				extract($row);			
+				extract($row);
 					array_push($existingMetaKeysArray, $row[0]);
-			}		
+			}
 			return array($existingMetaKeysArray, $result);
 }
 $existingMetaKeys = getExistingMetaKeys($whichMember, $conn);
@@ -325,10 +326,11 @@ updateValues($querySetupArray, $whichMember, $conn);
 } //insertUpdateQueries()
 
 insertUpdateQueries($queryArrays, $alphaFormArray, $whichMember, $conn);
+
+if (isset($result)) {mysqli_free_result($result);}
+if (isset($conn)) {mysqli_close($conn);}
+
 break;
 } //end case switch
 
-if (isset($result)) {mysqli_free_result($result);}
-if (isset($result2)) {mysqli_free_result($result2);}	
-if (isset($conn)) {mysqli_close($conn);}
 ?>
